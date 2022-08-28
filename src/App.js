@@ -20,15 +20,16 @@ function App() {
       <section id="me" class="text-gray-600 body-font">
         <div class="container mx-auto flex px-5 py-20 md:flex-row flex-col items-center">
           <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+            <h1 class="title-font sm:text-4xl text-3xl font-medium text-gray-900">
               Swastik Kulshreshtha
             </h1>
+            <div class="h-1 w-20 mb-4 bg-bluish-51 rounded"></div>
             <p class="mb-8 leading-relaxed">
-              Hello someone from the Internet 👋🏼<br/>
+              Hello someone from the Internet 👋🏼<br />
               I am Swastik. I'm a college student and have a bit of experience in coding stuff. Aside of Coding, I also like doing stuff from listening songs to playing video games and hang out with my friends on Discord.
-              </p>
+            </p>
             <div class="flex justify-center">
-              <a href="https://discord.com/channels/@me/600286650509295616/" target="_blank" rel="noreferrer">
+              <a title="DM me on Discord" href="https://discord.com/channels/@me/600286650509295616/" target="_blank" rel="noreferrer">
                 <button class="inline-flex text-white bg-red-400 border-0 py-2 px-6 focus:outline-none hover:bg-red-500 rounded text-lg">Discord</button>
               </a>
               <a title="If you know me IRL, you would probably have my Number '_'" href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noreferrer">
@@ -49,29 +50,29 @@ function App() {
               <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Gallery ¯\_(ツ)_/¯</h1>
               <div class="h-1 w-20 bg-bluish-51 rounded"></div>
             </div>
-            <p class="lg:w-3/4 w-full leading-relaxed text-gray-500">I am not very fond of taking pictures, being the infamous introvert kid from the class :)<br/>But anyways, here are some of my best clicks. Check out my Instagram Accounts for more of them.</p>
+            <p class="lg:w-3/4 w-full leading-relaxed text-gray-500">I am not very fond of taking pictures, being the infamous introvert kid from the class :)<br />But anyways, here are some of my best clicks. Check out my Instagram Accounts for more of them.</p>
           </div>
           <div class="flex flex-wrap md:-m-2 -m-1">
             <div class="flex flex-wrap w-1/2">
               <div class="md:p-2 p-1 w-1/2">
-                <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://dummyimage.com/500x300" />
+                <img class="w-full object-cover h-full object-center block" src="https://dummyimage.com/500x300" alt="Gallery Image" height="500" width="300" />
               </div>
               <div class="md:p-2 p-1 w-1/2">
-                <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://dummyimage.com/501x301" />
+                <img class="w-full object-cover h-full object-center block" src="https://dummyimage.com/500x300" alt="Gallery Image" height="500" width="300" />
               </div>
               <div class="md:p-2 p-1 w-full">
-                <img alt="gallery" class="w-full h-full object-cover object-center block" src="https://dummyimage.com/600x360" />
+                <img class="w-full h-full object-cover object-center block" src="https://dummyimage.com/600x360" alt="Gallery Image" height="600" width="360" />
               </div>
             </div>
             <div class="flex flex-wrap w-1/2">
               <div class="md:p-2 p-1 w-full">
-                <img alt="gallery" class="w-full h-full object-cover object-center block" src="https://dummyimage.com/601x361" />
+                <img class="w-full h-full object-cover object-center block" src="https://dummyimage.com/600x360" alt="Gallery Image" height="600" width="360" />
               </div>
               <div class="md:p-2 p-1 w-1/2">
-                <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://dummyimage.com/502x302" />
+                <img class="w-full object-cover h-full object-center block" src="https://dummyimage.com/500x300" alt="Gallery Image" height="500" width="300" />
               </div>
               <div class="md:p-2 p-1 w-1/2">
-                <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://dummyimage.com/503x303" />
+                <img class="w-full object-cover h-full object-center block" src="https://dummyimage.com/500x300" alt="Gallery Image" height="500" width="300" />
               </div>
             </div>
           </div>
@@ -89,36 +90,36 @@ function App() {
           </div>
           <div class="flex flex-wrap -m-4">
             <a href="https://github.com/Swastik2442/InsCalc" class="xl:w-1/4 md:w-1/2 p-4">
-                <div class="bg-gray-100 p-6 rounded-lg">
-                  <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content" />
-                  <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">C++</h3>
-                  <h2 class="text-lg text-gray-900 font-medium title-font mb-4">InsCalc</h2>
-                  <p class="leading-relaxed text-base">An Insurance Calculator which can generate Reports in many formats, after getting the required information.</p>
-                </div>
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_960_720.jpg" alt="content" height="400" width="720" />
+                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">C++</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">InsCalc</h2>
+                <p class="leading-relaxed text-base">An Insurance Calculator which can generate Reports in many formats, after getting the required information.</p>
+              </div>
             </a>
             <a href="https://github.com/Swastik2442/intellisense-mathjax" class="xl:w-1/4 md:w-1/2 p-4">
-                <div class="bg-gray-100 p-6 rounded-lg">
-                  <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content" />
-                  <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">TypeScript</h3>
-                  <h2 class="text-lg text-gray-900 font-medium title-font mb-4">IntelliSense for MathJax</h2>
-                  <p class="leading-relaxed text-base">An extension for Visual Studio Code which provides IntelliSense for MathJax or similar TeX languages.</p>
-                </div>
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://images.pexels.com/photos/3729557/pexels-photo-3729557.jpeg" alt="content" height="400" width="720" />
+                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">TypeScript</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">IntelliSense for MathJax</h2>
+                <p class="leading-relaxed text-base">An extension for Visual Studio Code which provides IntelliSense for MathJax or similar TeX languages.</p>
+              </div>
             </a>
             <a href="https://github.com/Swastik2442/FB-to-Discord" class="xl:w-1/4 md:w-1/2 p-4">
-                <div class="bg-gray-100 p-6 rounded-lg">
-                  <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content" />
-                  <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">Python</h3>
-                  <h2 class="text-lg text-gray-900 font-medium title-font mb-4">FB-to-Discord</h2>
-                  <p class="leading-relaxed text-base">A tool that can be used to extract Facebook Posts and send them to Discord using Webhooks.</p>
-                </div>
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://cdn.pixabay.com/photo/2015/10/21/08/22/media-998990_960_720.jpg" alt="content" height="400" width="720" />
+                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">Python</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">FB-to-Discord</h2>
+                <p class="leading-relaxed text-base">A tool that can be used to extract Facebook Posts and send them to Discord using Webhooks.</p>
+              </div>
             </a>
             <a href="https://github.com/Swastik2442/Custom-DiscordRPC" class="xl:w-1/4 md:w-1/2 p-4">
-                <div class="bg-gray-100 p-6 rounded-lg">
-                  <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content" />
-                  <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">Python</h3>
-                  <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Custom-DiscordRPC</h2>
-                  <p class="leading-relaxed text-base">A tool for providing Custom Rich Presence in Discord.</p>
-                </div>
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://images.unsplash.com/photo-1660721046155-f1e3143dd752" alt="content" height="400" width="720" />
+                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">Python</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Custom-DiscordRPC</h2>
+                <p class="leading-relaxed text-base">A tool for providing Custom Rich Presence in Discord.</p>
+              </div>
             </a>
           </div>
         </div>

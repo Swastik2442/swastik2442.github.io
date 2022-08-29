@@ -99,3 +99,19 @@ limitations under the License. */
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+.linktoig {
+  position: relative;
+  text-align: center;
+  color: gray;
+}
+
+.link_ig {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+.gallery-effect:hover {
+  filter: grayscale(1) contrast(1.2) opacity(0.9)
+}

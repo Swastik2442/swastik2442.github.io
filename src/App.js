@@ -14,6 +14,14 @@
 
 import './App.css';
 
+import image_link from './assets/link.png'
+import photo_chop from './assets/chop.jpg';
+import photo_contract from './assets/contract.jpg';
+import photo_garden from './assets/garden.jpg';
+import photo_iceland from './assets/iceland.jpg';
+import photo_muscle from './assets/muscle.jpg';
+import photo_spark from './assets/spark.jpg';
+
 function App() {
   return (
     <div className="App">
@@ -54,25 +62,31 @@ function App() {
           </div>
           <div class="flex flex-wrap md:-m-2 -m-1">
             <div class="flex flex-wrap w-1/2">
-              <div class="md:p-2 p-1 w-1/2">
-                <img class="w-full object-cover h-full object-center block" src="https://dummyimage.com/500x300" alt="Gallery Image" height="500" width="300" />
+              <div class="md:p-2 p-1 w-1/2 linktoig">
+                <img class="w-full object-cover h-full object-center block gallery-effect" src={photo_garden} alt="Gallery" height="500" width="300" style={{width: "100%"}}/>
+                <a class="link_ig" href="https://www.instagram.com/p/Ce-PyfLFlKdTtPQAKL4HNg1JCEPF-X3cEkDF8o0/">@k.wastik</a>
               </div>
-              <div class="md:p-2 p-1 w-1/2">
-                <img class="w-full object-cover h-full object-center block" src="https://dummyimage.com/500x300" alt="Gallery Image" height="500" width="300" />
+              <div class="md:p-2 p-1 w-1/2 linktoig">
+                <img class="w-full object-cover h-full object-center block gallery-effect" src={photo_spark} alt="Gallery" height="500" width="300" />
+                <a class="link_ig" href="https://www.instagram.com/p/CJ3zd9mnnj-/">@loki_2442</a>
               </div>
-              <div class="md:p-2 p-1 w-full">
-                <img class="w-full h-full object-cover object-center block" src="https://dummyimage.com/600x360" alt="Gallery Image" height="600" width="360" />
+              <div class="md:p-2 p-1 w-full linktoig">
+                <img class="w-full h-full object-cover object-center block gallery-effect" src={photo_contract} alt="Gallery" height="600" width="360" />
+                <a class="link_ig" href="https://www.instagram.com/p/CX1UDa-vg5-/">@loki_2442</a>           
               </div>
             </div>
-            <div class="flex flex-wrap w-1/2">
+            <div class="flex flex-wrap w-1/2 linktoig">
               <div class="md:p-2 p-1 w-full">
-                <img class="w-full h-full object-cover object-center block" src="https://dummyimage.com/600x360" alt="Gallery Image" height="600" width="360" />
+                <img class="w-full h-full object-cover object-center block gallery-effect" src={photo_muscle} alt="Gallery" height="600" width="360" />
+                <a class="link_ig" href="https://www.instagram.com/p/CLClK_hn8_X/">@loki_2442</a>
               </div>
-              <div class="md:p-2 p-1 w-1/2">
-                <img class="w-full object-cover h-full object-center block" src="https://dummyimage.com/500x300" alt="Gallery Image" height="500" width="300" />
+              <div class="md:p-2 p-1 w-1/2 linktoig">
+                <img class="w-full object-cover h-full object-center block gallery-effect" src={photo_iceland} alt="Gallery" height="500" width="300" />
+                <a class="link_ig" href="https://www.instagram.com/p/CLjfQt2nmfU/">@loki_2442</a>
               </div>
-              <div class="md:p-2 p-1 w-1/2">
-                <img class="w-full object-cover h-full object-center block" src="https://dummyimage.com/500x300" alt="Gallery Image" height="500" width="300" />
+              <div class="md:p-2 p-1 w-1/2 linktoig">
+                <img class="w-full object-cover h-full object-center block gallery-effect" src={photo_chop} alt="Gallery" height="500" width="300" />
+                <a class="link_ig" href="https://www.instagram.com/p/CXkcUDRPGC_/">@loki_2442</a>
               </div>
             </div>
           </div>
@@ -105,6 +119,40 @@ function App() {
                 <p class="leading-relaxed text-base">An extension for Visual Studio Code which provides IntelliSense for MathJax or similar TeX languages.</p>
               </div>
             </a>
+            <a href="https://github.com/Swastik2442/CSDiscord" class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://cdn.pixabay.com/photo/2014/01/30/18/26/skyline-255116_960_720.jpg" alt="content" height="400" width="720" />
+                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">C#</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">CSDiscord</h2>
+                <p class="leading-relaxed text-base">A mod for Cities Skylines to support Discord Rich Presence. Although it slows down the game, but the fun is there :P</p>
+              </div>
+            </a>
+            <a href="https://github.com/Swastik2442/ChatApp" class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://images.pexels.com/photos/230554/pexels-photo-230554.jpeg" alt="content" height="400" width="720" />
+                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">JavaScript</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">ChatApp</h2>
+                <p class="leading-relaxed text-base">A Chat Application which updates in Real-Time, made using Node.js & Socket.io</p>
+              </div>
+            </a>
+          </div>
+          <div class="flex flex-wrap -m-4">
+            <a href="https://github.com/Swastik2442/Games" class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://images.unsplash.com/photo-1595744043037-68de3376ed59" alt="content" height="400" width="720" />
+                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">Python / JavaScript</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Games</h2>
+                <p class="leading-relaxed text-base">Small-time Games made for fun. Made using pygame (Python) & p5 (JavaScript) libraries.</p>
+              </div>
+            </a>
+            <a href="https://github.com/Swastik2442/FB-to-Discord" class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://cdn.pixabay.com/photo/2015/10/21/08/22/media-998990_960_720.jpg" alt="content" height="400" width="720" />
+                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">Python</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Insta-to-Discord</h2>
+                <p class="leading-relaxed text-base">A tool that can be used to extract Instagram Posts and send them to Discord using Webhooks.</p>
+              </div>
+            </a>
             <a href="https://github.com/Swastik2442/FB-to-Discord" class="xl:w-1/4 md:w-1/2 p-4">
               <div class="bg-gray-100 p-6 rounded-lg">
                 <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://cdn.pixabay.com/photo/2015/10/21/08/22/media-998990_960_720.jpg" alt="content" height="400" width="720" />
@@ -122,6 +170,7 @@ function App() {
               </div>
             </a>
           </div>
+          <p class="p-2 text-gray-400 text-right">§ Images Copyright to their respectful owners</p>
         </div>
       </section>
 

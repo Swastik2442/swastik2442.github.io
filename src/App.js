@@ -14,7 +14,6 @@
 
 import './App.css';
 
-import image_link from './assets/link.png'
 import photo_chop from './assets/chop.jpg';
 import photo_contract from './assets/contract.jpg';
 import photo_garden from './assets/garden.jpg';
@@ -41,7 +40,7 @@ function App() {
                 <button class="inline-flex text-white bg-red-400 border-0 py-2 px-6 focus:outline-none hover:bg-red-500 rounded text-lg">Discord</button>
               </a>
               <a title="If you know me IRL, you would probably have my Number '_'" href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noreferrer">
-                <button class="ml-4 inline-flex text-white bg-bluish-51 border-0 py-2 px-6 focus:outline-none hover:bg-bluish-50 rounded text-lg">Phone Number</button>
+                <button class="ml-4 inline-flex text-white bg-bluish-51 border-0 py-2 px-6 focus:outline-none hover:bg-bluish-50 rounded text-lg">Contact Me</button>
               </a>
             </div>
           </div>

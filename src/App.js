@@ -15,7 +15,7 @@
 import './App.css';
 
 import photo_chop from './assets/chop.jpg';
-import photo_contract from './assets/contract.jpg';
+import photo_r8 from './assets/r8.jpg';
 import photo_garden from './assets/garden.jpg';
 import photo_iceland from './assets/iceland.jpg';
 import photo_muscle from './assets/muscle.jpg';
@@ -33,7 +33,7 @@ function App() {
             <div class="h-1 w-20 mb-4 bg-bluish-51 rounded"></div>
             <p class="mb-8 leading-relaxed">
               Hello someone from the Internet 👋🏼<br />
-              I am Swastik. I'm a college student and have a bit of experience in coding stuff. Aside of Coding, I also like doing stuff from listening songs to playing video games and hang out with my friends on Discord.
+              I am Swastik. I'm a college student and have a bit of experience in coding stuff. Aside of Coding, I also like doing stuff from listening songs to playing video games and hang out with my friends.
             </p>
             <div class="flex justify-center">
               <a title="DM me on Discord" href="https://discord.com/channels/@me/600286650509295616/" target="_blank" rel="noreferrer">
@@ -57,7 +57,7 @@ function App() {
               <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Gallery ¯\_(ツ)_/¯</h1>
               <div class="h-1 w-20 bg-bluish-51 rounded"></div>
             </div>
-            <p class="lg:w-3/4 w-full leading-relaxed text-gray-500">I am not very fond of taking pictures, being the infamous introvert kid from the class :)<br />But anyways, here are some of my best clicks. Check out my Instagram Accounts for more of them.</p>
+            <p class="lg:w-3/4 w-full leading-relaxed text-gray-500">I am not very fond of taking pictures :)<br />But anyways, here are some of my best clicks. Check out my Instagram Accounts for more of them.</p>
           </div>
           <div class="flex flex-wrap md:-m-2 -m-1">
             <div class="flex flex-wrap w-1/2">
@@ -70,8 +70,8 @@ function App() {
                 <a class="link_ig" href="https://www.instagram.com/p/CJ3zd9mnnj-/">@loki_2442</a>
               </div>
               <div class="md:p-2 p-1 w-full linktoig">
-                <img class="w-full h-full object-cover object-center block gallery-effect" src={photo_contract} alt="Gallery" height="600" width="360" />
-                <a class="link_ig" href="https://www.instagram.com/p/CX1UDa-vg5-/">@loki_2442</a>           
+                <img class="w-full h-full object-cover object-center block gallery-effect" src={photo_r8} alt="Gallery" height="600" width="360" />
+                <a class="link_ig" href="https://www.instagram.com/p/Ci0StV-v24K/">@loki_2442</a>          
               </div>
             </div>
             <div class="flex flex-wrap w-1/2 linktoig">
@@ -118,14 +118,6 @@ function App() {
                 <p class="leading-relaxed text-base">An extension for Visual Studio Code which provides IntelliSense for MathJax or similar TeX languages.</p>
               </div>
             </a>
-            <a href="https://github.com/Swastik2442/CSDiscord" class="xl:w-1/4 md:w-1/2 p-4">
-              <div class="bg-gray-100 p-6 rounded-lg">
-                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://cdn.pixabay.com/photo/2014/01/30/18/26/skyline-255116_960_720.jpg" alt="content" height="400" width="720" />
-                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">C#</h3>
-                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">CSDiscord</h2>
-                <p class="leading-relaxed text-base">A mod for Cities Skylines to support Discord Rich Presence. Although it slows down the game, but the fun is there :P</p>
-              </div>
-            </a>
             <a href="https://github.com/Swastik2442/ChatApp" class="xl:w-1/4 md:w-1/2 p-4">
               <div class="bg-gray-100 p-6 rounded-lg">
                 <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://images.pexels.com/photos/230554/pexels-photo-230554.jpeg" alt="content" height="400" width="720" />
@@ -134,22 +126,30 @@ function App() {
                 <p class="leading-relaxed text-base">A Chat Application which updates in Real-Time, made using Node.js & Socket.io</p>
               </div>
             </a>
+            <a href="https://github.com/Swastik2442/ChatApp-PHP" class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://images.pexels.com/photos/230554/pexels-photo-230554.jpeg" alt="content" height="400" width="720" />
+                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">PHP</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">ChatApp</h2>
+                <p class="leading-relaxed text-base">A Chat Application which updates in Real-Time, made using PHP & jQuery</p>
+              </div>
+            </a>
           </div>
           <div class="flex flex-wrap -m-4">
+            <a href="https://github.com/Swastik2442/CSDiscord" class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="bg-gray-100 p-6 rounded-lg">
+                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://cdn.pixabay.com/photo/2014/01/30/18/26/skyline-255116_960_720.jpg" alt="content" height="400" width="720" />
+                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">C#</h3>
+                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">CSDiscord</h2>
+                <p class="leading-relaxed text-base">A mod for Cities Skylines to support Discord Rich Presence. Although it slows down the game, but the fun is there :P</p>
+              </div>
+            </a>
             <a href="https://github.com/Swastik2442/Games" class="xl:w-1/4 md:w-1/2 p-4">
               <div class="bg-gray-100 p-6 rounded-lg">
                 <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://images.unsplash.com/photo-1595744043037-68de3376ed59" alt="content" height="400" width="720" />
                 <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">Python / JavaScript</h3>
                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Games</h2>
                 <p class="leading-relaxed text-base">Small-time Games made for fun. Made using pygame (Python) & p5 (JavaScript) libraries.</p>
-              </div>
-            </a>
-            <a href="https://github.com/Swastik2442/FB-to-Discord" class="xl:w-1/4 md:w-1/2 p-4">
-              <div class="bg-gray-100 p-6 rounded-lg">
-                <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://cdn.pixabay.com/photo/2015/10/21/08/22/media-998990_960_720.jpg" alt="content" height="400" width="720" />
-                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">Python</h3>
-                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Insta-to-Discord</h2>
-                <p class="leading-relaxed text-base">A tool that can be used to extract Instagram Posts and send them to Discord using Webhooks.</p>
               </div>
             </a>
             <a href="https://github.com/Swastik2442/FB-to-Discord" class="xl:w-1/4 md:w-1/2 p-4">
@@ -201,22 +201,16 @@ function App() {
                 <a class="px-2" href="https://linkedin.com/in/Swastik2442">
                   <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="text-gray-500 py-2" height={50} width={50}><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
                 </a>
-                <a class="px-2" href="https://auth.geeksforgeeks.org/user/swastik2442">
-                  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="text-gray-500 py-2" height={50} width={50}><title>GeeksforGeeks</title><path d="M21.45 14.315c-.143.28-.334.532-.565.745a3.691 3.691 0 0 1-1.104.695 4.51 4.51 0 0 1-3.116-.016 3.79 3.79 0 0 1-2.135-2.078 3.571 3.571 0 0 1-.13-.353h7.418a4.26 4.26 0 0 1-.368 1.008zm-11.99-.654a3.793 3.793 0 0 1-2.134 2.078 4.51 4.51 0 0 1-3.117.016 3.7 3.7 0 0 1-1.104-.695 2.652 2.652 0 0 1-.564-.745 4.221 4.221 0 0 1-.368-1.006H9.59c-.038.12-.08.238-.13.352zm14.501-1.758a3.849 3.849 0 0 0-.082-.475l-9.634-.008a3.932 3.932 0 0 1 1.143-2.348c.363-.35.79-.625 1.26-.809a3.97 3.97 0 0 1 4.484.957l1.521-1.49a5.7 5.7 0 0 0-1.922-1.357 6.283 6.283 0 0 0-2.544-.49 6.35 6.35 0 0 0-2.405.457 6.007 6.007 0 0 0-1.963 1.276 6.142 6.142 0 0 0-1.325 1.94 5.862 5.862 0 0 0-.466 1.864h-.063a5.857 5.857 0 0 0-.467-1.865 6.13 6.13 0 0 0-1.325-1.939A6 6 0 0 0 8.21 6.34a6.698 6.698 0 0 0-4.949.031A5.708 5.708 0 0 0 1.34 7.73l1.52 1.49a4.166 4.166 0 0 1 4.484-.958c.47.184.898.46 1.26.81.368.36.66.792.859 1.268.146.344.242.708.285 1.08l-9.635.008A4.714 4.714 0 0 0 0 12.457a6.493 6.493 0 0 0 .345 2.127 4.927 4.927 0 0 0 1.08 1.783c.528.56 1.17 1 1.88 1.293a6.454 6.454 0 0 0 2.504.457c.824.005 1.64-.15 2.404-.457a5.986 5.986 0 0 0 1.964-1.277 6.116 6.116 0 0 0 1.686-3.076h.273a6.13 6.13 0 0 0 1.686 3.077 5.99 5.99 0 0 0 1.964 1.276 6.345 6.345 0 0 0 2.405.457 6.45 6.45 0 0 0 2.502-.457 5.42 5.42 0 0 0 1.882-1.293 4.928 4.928 0 0 0 1.08-1.783A6.52 6.52 0 0 0 24 12.457a4.757 4.757 0 0 0-.039-.554z" /></svg>
-                </a>
               </span>
               <br></br>
               <span class="inline-flex text-center m-0">
                 <a class="px-2" href="https://www.youtube.com/channel/UCdlSJ8wN4l8Yok1TiQzMx6A">
                   <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="text-gray-500 py-2" height={50} width={50}><title>YouTube</title><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>
                 </a>
-                <a class="px-2" href="https://dev.to/swastik">
-                  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="text-gray-500 py-2" height={50} width={50}><title>dev.to</title><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6l.02 2.44.04 2.45.56-.02c.41 0 .63-.07.83-.26.24-.24.26-.36.26-2.2 0-1.91-.02-1.96-.29-2.18zM0 4.94v14.12h24V4.94H0zM8.56 15.3c-.44.58-1.06.77-2.53.77H4.71V8.53h1.4c1.67 0 2.16.18 2.6.9.27.43.29.6.32 2.57.05 2.23-.02 2.73-.47 3.3zm5.09-5.47h-2.47v1.77h1.52v1.28l-.72.04-.75.03v1.77l1.22.03 1.2.04v1.28h-1.6c-1.53 0-1.6-.01-1.87-.3l-.3-.28v-3.16c0-3.02.01-3.18.25-3.48.23-.31.25-.31 1.88-.31h1.64v1.3zm4.68 5.45c-.17.43-.64.79-1 .79-.18 0-.45-.15-.67-.39-.32-.32-.45-.63-.82-2.08l-.9-3.39-.45-1.67h.76c.4 0 .75.02.75.05 0 .06 1.16 4.54 1.26 4.83.04.15.32-.7.73-2.3l.66-2.52.74-.04c.4-.02.73 0 .73.04 0 .14-1.67 6.38-1.8 6.68z" /></svg>
-                </a>
               </span>
               <p class="text-center">
                 <p class="text-gray-900 text-lg font-medium">Email</p>
-                <a class="hover-underline-animation italic leading-relaxed text-gray-600" href="mailto:kul.swas321tik@gmail.com">kul.swas321tik@gmail.com</a>
+                <a class="hover-underline-animation italic leading-relaxed text-gray-600" href="mailto:swastik2442@gmail.com">swastik2442@gmail.com</a>
               </p>
             </div>
             <a class="text-white bg-bluish-51 border-0 py-2 px-6 focus:outline-none hover:bg-bluish-51 rounded text-lg text-center" href="https://loki2442.github.io">

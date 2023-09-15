@@ -1,11 +1,7 @@
 {
   "name": "swastik2442.github.io",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "My Online Portfolio",
-  "main": "assets/script.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Swastik2442/swastik2442.github.io.git"
@@ -16,7 +12,23 @@
     "url": "https://github.com/Swastik2442/swastik2442.github.io/issues"
   },
   "homepage": "https://github.com/Swastik2442/swastik2442.github.io#readme",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "devDependencies": {
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3"
   }
 }

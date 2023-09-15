@@ -1,0 +1,73 @@
+.heading2Xl {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+  margin: 1rem 0;
+}
+.headingXl {
+  font-size: 2rem;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+  margin: 1rem 0;
+}
+.headingLg {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin: 1rem 0;
+}
+.headingMd {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+.borderCircle {
+  border-radius: 9999px;
+}
+.colorInherit {
+  color: inherit;
+}
+.padding1px {
+  padding-top: 1px;
+}
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.listItem {
+  margin: 0 0 1.25rem;
+}
+.lightText {
+  color: #666;
+}
+.defaultCursor {
+  cursor: default;
+}
+.hoverUnderlineAnimation {
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+.hoverUnderlineAnimation:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.hoverUnderlineAnimation:link,
+.hoverUnderlineAnimation:visited,
+.hoverUnderlineAnimation:hover,
+.hoverUnderlineAnimation:active {
+  text-decoration: none;
+}
+.hoverUnderlineAnimation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

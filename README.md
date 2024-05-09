@@ -1,4 +1,4 @@
-<!-- Copyright 2023 Swastik Kulshreshtha <@Swastik2442>
+<!-- Copyright 2024 Swastik Kulshreshtha <@Swastik2442>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -13,12 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License. -->
 
 <div align="center">
-  <a href="https://swastik2442.github.io"><img src="s.svg" width="100" alt="Swastik K." /></a>
+  <a href="https://swastik2442.github.io"><img src="./public/images/profile.svg" width="100" alt="Swastik Kulshreshtha" /></a>
   <br>
 
   ![](https://img.shields.io/github/package-json/v/Swastik2442/swastik2442.github.io/master)
   ![](https://img.shields.io/github/license/Swastik2442/swastik2442.github.io)
   ![](https://github.com/Swastik2442/swastik2442.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
 
-My Online Portfolio
+An Online Portfolio based on the Pause Menu of Grand Theft Auto: Vice City
 </div>

@@ -1,0 +1,22 @@
+.main {
+  background-color: orange;
+  color: var(--primary);
+}
+
+.menuList {
+  font-size: 2rem;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.menuList li a {
+  color: inherit;
+  text-decoration: none;
+  cursor: default;
+}
+
+.menuList li a:hover {
+  background-color: var(--hovering);
+}

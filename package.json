@@ -1,6 +1,6 @@
 {
   "name": "swastik2442.github.io",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "My Online Portfolio",
   "repository": {
     "type": "git",
@@ -14,21 +14,22 @@
   "homepage": "https://github.com/Swastik2442/swastik2442.github.io#readme",
   "private": true,
   "scripts": {
-    "build": "next build",
     "dev": "next dev",
-    "start": "next start"
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "next": "latest",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "engines": {
-    "node": ">=18"
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.2.3"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.15",
-    "postcss": "^8.4.29",
-    "tailwindcss": "^3.3.3"
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3"
   }
 }

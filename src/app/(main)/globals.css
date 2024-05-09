@@ -1,0 +1,45 @@
+:root {
+  --primary: #fe96e1;
+  --secondary: #f3f3f3;
+  --tertiary: #1b1b1b;
+  --quaternary: #595563;
+  --hovering: #198247;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--quaternary) url("/images/background.jpg") left top/cover no-repeat;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background-image: url("/images/backgroundSmall.jpg");
+  }
+}
+
+.topNames {
+  padding-top: 2em;
+  display: flex;
+  justify-self: space-between;
+}
+
+.leftName {
+  margin: 0;
+  font-size: 2.5rem;
+  color: var(--secondary);
+  text-decoration: underline;
+  text-shadow: -2px 0 var(--primary), 0 2px var(--primary), 2px 0 var(--primary), 0 -2px var(--primary);
+  transform: rotate(-10deg);
+}
+  
+.rightName {
+  margin: 0;
+  margin-left: auto;
+  font-size: 2.5rem;
+  color: var(--primary);
+  text-align: right;
+  text-shadow: -5px 5px 2px var(--tertiary);
+}

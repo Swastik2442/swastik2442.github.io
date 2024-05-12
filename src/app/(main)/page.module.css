@@ -1,22 +1,26 @@
 .main {
-  background-color: orange;
   color: var(--primary);
 }
 
 .menuList {
   font-size: 2rem;
   list-style-type: none;
-  padding: 0;
-  margin: 0;
+  padding: 10px;
+  margin: auto;
   text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menuList li {
+  padding: 10px;
 }
 
 .menuList li a {
   color: inherit;
   text-decoration: none;
   cursor: default;
-}
-
-.menuList li a:hover {
-  background-color: var(--hovering);
+  margin: 30px auto;
 }

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Alex_Brush, Notable } from 'next/font/google'
 import "./globals.css";
 
 export const ownerName = "Swastik Kulshreshtha", ownerBio = "Yet another Human from Earth", ownerLogo = "https://avatars.githubusercontent.com/u/135314424";
@@ -41,8 +42,13 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 }
 
-const pricedownFont = localFont({ src: '../../../fonts/PricedownBl-regular.otf' })
-const rageItalicFont = localFont({ src: '../../../fonts/Rage Italic.ttf' })
+// Local Fonts
+const primaryFont = localFont({ src: "../../../fonts/PricedownBl-regular.otf" });
+const titleFont = localFont({ src: "../../../fonts/Rage Italic.ttf" });
+
+// Alternative Fonts - https://fonts.google.com/share?selection.family=Notable|Alex+Brush
+// const primaryFont = Notable({ weight: "400", subsets: ['latin'] });
+// const titleFont =  Alex_Brush({ weight: "400", subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -51,16 +57,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={pricedownFont.className}>
-        <div className="topNames">
-          <div className={`leftName ${rageItalicFont.className}`}>
-            <strong>{ownerName}</strong>
+      <body className={primaryFont.className}>
+        <div className="main">
+          <div className="topNames">
+            <div className={`leftName ${titleFont.className}`}>
+              <strong>{ownerName}</strong>
+            </div>
+            <div className="rightName">
+              pause menu
+            </div>
           </div>
-          <div className="rightName">
-            {ownerName}
-          </div>
+          {children}
+          <div className="borderOne"></div>
+          <div className="borderTwo"></div>
+          <div className="borderThree"></div>
+          <div className="borderFour"></div>
         </div>
-        {children}
       </body>
     </html>
   );

@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Alex_Brush } from 'next/font/google'
+import "../globals.css";
 
 export const ownerName = "Swastik Kulshreshtha", ownerBio = "Yet another Human from Earth", ownerLogo = "https://avatars.githubusercontent.com/u/135314424";
 export const siteHost = "https://swastik2442.github.io", siteTitle = ownerName, twitterTag = "swastik2442";
@@ -40,7 +42,8 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 }
 
-const rageItalicFont = localFont({ src: '../../../../fonts/Rage Italic.ttf' })
+const greetFont = localFont({ src: '../../../../fonts/Rage Italic.ttf' })
+// const greetFont = Alex_Brush({ weight: "400", subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -49,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={rageItalicFont.className}>
+      <body className={greetFont.className}>
         {children}
       </body>
     </html>

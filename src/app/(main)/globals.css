@@ -8,6 +8,7 @@
 
 html, body {
   min-height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -20,8 +21,48 @@ body {
   }
 }
 
+.main{
+  overflow: hidden; /* Doesn't Work */
+}
+
+.borderOne, .borderTwo, .borderThree, .borderFour {
+  position: absolute;
+  z-index: -2;
+  background-color: black;
+}
+
+.borderOne, .borderTwo {
+  width: 125vw;
+  height: 10vh;
+}
+
+.borderThree, .borderFour {
+  width: 10vw;
+  height: 125vh;
+}
+
+.borderOne {
+  top: -1em;
+  left: 0;
+}
+
+.borderTwo {
+  bottom: -1em;
+  right: 0;
+}
+
+.borderThree {
+  top: 0;
+  left: -1em;
+}
+
+.borderFour {
+  bottom: 0;
+  right: -1em;
+}
+
 .topNames {
-  padding-top: 2em;
+  padding: 2em 2em;
   display: flex;
   justify-self: space-between;
 }
@@ -34,12 +75,41 @@ body {
   text-shadow: -2px 0 var(--primary), 0 2px var(--primary), 2px 0 var(--primary), 0 -2px var(--primary);
   transform: rotate(-10deg);
 }
-  
+
 .rightName {
   margin: 0;
   margin-left: auto;
-  font-size: 2.5rem;
+  font-size: 4rem;
   color: var(--primary);
   text-align: right;
-  text-shadow: -5px 5px 2px var(--tertiary);
+  text-shadow: -8px 6px 2px var(--tertiary);
+}
+
+@media screen and (max-width: 768px) {
+  .leftName, .rightName {
+    padding-top: 1em;
+    font-size: 1rem;
+  }
+}
+
+.textScar {
+  text-shadow: 1.5px 1.5px 1px var(--tertiary);
+}
+
+.greenHover {
+  position: relative;
+}
+
+.greenHover::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background-color: var(--hovering);
+}
+
+.greenHover:hover::before {
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  top: -10px;
+  left: -10px;
 }

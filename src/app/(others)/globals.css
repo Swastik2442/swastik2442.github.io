@@ -1,0 +1,12 @@
+:root {
+  --primary: #f3f3f3;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  background-color: black;
+  color: var(--primary);
+}

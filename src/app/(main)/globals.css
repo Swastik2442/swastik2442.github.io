@@ -9,6 +9,7 @@
 html, body {
   min-height: 100%;
   overflow: hidden;
+  cursor:url("/cursor.png"), auto;
 }
 
 body {
@@ -21,44 +22,47 @@ body {
   }
 }
 
-.main{
-  overflow: hidden; /* Doesn't Work */
+.main { /* Overflow Doesn't Work on Mobiles */
+  /* position: relative; */
+  overflow: hidden;
 }
 
 .borderOne, .borderTwo, .borderThree, .borderFour {
   position: absolute;
   z-index: -2;
   background-color: black;
+  rotate: 0deg;
+  transition: rotate 0.5s;
 }
 
 .borderOne, .borderTwo {
   width: 125vw;
-  height: 10vh;
+  height: 25vh;
 }
 
 .borderThree, .borderFour {
-  width: 10vw;
+  width: 25vw;
   height: 125vh;
 }
 
 .borderOne {
-  top: -1em;
+  top: -12.5vh;
   left: 0;
 }
 
 .borderTwo {
-  bottom: -1em;
+  bottom: -12.5vh;
   right: 0;
 }
 
 .borderThree {
   top: 0;
-  left: -1em;
+  left: -12.5vw;
 }
 
 .borderFour {
   bottom: 0;
-  right: -1em;
+  right: -12.5vw;
 }
 
 .topNames {

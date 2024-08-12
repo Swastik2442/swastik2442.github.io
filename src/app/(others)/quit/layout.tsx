@@ -1,33 +1,30 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
 import { Alex_Brush } from 'next/font/google'
+import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verifyGoogle, twitterUsername } from "../../config";
 import "../globals.css";
-
-export const ownerName = "Swastik Kulshreshtha", ownerBio = "Yet another Human from Earth", ownerLogo = "https://avatars.githubusercontent.com/u/135314424";
-export const siteHost = "https://swastik2442.github.io", siteTitle = ownerName, twitterTag = "swastik2442";
 
 export const metadata: Metadata = {
   title: siteTitle,
-  description: ownerBio,
+  description: siteDescription,
   authors: [{"name": ownerName}],
   icons: "favicon.ico",
   openGraph: {
     type: "website",
     url: siteHost,
     title: siteTitle,
-    description: ownerBio,
+    description: siteDescription,
     siteName: siteTitle,
     images: [{
-      url: ownerLogo,
+      url: siteLogo,
     }],
   },
   twitter: {
     card: "summary",
-    creator: `@${twitterTag}`,
-    "images": ownerLogo,
+    creator: `@${twitterUsername}`,
+    "images": siteLogo,
   },
   verification: {
-    google: "39d45a3da377d5a6",
+    google: verifyGoogle,
   },
   appleWebApp: {
     capable: false,
@@ -42,8 +39,7 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 }
 
-const greetFont = localFont({ src: '../../../../fonts/Rage Italic.ttf' })
-// const greetFont = Alex_Brush({ weight: "400", subsets: ['latin'] });
+const greetFont = Alex_Brush({ weight: "400", subsets: ['latin'] });
 
 export default function RootLayout({
   children,

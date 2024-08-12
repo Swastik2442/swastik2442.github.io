@@ -1,8 +1,8 @@
+import { ownerName } from "../../config";
 import styles from "./page.module.css";
-import { ownerName } from "./layout";
 
 export default function Quit() {
-  const fromTitle = ownerName.trim().split(" ");
+  const fromTitle = ownerName.trim().split(/(\s+)/).filter(e => e.trim().length > 0);
   return (
     <>
     <main className={styles.main}>
@@ -10,7 +10,7 @@ export default function Quit() {
         Greetings from
       </div>
       <div className={styles.fromTitle}>
-        {fromTitle.map(i => <p>{i}</p>)}
+        {fromTitle.map((text, idx) => <p key={idx}>{text}</p>)}
       </div>
     </main>
     </>

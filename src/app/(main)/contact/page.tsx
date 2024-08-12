@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
-import { siteTitle, twitterTag } from '../layout'
+import { siteTitle, twitterUsername, githubUsername, linkedinUsername } from '../../config'
+import BorderStyle from './borderStyle';
 import styles from "../page.module.css";
 
 export const metadata: Metadata = {
@@ -9,12 +10,13 @@ export const metadata: Metadata = {
   },
 }
 
-const githubTag = "Swastik2442", facebookTag = "Swastik2442", linkedinTag = "Swastik2442", instagramTag = "k.wastik";
-
 export default function Contact() {
   return (
+    <>
+    <BorderStyle/>
     <main className={styles.main}>
       Hello
     </main>
+    </>
   );
 }

@@ -1,46 +1,53 @@
 import Link from "next/link";
+import BorderStyle from "./borderStyle";
 import styles from "./page.module.css";
+
+const mainLinks = [
+  {
+    name: "resume",
+    loc: "https://github.com/"
+  },
+  {
+    name: "start new game",
+    loc: "#"
+  },
+  {
+    name: "contact",
+    loc: "/contact"
+  },
+  {
+    name: "stats",
+    loc: "#"
+  },
+  {
+    name: "breif",
+    loc: "#"
+  },
+  {
+    name: "options",
+    loc: "#"
+  },
+  {
+    name: "quit site",
+    loc: "/quit"
+  }
+];
 
 export default function Home() {
   return (
+    <>
+    <BorderStyle/>
     <main className={styles.main}>
       <ul className={`${styles.menuList}`}>
-        <li>
-          <Link href="https://github.com/" className="greenHover textScar">
-            resume
-          </Link>
-        </li>
-        <li>
-          <Link href="" className="greenHover textScar">
-            start new game
-          </Link>
-        </li>
-        <li>
-          <Link href="/contact" className="greenHover textScar">
-            contact
-          </Link>
-        </li>
-        <li>
-          <Link href="" className="greenHover textScar">
-            stats
-          </Link>
-        </li>
-        <li>
-          <Link href="" className="greenHover textScar">
-            breif
-          </Link>
-        </li>
-        <li>
-          <Link href="" className="greenHover textScar">
-            options
-          </Link>
-        </li>
-        <li>
-          <Link href="/quit" className="greenHover textScar">
-            quit site
-          </Link>
-        </li>
+        {mainLinks.map((link, idx) => (
+          <li key={idx}>
+            <Link href={link.loc} className="greenHover textScar">
+              {link.name}
+            </Link>
+          </li>
+        ))}
       </ul>
     </main>
+    </>
   );
 }

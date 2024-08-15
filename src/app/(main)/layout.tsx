@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Notable } from 'next/font/google';
-import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verifyGoogle, twitterUsername } from "../config";
-import Header from "../_components/header";
-import Footer from "../_components/footer";
-import Borders from "../_components/vcBorders";
+import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verifyGoogle, twitterUsername, tertiaryFont } from "@/app/config";
+import Header from "@/app/_components/header";
+import Footer from "@/app/_components/footer";
+import Borders from "@/app/_components/vcBorders";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,7 +17,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     siteName: siteTitle,
     images: [{
-      url: siteLogo,
+      url: siteLogo ?? '',
     }],
   },
   twitter: {
@@ -42,8 +41,6 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 }
 
-const primaryFont = Notable({ weight: "400", subsets: ['latin'] });
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -51,13 +48,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={primaryFont.className}>
+      <body className={tertiaryFont.className}>
         <div className="main">
           <Header />
           {children}
-          <Borders />
           <Footer />
         </div>
+        <Borders />
       </body>
     </html>
   );

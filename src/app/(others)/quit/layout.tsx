@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Alex_Brush } from 'next/font/google'
-import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verifyGoogle, twitterUsername } from "../../config";
+import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verifyGoogle, twitterUsername, secondaryFont } from "../../config";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     siteName: siteTitle,
     images: [{
-      url: siteLogo,
+      url: siteLogo ?? '',
     }],
   },
   twitter: {
@@ -39,8 +38,6 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 }
 
-const greetFont = Alex_Brush({ weight: "400", subsets: ['latin'] });
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -48,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={greetFont.className}>
+      <body className={secondaryFont.className}>
         {children}
       </body>
     </html>

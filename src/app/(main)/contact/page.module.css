@@ -1,0 +1,43 @@
+.main {
+  color: var(--tertiary);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.socials div {
+  padding: 5px;
+}
+
+.socials div a {
+  color: inherit;
+  cursor: url("/cursor.png"), pointer;
+  text-decoration: none;
+  &:hover {
+    color: var(--secondary);
+  }
+}
+
+.socials div a svg {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.socials div a span {
+  padding-left: 1vw;
+  padding-right: 0.25vw;
+  vertical-align: middle;
+}
+
+.socials .link {
+  visibility: hidden;
+  width: 15px;
+  height: 15px;
+  vertical-align: super;
+}
+
+.socials div a:hover .link {
+  visibility: visible;
+}

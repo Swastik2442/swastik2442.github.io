@@ -1,5 +1,6 @@
 import Link from "next/link";
-import BorderStyle from "./borderStyle";
+import { primaryFont } from "@/app/config";
+import BorderStyle from "@/app/_components/vcBordersStyle";
 import styles from "./page.module.css";
 
 const mainLinks = [
@@ -12,8 +13,8 @@ const mainLinks = [
     loc: "#"
   },
   {
-    name: "contact",
-    loc: "/contact"
+    name: "options",
+    loc: "#"
   },
   {
     name: "stats",
@@ -24,8 +25,8 @@ const mainLinks = [
     loc: "#"
   },
   {
-    name: "options",
-    loc: "#"
+    name: "contact",
+    loc: "/contact"
   },
   {
     name: "quit site",
@@ -36,9 +37,9 @@ const mainLinks = [
 export default function Home() {
   return (
     <>
-    <BorderStyle/>
+    <BorderStyle up={1} down={-1} left={2.5} right={-1.5}/>
     <main className={styles.main}>
-      <ul className={`${styles.menuList}`}>
+      <ul className={`${styles.menuList} ${primaryFont.className}`}>
         {mainLinks.map((link, idx) => (
           <li key={idx}>
             <Link href={link.loc} className="greenHover textScar">

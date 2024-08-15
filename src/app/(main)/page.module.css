@@ -3,6 +3,7 @@
 }
 
 .menuList {
+  user-select: none;
   font-size: 2rem;
   list-style-type: none;
   padding: 10px;
@@ -20,7 +21,5 @@
 
 .menuList li a {
   color: inherit;
-  text-decoration: none;
-  cursor:url("/cursor.png"), pointer;
-  margin: 30px auto;
+  cursor: url("/cursor.png"), pointer;
 }

@@ -69,6 +69,7 @@ body {
   padding: 2em 2em;
   display: flex;
   justify-self: space-between;
+  user-select: none;
 }
 
 .leftName {
@@ -86,7 +87,7 @@ body {
   font-size: 4rem;
   color: var(--primary);
   text-align: right;
-  text-shadow: -8px 6px 2px var(--tertiary);
+  text-shadow: -14px 10px 2px var(--tertiary);
 }
 
 @media screen and (max-width: 768px) {
@@ -94,26 +95,46 @@ body {
     padding-top: 1em;
     font-size: 1rem;
   }
+  .rightName {
+    text-shadow: -8px 6px 2px var(--tertiary);
+  }
 }
 
 .textScar {
   text-shadow: 1.5px 1.5px 1px var(--tertiary);
+  text-decoration: none;
 }
 
 .greenHover {
   position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background-color: var(--hovering);
+  }
+  &:hover::before {
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    top: -10px;
+    left: -10px;
+  }
 }
 
-.greenHover::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  background-color: var(--hovering);
+.backButton {
+  font-size: 2rem;
+  color: var(--primary);
+  cursor: url("/cursor.png"), pointer;
+  text-decoration: none;
+  user-select: none;
 }
 
-.greenHover:hover::before {
-  width: calc(100% + 20px);
-  height: calc(100% + 20px);
-  top: -10px;
-  left: -10px;
+.footer {
+  font-size: 0.8rem;
+  color: var(--tertiary);
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding-right: 16px;
+  user-select: none;
 }

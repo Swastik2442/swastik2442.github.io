@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { siteTitle, twitterUsername, githubUsername, linkedinUsername, ownerMail, primaryFont } from "@/app/config";
-import { GitHubLogo, LinkedInLogo, TwitterLogo, EmailLogo, LinkIcon } from "@/app/_components/icons";
+import { siteTitle, twitterUsername, githubUsername, linkedinUsername,  ownerMail, ownerLocation, ownerTimezone, primaryFont } from "@/app/config";
+import { GitHubLogo, LinkedInLogo, TwitterLogo, EmailLogo, LinkIcon, LocationPinIcon } from "@/app/_components/icons";
+import OwnerTime from "@/app/_components/ownerTime";
 import BorderStyle from "@/app/_components/vcBordersStyle";
 import styles from "./page.module.css";
 
@@ -45,11 +46,15 @@ export default function Contact() {
     <BorderStyle up={1.5} down={-3} left={3.5} right={-3.5} />
     <main className={styles.main}>
       <div className={styles.socials} style={{ paddingBottom: 3 + "vh" }}>
+        <div style={{ userSelect: "none" }}>
+          <LocationPinIcon />
+          <strong>{ownerLocation} (<OwnerTime />)</strong>
+        </div>
         {socialLinks.map((link, idx) => (
           <div key={idx}>
             <Link href={link.loc} target="_blank">
               <link.image />
-              <span>{link.label}</span>
+              <span><strong>{link.label}</strong></span>
               <LinkIcon className={styles.link} />
             </Link>
           </div>

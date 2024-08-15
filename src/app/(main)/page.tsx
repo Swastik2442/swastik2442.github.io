@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { primaryFont } from "@/app/config";
+import { ownerResume, primaryFont } from "@/app/config";
 import BorderStyle from "@/app/_components/vcBordersStyle";
 import styles from "./page.module.css";
 
 const mainLinks = [
   {
     name: "resume",
-    loc: "https://github.com/"
+    loc: ownerResume ?? "#"
   },
   {
     name: "start new game",
@@ -18,11 +18,11 @@ const mainLinks = [
   },
   {
     name: "stats",
-    loc: "#"
+    loc: "/stats"
   },
   {
     name: "breif",
-    loc: "#"
+    loc: "/breif"
   },
   {
     name: "contact",

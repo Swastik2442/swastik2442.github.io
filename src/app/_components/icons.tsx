@@ -1,5 +1,13 @@
 import { SVGProps } from "react"
 
+export const LocationPinIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" {...props}>
+    <title>{"Location"}</title>
+    <path stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 21c3.5-3.6 7-6.824 7-10.8C19 6.224 15.866 3 12 3s-7 3.224-7 7.2 3.5 7.2 7 10.8Z" />
+    <path stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+  </svg>
+)
+
 export const LinkIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
     <path d="M15.729 3.884c1.434-1.44 3.532-1.47 4.693-.304 1.164 1.168 1.133 3.28-.303 4.72l-2.423 2.433a.75.75 0 0 0 1.062 1.059l2.424-2.433c1.911-1.919 2.151-4.982.303-6.838-1.85-1.857-4.907-1.615-6.82.304L9.819 7.692c-1.911 1.919-2.151 4.982-.303 6.837a.75.75 0 1 0 1.063-1.058c-1.164-1.168-1.132-3.28.303-4.72l4.848-4.867Z" />
@@ -10,10 +18,7 @@ export const LinkIcon = (props: SVGProps<SVGSVGElement>) => (
 export const EmailLogo = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1920" {...props}>
     <title>{"Email"}</title>
-    <path
-      fillRule="evenodd"
-      d="M1920 428.266v1189.54l-464.16-580.146-88.203 75.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 834.44L.045 278.628V226h1919.887Z"
-    />
+    <path fillRule="evenodd" d="M1920 428.266v1189.54l-464.16-580.146-88.203 75.585 468.679 585.904H83.684l468.679-585.904-88.202-70.585L0 1617.805V428.265l959.944 832.441L1920 428.266ZM1919.932 226v52.627l-959.943 834.44L.045 278.628V226h1919.887Z" />
   </svg>
 )
 

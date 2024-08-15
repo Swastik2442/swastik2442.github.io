@@ -19,7 +19,7 @@
   }
 }
 
-.socials div a svg {
+.socials div a svg, .socials div svg {
   width: 30px;
   height: 30px;
   vertical-align: middle;

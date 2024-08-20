@@ -1,4 +1,4 @@
-export default function borders() {
+export default function Borders() {
   return (
     <>
         <div className="borderOne"></div>

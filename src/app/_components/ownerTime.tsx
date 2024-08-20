@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { ownerTimezone } from "@/app/config";
+import { ownerTimezone } from "@/config";
 
 const getOwnerTime = function() {
   return new Date().toLocaleString(
@@ -10,7 +10,7 @@ const getOwnerTime = function() {
   );   
 }
 
-export default function ownerTime() {
+export default function OwnerTime() {
   const [time, setTime] = useState(getOwnerTime());
   useEffect(() => {
     const interval = setInterval(() => {

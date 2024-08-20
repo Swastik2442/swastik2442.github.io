@@ -1,7 +1,7 @@
-import { siteTitle, primaryFont, secondaryFont } from "@/app/config";
+import { siteTitle, primaryFont, secondaryFont } from "@/config";
 import PageName from "./pageName";
 
-export default function header() {
+export default function Header() {
   return (
     <div className="topNames">
       <div className={`leftName ${secondaryFont.className}`}>

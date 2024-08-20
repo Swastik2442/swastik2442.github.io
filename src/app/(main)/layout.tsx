@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verifyGoogle, twitterUsername, tertiaryFont } from "@/app/config";
+import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verificationGoogle, twitterUsername, tertiaryFont } from "@/config";
 import Header from "@/app/_components/header";
 import Footer from "@/app/_components/footer";
 import Borders from "@/app/_components/vcBorders";
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     siteName: siteTitle,
     images: [{
-      url: siteLogo ?? '',
+      url: siteLogo,
     }],
   },
   twitter: {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "images": siteLogo,
   },
   verification: {
-    google: verifyGoogle,
+    google: verificationGoogle,
   },
   appleWebApp: {
     capable: false,

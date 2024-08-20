@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { primaryFont } from "@/app/config";
+import { primaryFont } from "@/config";
 import BorderStyle from "@/app/_components/vcBordersStyle";
 import styles from "./page.module.css";
 

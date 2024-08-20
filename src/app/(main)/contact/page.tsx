@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { siteTitle, twitterUsername, githubUsername, linkedinUsername,  ownerMail, ownerLocation, ownerTimezone, primaryFont } from "@/app/config";
-import { GitHubLogo, LinkedInLogo, TwitterLogo, EmailLogo, LinkIcon, LocationPinIcon } from "@/app/_components/icons";
+import { siteTitle, twitterUsername, githubUsername, linkedinUsername,  ownerLocation, primaryFont } from "@/config";
+import { GitHubLogo, LinkedInLogo, TwitterLogo, LinkIcon, LocationPinIcon } from "@/app/_components/icons";
 import OwnerTime from "@/app/_components/ownerTime";
 import BorderStyle from "@/app/_components/vcBordersStyle";
 import styles from "./page.module.css";
@@ -32,14 +32,9 @@ const socialLinks = [
     label: `@${twitterUsername}`,
     loc: `https://x.com/${twitterUsername}`
   },
-  {
-    image: EmailLogo,
-    alt: "email logo",
-    label: ownerMail,
-    loc: `mailto:${ownerMail}`
-  },
 ];
 
+// TODO: Add Send Message Form
 export default function Contact() {
   return (
     <>

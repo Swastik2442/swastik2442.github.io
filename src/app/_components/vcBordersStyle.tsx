@@ -1,6 +1,6 @@
 "use client"
 
-export default function bordersStyle({ up = 0, down = 0, left = 0, right = 0 } : { up?: number, down?: number, left?: number, right?: number }) {
+export default function BordersStyle({ up = 0, down = 0, left = 0, right = 0 } : { up?: number, down?: number, left?: number, right?: number }) {
   return (
     <style jsx global>{`
       .borderOne {

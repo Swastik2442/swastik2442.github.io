@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verifyGoogle, twitterUsername, secondaryFont } from "../../config";
+import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verificationGoogle, twitterUsername, secondaryFont } from "@/config";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     siteName: siteTitle,
     images: [{
-      url: siteLogo ?? '',
+      url: siteLogo,
     }],
   },
   twitter: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "images": siteLogo,
   },
   verification: {
-    google: verifyGoogle,
+    google: verificationGoogle,
   },
   appleWebApp: {
     capable: false,

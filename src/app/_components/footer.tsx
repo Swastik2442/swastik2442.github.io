@@ -1,6 +1,6 @@
-import { ownerName, startYear } from "@/app/config";
+import { ownerName, startYear } from "@/config";
 
-export default function footer() {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
   const yearText = startYear != currentYear ? `${startYear} - ${currentYear}` : startYear;
   return (

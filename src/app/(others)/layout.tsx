@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verificationGoogle, twitterUsername, secondaryFont } from "@/config";
-import "../globals.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: siteTitle,
@@ -45,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={secondaryFont.className}>
+      <body className={secondaryFont.className} style={{ background: "none" }}>
         {children}
       </body>
     </html>

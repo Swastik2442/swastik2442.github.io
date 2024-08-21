@@ -3,7 +3,7 @@ import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verification
 import Header from "@/app/_components/header";
 import Footer from "@/app/_components/footer";
 import Borders from "@/app/_components/vcBorders";
-import "./globals.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: siteTitle,

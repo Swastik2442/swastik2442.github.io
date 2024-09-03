@@ -3,7 +3,6 @@ import { Notable, Alex_Brush, Poppins } from 'next/font/google';
 export const startYear = 2023;
 export const ownerName = "Swastik Kulshreshtha";
 export const ownerBio = "Yet another Human from Earth";
-export const ownerMail = process.env.OWNER_MAIL;
 export const ownerResume = process.env.OWNER_RESUME;
 export const ownerLocation = process.env.OWNER_LOCATION;
 export const ownerTimezone = process.env.OWNER_TIMEZONE;

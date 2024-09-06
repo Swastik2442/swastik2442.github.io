@@ -1,5 +1,6 @@
 :root {
   --primary: #fe96e1;
+  --primaryDark: #c15ba4;
   --secondary: #f3f3f3;
   --tertiary: #1b1b1b;
   --quaternary: #595563;
@@ -14,12 +15,12 @@ html, body {
 }
 
 body {
-  background: var(--quaternary) url("/images/background.jpg") left top/cover no-repeat;
+  background: var(--quaternary) url("/images/background.webp") left top/cover no-repeat;
 }
 
 @media screen and (max-width: 768px) {
   body {
-    background-image: url("/images/backgroundSmall.jpg");
+    background-image: url("/images/backgroundSmall.webp");
   }
 }
 

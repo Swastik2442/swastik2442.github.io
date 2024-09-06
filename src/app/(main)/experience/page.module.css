@@ -1,0 +1,90 @@
+.main {
+  color: var(--tertiary);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  display: flex;
+}
+
+.descriptionCol {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailsCol {
+  flex: 3;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+}
+
+.expTable {
+  background-color: var(--tBlue);
+  overflow-y: scroll;
+  height: 50vh;
+  margin-bottom: 2vh;
+  
+  &::-webkit-scrollbar {
+    width: 1.5vw;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary);
+  } 
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--primaryDark);
+  }
+}
+
+.expTable table {
+  width: 100%;
+  text-align: center;
+}
+
+.expTable table thead {
+  color: var(--primary);
+  position: sticky;
+  top: 0;
+}
+
+.expTable table tbody {
+  color: var(--secondary);
+}
+
+.bottomButtons {
+  margin: 0 1.5vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottomButtons div > *:not(:last-child) {
+  display: inline;
+  margin-right: 1.5vw; 
+}
+
+.bottomButtons button, .bottomButtons a {
+  font-size: 1.25rem;
+  color: var(--primary);
+  cursor: url("/cursor.png"), pointer;
+  text-decoration: none;
+  user-select: none;
+}
+
+.bottomButtons button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.selectedButton {
+  color: var(--primaryDark) !important;
+}

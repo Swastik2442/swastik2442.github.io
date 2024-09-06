@@ -13,8 +13,8 @@ const mainLinks = [
     loc: "#"
   },
   {
-    name: "options",
-    loc: "#"
+    name: "experience",
+    loc: "/experience"
   },
   {
     name: "stats",

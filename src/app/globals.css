@@ -37,6 +37,12 @@ body {
   transition: rotate 0.5s;
 }
 
+@media screen and (max-width: 320px) {
+  .borderOne, .borderTwo, .borderThree, .borderFour {
+    display: none;
+  }
+}
+
 .borderOne, .borderTwo {
   width: 125vw;
   height: 25vh;

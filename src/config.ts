@@ -1,4 +1,4 @@
-import { Notable, Alex_Brush, Poppins } from 'next/font/google';
+import { Notable, Alex_Brush, Poppins } from "next/font/google";
 
 export const startYear = 2023;
 export const ownerName = "Swastik Kulshreshtha";
@@ -17,6 +17,33 @@ export const githubUsername = "Swastik2442";
 export const linkedinUsername = "Swastik2442";
 export const wakatimeUsername = "swastik2442";
 
-export const primaryFont = Notable({ weight: "400", subsets: ['latin'] });
-export const secondaryFont = Alex_Brush({ weight: "400", subsets: ['latin'] });
-export const tertiaryFont = Poppins({ weight: "400", subsets: ['latin'] });
+export const workExpData = [
+  {
+    name: "abcd",
+    tech: "abcd",
+    time: "abcd",
+    description: "abcd",
+    image: "/images/background.webp",
+    url: "https://www.example.com",
+  },
+  {
+    name: "dcba",
+    tech: "dcba",
+    time: "dcba",
+    description: "abcd",
+    image: "/images/backgroundSmall.webp",
+    url: "https://www.example.com",
+  },
+  {
+    name: "abcd",
+    tech: "abcd",
+    time: "abcd",
+    description: "abcd",
+    image: "/images/background.webp",
+    url: "https://www.example.com",
+  },
+];
+
+export const primaryFont = Notable({ weight: "400", subsets: ["latin"] });
+export const secondaryFont = Alex_Brush({ weight: "400", subsets: ["latin"] });
+export const tertiaryFont = Poppins({ weight: "400", subsets: ["latin"] });

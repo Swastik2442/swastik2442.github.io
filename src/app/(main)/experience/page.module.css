@@ -11,8 +11,12 @@
 .descriptionCol {
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: flex 0.75s;
+  padding: 0 1vw;
+  font-weight: bold;
 }
 
 .detailsCol {
@@ -21,7 +25,16 @@
 
 @media screen and (max-width: 768px) {
   .main {
-    flex-direction: column;
+    flex-direction: column-reverse;
+  }
+  .descriptionCol {
+    padding: 1vh 0;
+  }
+  .descriptionCol img {
+    display: none;
+  }
+  .expTable table {
+    font-size: 0.6rem;
   }
 }
 
@@ -60,6 +73,10 @@
   color: var(--secondary);
 }
 
+.expTable a {
+  cursor: url("/cursor.png"), pointer;
+}
+
 .bottomButtons {
   margin: 0 1.5vh;
   display: flex;
@@ -68,7 +85,7 @@
 
 .bottomButtons div > *:not(:last-child) {
   display: inline;
-  margin-right: 1.5vw; 
+  margin-right: 1.5vw;
 }
 
 .bottomButtons button, .bottomButtons a {

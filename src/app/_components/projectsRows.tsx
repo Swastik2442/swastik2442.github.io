@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
 import { githubUsername, startYear } from "@/config";
-import { LinkIcon } from "./icons";
+import { LinkIcon, LoadingIcon } from "./icons";
 
 interface ProjectProperties {
   name: string;
@@ -21,7 +21,8 @@ export default function ProjectsRows({ setDescription }: { setDescription: Dispa
   const [projects, setProjects] = useState<ProjectProperties[]>([]);
   useEffect(() => {
     async function getProjects() {
-      let response = await fetch(`https://api.github.com/users/${githubUsername}/repos`);
+      let response = await fetch(`https://api.github.com/users/${githubUsername}/repos`, { next: { revalidate: 25200 } });
+      if (!(response.ok)) return;
       let responseJson = await response.json();
       if (!(responseJson instanceof Array)) return;
 
@@ -39,19 +40,24 @@ export default function ProjectsRows({ setDescription }: { setDescription: Dispa
       }));
 
       projectsData.sort((a: ProjectProperties, b: ProjectProperties) => b.pushedAt.getTime() - a.pushedAt.getTime());
-      projectsData.forEach(async (project: ProjectProperties, index: number) => {
+      for (let index = 0; index < projectsData.length; index++) {
+        let langsResponse = await fetch(projectsData[index].langUrl, { next: { revalidate: 50400 } });
+        if (!(langsResponse.ok)) break;
+        let langsResponseJson = await langsResponse.json().then((data: any) => Object.keys(data));
+
+        let tech = "";
+        for (let langIndex = 0; langIndex < Math.min(langsResponseJson.length, 3); langIndex++)
+          tech += `, ${langsResponseJson[langIndex]}`;
+        if (tech.length > 0)
+          projectsData[index].tech = tech.slice(2);
+      }
+
+      for (let index = 0; index < projectsData.length; index++) {
+        let project = projectsData[index];
         project.name = project.name.replace(/[_-]/g, " ");
         projectsData[index].name = (project.name.length > 25)
                                  ? (project.name.slice(0, 11).trim() + "..." + project.name.slice(project.name.length - 11).trim())
                                  : project.name;
-
-        let langsResponse = await fetch(project.langUrl);
-        let langsResponseJson = await langsResponse.json();
-        let tech = "";
-        for (let lang in langsResponseJson)
-          tech += `, ${lang}`;  
-        if (tech.length > 0)
-          projectsData[index].tech = tech.slice(2);
 
         let endDate = project.pushedAt.toLocaleString([], { month: "short", year: "numeric" });
         if (project.createdAt.getFullYear() === project.pushedAt.getFullYear()) {
@@ -61,7 +67,7 @@ export default function ProjectsRows({ setDescription }: { setDescription: Dispa
           let startDate = project.createdAt.toLocaleString([], { month: "short", year: "numeric" });
           projectsData[index].time = `${startDate} - ${endDate}`;
         }
-      });
+      }
 
       setProjects(projectsData);
     }
@@ -70,14 +76,21 @@ export default function ProjectsRows({ setDescription }: { setDescription: Dispa
 
   return (
     <>
-      {projects.map((project: any) => (
-        <tr key={project.name} onClick={() => setDescription({ image: "", text: project.description })}>
+      {projects.length > 0 ? projects.map((project, index) => (
+        <tr key={index} onClick={() => setDescription({ image: "", text: project.description })}>
           <td>{project.name}</td>
           <td>{project.tech}</td>
           <td>{project.time}</td>
-          <td><Link href={project.repoUrl} target="_blank"><LinkIcon width="15px" height="15px" /></Link></td>
+          <td><Link href={project.repoUrl} target="_blank"><LinkIcon width={18} height={18} /></Link></td>
         </tr>
-      ))}
+      )) : (
+        <tr>
+          <td><LoadingIcon width={18} height={18} fill="white" /></td>
+          <td><LoadingIcon width={18} height={18} fill="white" /></td>
+          <td><LoadingIcon width={18} height={18} fill="white" /></td>
+          <td><LoadingIcon width={18} height={18} fill="white" /></td>
+        </tr>
+      )}
     </>
   )
 }

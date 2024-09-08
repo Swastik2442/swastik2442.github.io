@@ -146,3 +146,16 @@ body {
   padding-right: 16px;
   user-select: none;
 }
+
+@keyframes loadingIconAnimation {
+  0%, to {
+    r: 1.5px;
+  }
+  50% {
+    r: 3px;
+  }
+}
+
+.loadingIconCircle {
+  animation: loadingIconAnimation .75s linear infinite;
+}

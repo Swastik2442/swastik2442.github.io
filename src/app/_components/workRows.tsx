@@ -11,7 +11,7 @@ export default function WorkRows({ setDescription }: { setDescription: Dispatch<
           <td>{work.name}</td>
           <td>{work.tech}</td>
           <td>{work.time}</td>
-          <td><Link href={work.url} target="_blank"><LinkIcon width="15px" height="15px" /></Link></td>
+          <td><Link href={work.url} target="_blank"><LinkIcon width={18} height={18} /></Link></td>
         </tr>
       ))}
     </>

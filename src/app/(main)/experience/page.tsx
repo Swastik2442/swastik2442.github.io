@@ -10,7 +10,7 @@ import ProjectsRows from "@/app/_components/projectsRows";
 import WorkRows from "@/app/_components/workRows";
 
 export default function Experience() {
-  const [tableData, setTableData] = useState("projects");
+  const [tableData, setTableData] = useState("work");
   const [description, setDescription] = useState({ image: "", text: "" });
 
   const getWorkData = () => {

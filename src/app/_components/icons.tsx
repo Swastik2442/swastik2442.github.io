@@ -15,6 +15,14 @@ export const LinkIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
+export const LoadingIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+    <circle className="loadingIconCircle" cx={4} cy={12} r={1.5} />
+    <circle className="loadingIconCircle" cx={12} cy={12} r={3} style={{ animationDelay: "-.375s" }} />
+    <circle className="loadingIconCircle" cx={20} cy={12} r={1.5} />
+  </svg>
+)
+
 export const EmailLogo = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1920" {...props}>
     <title>{"Email"}</title>

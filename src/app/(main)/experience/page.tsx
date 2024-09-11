@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { primaryFont, tertiaryFont } from "@/config";
+import { primaryFont } from "@/config";
 import BorderStyle from "@/app/_components/vcBordersStyle";
 import styles from "./page.module.css";
 import ProjectsRows from "@/app/_components/projectsRows";
@@ -41,10 +41,10 @@ export default function Experience() {
                 <th></th>
               </tr>
             </thead>
-            <tbody className={tertiaryFont.className} style={{ display: tableData === "work" ? "table-row-group" : "none" }}>
+            <tbody style={{ display: tableData === "work" ? "table-row-group" : "none" }}>
               <WorkRows setDescription={setDescription} />
             </tbody>
-            <tbody className={tertiaryFont.className} style={{ display: tableData === "projects" ? "table-row-group" : "none" }}>
+            <tbody style={{ display: tableData === "projects" ? "table-row-group" : "none" }}>
               <ProjectsRows setDescription={setDescription} />
             </tbody>
           </table>

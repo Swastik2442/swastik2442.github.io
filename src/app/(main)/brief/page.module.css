@@ -1,0 +1,23 @@
+.main {
+  color: var(--secondary);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+}
+
+.shortBrief {
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    font-size: 0.75rem;
+  }
+  .shortBrief {
+    flex-direction: column;
+  }
+}

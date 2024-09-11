@@ -21,8 +21,8 @@ const mainLinks = [
     loc: "/stats"
   },
   {
-    name: "breif",
-    loc: "/breif"
+    name: "brief",
+    loc: "/brief"
   },
   {
     name: "contact",

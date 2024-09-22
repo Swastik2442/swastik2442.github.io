@@ -75,6 +75,9 @@
 
 .expTable a {
   cursor: url("/cursor.png"), pointer;
+  &:hover svg {
+    fill: var(--secondary);
+  }
 }
 
 .bottomButtons {

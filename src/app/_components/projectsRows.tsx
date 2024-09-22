@@ -27,13 +27,13 @@ export default function ProjectsRows({ setDescription }: { setDescription: Dispa
       if (!(responseJson instanceof Array)) return;
 
       let projectsData: ProjectProperties[] = responseJson.filter(
-        (repo: any) => (repo.fork === false && new Date(repo.pushed_at).getFullYear() >= startYear)
+        (repo: any) => (repo.fork === false && new Date(repo.pushed_at).getFullYear() >= startYear && repo.name !== githubUsername)
       ).map((repo: any) => ({
         name: repo.name,
         tech: "-",
         time: "",
         description: repo.description,
-        repoUrl: repo.html_url,
+        repoUrl: repo.homepage == "" ? repo.html_url : repo.homepage,
         langUrl: repo.languages_url,
         createdAt: new Date(repo.created_at),
         pushedAt: new Date(repo.pushed_at),
@@ -61,8 +61,12 @@ export default function ProjectsRows({ setDescription }: { setDescription: Dispa
 
         let endDate = project.pushedAt.toLocaleString([], { month: "short", year: "numeric" });
         if (project.createdAt.getFullYear() === project.pushedAt.getFullYear()) {
-          let startDate = project.createdAt.toLocaleString([], { month: "short" });
-          projectsData[index].time = `${startDate}-${endDate}`;
+          if (project.createdAt.getMonth() === project.pushedAt.getMonth()) {
+            projectsData[index].time = endDate;
+          } else {
+            let startDate = project.createdAt.toLocaleString([], { month: "short" });
+            projectsData[index].time = `${startDate}-${endDate}`;
+          }
         } else {
           let startDate = project.createdAt.toLocaleString([], { month: "short", year: "numeric" });
           projectsData[index].time = `${startDate} - ${endDate}`;
@@ -85,10 +89,7 @@ export default function ProjectsRows({ setDescription }: { setDescription: Dispa
         </tr>
       )) : (
         <tr>
-          <td><LoadingIcon width={18} height={18} fill="white" /></td>
-          <td><LoadingIcon width={18} height={18} fill="white" /></td>
-          <td><LoadingIcon width={18} height={18} fill="white" /></td>
-          <td><LoadingIcon width={18} height={18} fill="white" /></td>
+          <td colSpan={4}><LoadingIcon width={18} height={18} fill="white" /></td>
         </tr>
       )}
     </>

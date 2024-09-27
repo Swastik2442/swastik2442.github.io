@@ -113,5 +113,6 @@ limitations under the License. */
 }
 
 .gallery-effect:hover {
-  filter: grayscale(1) contrast(1.2) opacity(0.9)
+  filter: grayscale(1) contrast(1.2) opacity(0.9);
+  scale: 1.01;
 }

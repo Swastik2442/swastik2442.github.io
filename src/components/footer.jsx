@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
-    <footer class="text-gray-600 body-font">
-      <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-        <div class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+    <footer className="text-gray-600 body-font">
+      <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+        <div className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
           <svg
             version="1.0"
             xmlns="http://www.w3.org/2000/svg"
@@ -10,10 +10,10 @@ export default function Footer() {
             preserveAspectRatio="xMidYMid meet"
             fill="none"
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            class="w-10 h-10 text-white p-2 bg-blue-400 rounded-full"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            className="w-10 h-10 text-white p-2 bg-blue-400 rounded-full"
           >
             <g
               transform="translate(0.000000,50.000000) scale(0.100000,-0.100000)"
@@ -32,32 +32,22 @@ export default function Footer() {
               <path d="M213 143 c-135 -3 -143 -5 -143 -23 0 -19 7 -20 134 -20 109 0 138 3 150 16 17 16 22 36 9 32 -5 -1 -72 -4 -150 -5z" />
             </g>
           </svg>
-          <span class="ml-3 text-xl">Swastik Kulshreshtha</span>
+          <span className="ml-3 text-xl">Swastik Kulshreshtha</span>
         </div>
-        <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-          © 2022 Swastik Kulshreshtha —
-          <a
-            href="https://twitter.com/Swastik2442"
-            class="text-gray-600 ml-1"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
+        <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+          © 2022-{new Date().getFullYear()} Swastik Kulshreshtha —
+          <a href="https://twitter.com/Swastik2442" className="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">
             @Swastik2442
           </a>
         </p>
-        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-          <a
-            href="https://github.com/Swastik2442/Swastik2442.github.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="ml-3 text-gray-500"
-          >
+        <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+          <a href="https://github.com/Swastik2442" target="_blank" rel="noopener noreferrer" className="ml-3 text-gray-500">
             <svg
               fill="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              class="w-5 h-5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              className="w-5 h-5"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >

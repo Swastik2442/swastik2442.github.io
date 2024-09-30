@@ -1,10 +1,55 @@
 const projectsList1 = [
   {
-    title: "InsCalc",
-    description: "An Insurance Calculator which can generate Reports in many formats, after getting the required information.",
-    image: "https://cdn.pixabay.com/photo/2014/07/06/13/55/calculator-385506_960_720.jpg",
-    link: "https://github.com/Swastik2442/InsCalc",
-    tech: "C++",
+    title: "Theo",
+    description: "A Simple Image Gallery that can let users upload and save their images on the web.",
+    image: "https://cdn.pixabay.com/photo/2022/06/19/12/09/frame-7271744_960_720.png",
+    link: "https://theo-opal.vercel.app/",
+    tech: "TypeScript, Next.js",
+  },
+  {
+    title: "Police Feedback System",
+    description: "A Feedback Submission System for the Rajasthan Police, made during a Hackathon.",
+    image: "https://images.pexels.com/photos/230554/pexels-photo-230554.jpeg",
+    link: "https://github.com/Swastik2442/RJPOLICE_HACK_157_Binary_Brigade_1",
+    tech: "Python, Django",
+  },
+  {
+    title: "Graph Project 4",
+    description: "An Algorithm Visualization Software which shows the workings of Dijkstra's Algorithm, along with BFS and DFS.",
+    image: "https://cdn.pixabay.com/photo/2021/03/11/12/58/laptop-6087062_1280.png",
+    link: "https://github.com/Swastik2442/graphProject4",
+    tech: "C, raylib",
+  },
+  {
+    title: "clubHub",
+    description: "A Club Hub and Event Calendar where Users can see clubs and events organised by them.",
+    image: "https://cdn.pixabay.com/photo/2016/11/29/06/16/apple-1867752_960_720.jpg",
+    link: "https://club-hub.vercel.app/",
+    tech: "Python, Django",
+  },
+];
+
+const projectsList2 = [
+  {
+    title: "MovieRecommender",
+    description: "A Movie Recommender System that uses some Statistical Methods to recommend movies based on User's Ratings.",
+    image: "https://cdn.pixabay.com/photo/2014/01/30/18/26/skyline-255116_960_720.jpg",
+    link: "https://www.dukelearntoprogram.com/capstone/recommender.php?id=1mWasMwtzCqoeb",
+    tech: "Java",
+  },
+  {
+    title: "RFM Analysis of Online Retail",
+    description: "Using Machine Learning algorithms to analyse Online Retail using the RFM Model.",
+    image: "https://images.pexels.com/photos/5980898/pexels-photo-5980898.jpeg",
+    link: "https://github.com/Swastik2442/RFM_OnlineRetail",
+    tech: "Python",
+  },
+  {
+    title: "Zero Hunger",
+    description: "Data Analysis of the data from UN's Sustainable Development Goal 2: Zero Hunger progress in most affected regions.",
+    image: "https://cdn.pixabay.com/photo/2024/06/10/11/04/ai-generated-8820489_1280.png",
+    link: "https://github.com/Swastik2442/cda_sdg2",
+    tech: "Python",
   },
   {
     title: "IntelliSense for MathJax",
@@ -13,127 +58,75 @@ const projectsList1 = [
     link: "https://github.com/Swastik2442/intellisense-mathjax",
     tech: "TypeScript",
   },
-  {
-    title: "ChatApp",
-    description: "A Chat Application which updates in Real-Time, made using Node.js & Socket.io",
-    image: "https://images.pexels.com/photos/230554/pexels-photo-230554.jpeg",
-    link: "https://github.com/Swastik2442/ChatApp",
-    tech: "JavaScript",
-  },
-  {
-    title: "ChatApp",
-    description: "A Chat Application which updates in Real-Time, made using PHP & jQuery",
-    image: "https://images.pexels.com/photos/230554/pexels-photo-230554.jpeg",
-    link: "https://github.com/Swastik2442/ChatApp-PHP",
-    tech: "PHP",
-  }
-];
-
-const projectsList2 = [
-  {
-    title: "CSDiscord",
-    description: "A mod for Cities Skylines to support Discord Rich Presence. Although it slows down the game, but the fun is there :P",
-    image: "https://cdn.pixabay.com/photo/2014/01/30/18/26/skyline-255116_960_720.jpg",
-    link: "https://github.com/Swastik2442/CSDiscord",
-    tech: "C#",
-  },
-  {
-    title: "Games",
-    description: "Small-time Games made for fun. Made using pygame (Python) & p5 (JavaScript) libraries.",
-    image: "https://images.unsplash.com/photo-1595744043037-68de3376ed59",
-    link: "https://github.com/Swastik2442/Games",
-    tech: "Python / JavaScript",
-  },
-  {
-    title: "FB-to-Discord",
-    description: "A tool that can be used to extract Facebook Posts and send them to Discord using Webhooks.",
-    image: "https://cdn.pixabay.com/photo/2015/10/21/08/22/media-998990_960_720.jpg",
-    link: "https://github.com/Swastik2442/FB-to-Discord",
-    tech: "Python",
-  },
-  {
-    title: "Custom-DiscordRPC",
-    description: "A tool for providing Custom Rich Presence in Discord.",
-    image: "https://images.unsplash.com/photo-1660721046155-f1e3143dd752",
-    link: "https://github.com/Swastik2442/Custom-DiscordRPC",
-    tech: "Python",
-  }
 ];
 
 export default function Projects() {
   return (
-    <section id="code" class="text-gray-600 body-font">
-      <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-wrap w-full mb-20">
-          <div class="lg:w-2/5 w-full mb-6 lg:mb-0">
-            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
+    <section id="code" className="text-gray-600 body-font">
+      <div className="container px-5 py-24 mx-auto">
+        <div className="flex flex-wrap w-full mb-20">
+          <div className="lg:w-2/5 w-full mb-6 lg:mb-0">
+            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
               Some of my Projects
             </h1>
-            <div class="h-1 w-20 bg-bluish-51 rounded"></div>
+            <div className="h-1 w-20 bg-bluish-51 rounded"></div>
           </div>
-          <p class="lg:w-3/5 w-full leading-relaxed text-gray-500">
-            I have tried to keep the most ambitious projects that I think are,
-            but you can check out probably more of them on my{" "}
+          <p className="lg:w-3/5 w-full leading-relaxed text-gray-500">
+            I have tried to keep the most ambitious projects that I think I have made,
+            but you can also check out more of them on my{" "}
             <a
-              class="hover-underline-animation"
+              className="hover-underline-animation"
               href="https://github.com/Swastik2442?tab=repositories"
             >
               GitHub Profile
             </a>
-            . Ah also, most of them are Private :P
           </p>
         </div>
-        <div class="flex flex-wrap -m-4">
-          {projectsList1.map((project) => (
-            <a
-              href={project.link}
-              class="xl:w-1/4 md:w-1/2 p-4"
-            >
-              <div class="bg-gray-100 p-6 rounded-lg">
+        <div className="flex flex-wrap -m-4">
+          {projectsList1.map((project, index) => (
+            <a key={index} href={project.link} className="xl:w-1/4 md:w-1/2 p-4">
+              <div className="bg-gray-100 p-6 rounded-lg">
                 <img
-                  class="h-40 rounded w-full object-cover object-center mb-6"
+                  className="h-40 rounded w-full object-cover object-center mb-6"
                   src={project.image}
                   alt="content"
                   height="400"
                   width="720"
                 />
-                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">
+                <h3 className="tracking-widest text-bluish-51 text-xs font-medium title-font">
                   {project.tech}
                 </h3>
-                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
+                <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
                   {project.title}
                 </h2>
-                <p class="leading-relaxed text-base">{project.description}</p>
+                <p className="leading-relaxed text-base">{project.description}</p>
               </div>
             </a>
           ))}
         </div>
-        <div class="flex flex-wrap -m-4">
-        {projectsList2.map((project) => (
-            <a
-              href={project.link}
-              class="xl:w-1/4 md:w-1/2 p-4"
-            >
-              <div class="bg-gray-100 p-6 rounded-lg">
+        <div className="flex flex-wrap -m-4">
+        {projectsList2.map((project, index) => (
+            <a key={index} href={project.link} className="xl:w-1/4 md:w-1/2 p-4">
+              <div className="bg-gray-100 p-6 rounded-lg">
                 <img
-                  class="h-40 rounded w-full object-cover object-center mb-6"
+                  className="h-40 rounded w-full object-cover object-center mb-6"
                   src={project.image}
                   alt="content"
                   height="400"
                   width="720"
                 />
-                <h3 class="tracking-widest text-bluish-51 text-xs font-medium title-font">
+                <h3 className="tracking-widest text-bluish-51 text-xs font-medium title-font">
                   {project.tech}
                 </h3>
-                <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
+                <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
                   {project.title}
                 </h2>
-                <p class="leading-relaxed text-base">{project.description}</p>
+                <p className="leading-relaxed text-base">{project.description}</p>
               </div>
             </a>
           ))}
         </div>
-        <p class="p-2 text-gray-400 text-right">
+        <p className="p-2 text-gray-400 text-right">
           § Images Copyright to their respectful owners
         </p>
       </div>

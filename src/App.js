@@ -16,7 +16,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import AboutMe from './components/aboutMe';
 import Projects from './components/projects';
-import Gallery from './components/gallery';
+import Skills from './components/skills';
 import ContactMe from './components/contactMe';
 import './App.css';
 
@@ -27,7 +27,7 @@ function App() {
       <div className="App">
         <AboutMe />
         <Projects />
-        <Gallery />
+        <Skills />
         <ContactMe />
       </div>
       <Footer />

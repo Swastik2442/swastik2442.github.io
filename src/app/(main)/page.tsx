@@ -1,13 +1,10 @@
 import Link from "next/link";
 import { ownerResume, primaryFont } from "@/config";
 import BorderStyle from "@/app/_components/vcBordersStyle";
+import mergeClasses from "@/utils/css";
 import styles from "./page.module.css";
 
 const mainLinks = [
-  {
-    name: "resume",
-    loc: ownerResume ?? "#"
-  },
   {
     name: "start new game",
     loc: "#"
@@ -39,7 +36,12 @@ export default function Home() {
     <>
     <BorderStyle up={1} down={-1} left={2.5} right={-1.5}/>
     <main className={styles.main}>
-      <ul className={`${styles.menuList} ${primaryFont.className}`}>
+      <ul className={mergeClasses(styles.menuList, primaryFont.className)}>
+        <li>
+          <Link href={ownerResume ?? "#"} target="_blank" className="greenHover textScar">
+            resume
+          </Link>
+        </li>
         {mainLinks.map((link, idx) => (
           <li key={idx}>
             <Link href={link.loc} className="greenHover textScar">

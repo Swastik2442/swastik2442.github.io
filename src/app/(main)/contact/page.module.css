@@ -12,7 +12,6 @@
 
 .socials div a {
   color: inherit;
-  cursor: url("/cursor.png"), pointer;
   text-decoration: none;
   &:hover {
     color: var(--tertiary);

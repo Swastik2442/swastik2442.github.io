@@ -9,7 +9,7 @@
 }
 
 .descriptionCol {
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,7 +43,7 @@
   overflow-y: scroll;
   height: 50vh;
   margin-bottom: 2vh;
-  
+
   &::-webkit-scrollbar {
     width: 1.5vw;
   }
@@ -52,7 +52,7 @@
   }
   &::-webkit-scrollbar-thumb {
     background: var(--primary);
-  } 
+  }
   &::-webkit-scrollbar-thumb:hover {
     background: var(--primaryDark);
   }
@@ -74,7 +74,6 @@
 }
 
 .expTable a {
-  cursor: url("/cursor.png"), pointer;
   &:hover svg {
     fill: var(--secondary);
   }
@@ -94,7 +93,6 @@
 .bottomButtons button, .bottomButtons a {
   font-size: 1.25rem;
   color: var(--primary);
-  cursor: url("/cursor.png"), pointer;
   text-decoration: none;
   user-select: none;
 }

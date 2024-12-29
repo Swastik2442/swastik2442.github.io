@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { ownerName, ownerBio, ownerDescription, primaryFont } from "@/config";
+import { ownerName, ownerBio, ownerDescription } from "@/config";
 import BorderStyle from "@/app/_components/vcBordersStyle";
+import BackButton from "@/app/_components/backButton";
 import styles from "./page.module.css";
 
 export default function Brief() {
@@ -18,7 +18,7 @@ export default function Brief() {
           <p key={index}>{line}</p>
         ))}
       </div>
-      <Link href="/" className={`${primaryFont.className} backButton greenHover textScar`}>back</Link>
+      <BackButton />
     </main>
     </>
   );

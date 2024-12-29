@@ -5,12 +5,12 @@ export const ownerName = "Swastik Kulshreshtha";
 export const ownerBio = "Computer Science Undergraduate | Tech Enthusiast | Python & C++";
 export const ownerDescription = `
 I am currently pursuing higher studies in Computer Science and Engineering. I am enthusiastic about Computers and Technology in general. I have been learning about Programming and their Libraries since 2018 and have significant experience in Python and Web Development.
-In my college, I started learning more about Computer Fundamentals and other Programming Languages like C, Java, C++, JavaScript etc. Other than that, I have explored and created projects in Django, Flet, Next.js, React, Pandas, etc. I am currently exploring about Artificial Intelligence, Game Development, and several other Computer Science domains.
+In my college, I started learning more about Computer Fundamentals and other Programming Languages like C, Java, C++, JavaScript etc. Other than that, I have explored and created projects in Django, Flet, Next.js, React, Pandas, etc. I am currently exploring Artificial Intelligence, Game Development, and several other Computer Science domains.
 `;
 
 export const ownerResume = process.env.OWNER_RESUME;
-export const ownerLocation = process.env.OWNER_LOCATION;
-export const ownerTimezone = process.env.OWNER_TIMEZONE;
+export const ownerLocation = "RJ, India";
+export const ownerTimezone = "Asia/Kolkata";
 export const siteTitle = ownerName;
 export const siteDescription = "Yet another Human from Earth";
 export const siteLogo = "https://avatars.githubusercontent.com/u/56737344";
@@ -19,15 +19,15 @@ export const verificationGoogle = process.env.VERIFICATION_GOOGLE;
 
 export const twitterUsername = "swastik2442";
 export const githubUsername = "Swastik2442";
-export const linkedinUsername = "Swastik2442";
-export const wakatimeUsername = "swastik2442";
+export const linkedinUsername = githubUsername;
+export const wakatimeUsername = twitterUsername;
 
 export const workExpData = [
   {
     name: "DigiMonk Ltd.",
     tech: "Python, Flet, Mediapipe, Pygame",
-    time: "May-July 2024",
-    description: "Worked as a Software Development Intern updating the Smart-Gripper project, namely User Statistics, Game Screens, Bluetooth/Camera Connectivity, etc.",
+    time: "since May 2024",
+    description: "Worked as a Software Development Intern improving a product based on Gesture Recognition, with features like Usage Statistics, Game Screens, Bluetooth/Webcam Connectivity, Gesture Showcase, etc.",
     image: "",
     url: "#",
   },

@@ -73,6 +73,14 @@
   color: var(--secondary);
 }
 
+.expTable table tbody th {
+  cursor: default;
+}
+
+.expTable table tbody td {
+  cursor: pointer;
+}
+
 .expTable a {
   &:hover svg {
     fill: var(--secondary);

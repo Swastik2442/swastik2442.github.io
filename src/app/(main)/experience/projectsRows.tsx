@@ -1,15 +1,15 @@
-import { Dispatch, SetStateAction } from "react";
+"use client";
+
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import Link from "next/link";
 import { LinkIcon, LoadingIcon } from "@/app/_components/icons";
-
-// Using separate Function as it gets embedded inside a Client Component
 
 async function getProjects() {
   let response = await fetch("/api/projects");
   if (!(response.ok)) return [];
   let responseJson = await response.json();
-  if (responseJson.projects)
-    return responseJson.projects;
+  if (responseJson?.projects)
+    return responseJson.projects as ProjectProperties[];
   return [];
 }
 
@@ -19,8 +19,10 @@ export default function ProjectsRows({ setDescription }: {
     text: string;
   }>>
 }) {
-  const projects: ProjectProperties[] = [];
-  getProjects().then((data) => data.forEach((project: ProjectProperties) => projects.push(project)));
+  const [projects, setProjects] = useState<ProjectProperties[]>([]);
+  useEffect(() => {
+    getProjects().then((data) => setProjects(data));
+  }, []);
 
   return (
     <>

@@ -13,6 +13,7 @@
 .socials div a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.25s ease;
   &:hover {
     color: var(--tertiary);
   }
@@ -28,6 +29,10 @@
   padding-left: 1vw;
   padding-right: 0.25vw;
   vertical-align: middle;
+}
+
+.socials .location {
+  user-select: none;
 }
 
 .socials .link {

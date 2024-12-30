@@ -17,38 +17,38 @@ export const metadata: Metadata = {
 const socialLinks = [
   {
     image: GitHubLogo,
-    alt: "github logo",
+    name: "GitHub",
     label: `@${githubUsername}`,
     loc: `https://github.com/${githubUsername}`
   },
   {
     image: LinkedInLogo,
-    alt: "linkedin logo",
+    name: "LinkedIn",
     label: `@${linkedinUsername}`,
     loc: `https://linkedin.com/in/${linkedinUsername}`
   },
   {
     image: TwitterLogo,
-    alt: "twitter logo",
+    name: "Twitter",
     label: `@${twitterUsername}`,
     loc: `https://x.com/${twitterUsername}`
   },
 ];
 
-// TODO: Add Send Message Form
 export default function Contact() {
   return (
     <>
     <BorderStyle up={1.5} down={-3} left={3.5} right={-3.5} />
     <main className={styles.main}>
       <div className={styles.socials} style={{ paddingBottom: 3 + "vh" }}>
-        <div style={{ userSelect: "none" }}>
+        <div className={styles.location}>
           <LocationPinIcon />
           <strong>{ownerLocation} (<OwnerTime />)</strong>
         </div>
         {socialLinks.map((link, idx) => (
           <div key={idx}>
             <Link href={link.loc} target="_blank">
+              <span className="sr-only">{link.name}&nbsp;</span>
               <link.image />
               <span><strong>{link.label}</strong></span>
               <LinkIcon className={styles.link} />

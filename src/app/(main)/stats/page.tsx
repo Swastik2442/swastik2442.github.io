@@ -10,7 +10,7 @@ export default async function Stats() {
   let response = await import("@/app/api/stats/route");
   let responseJson = await (await response.GET()).json();
   let langStats: WakatimeType[] = [];
-  if (responseJson.languages)
+  if (responseJson?.languages)
     langStats = responseJson.languages;
 
   return (
@@ -19,13 +19,19 @@ export default async function Stats() {
     <main className={styles.main}>
       <div style={{ paddingBottom: 3 + "vh" }}>
         <div className={styles.statsHeading}>
-          <div className={mergeClasses(primaryFont.className, "textScar")}>Developer Rating:</div>
-          <div className={tertiaryFont.className}>Average (3)</div>
+          <div className={mergeClasses(primaryFont.className, "textScar")}>
+            Developer Rating:
+          </div>
+          <div className={tertiaryFont.className}>
+            Average (3)
+          </div>
         </div>
         <div className={mergeClasses(tertiaryFont.className, styles.tBlueBackground)}>
           <div className={styles.mask}>
             <div className={styles.stats}>
-              {langStats.length > 1 && <div className={styles.text}>Programming Languages</div>}
+              {langStats.length > 1 && <div className={styles.text}>
+                Programming Languages
+              </div>}
               {langStats.map((lang) => (
                 <div key={lang.name} className={styles.stat}>
                   <span>{lang.name}</span>

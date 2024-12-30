@@ -11,7 +11,7 @@ import WorkRows from "./workRows";
 import styles from "./page.module.css";
 
 export default function Experience() {
-  const [tableData, setTableData] = useState("work");
+  const [tableData, setTableData] = useState<"work" | "projects">("work");
   const [description, setDescription] = useState({ image: "", text: "" });
 
   const getWorkData = () => {
@@ -38,7 +38,7 @@ export default function Experience() {
           <table>
             <thead className={mergeClasses(primaryFont.className, "textScar")}>
               <tr>
-                <th>Name</th>
+                <th>{tableData === "work" ? "Org" : "Name"}</th>
                 <th>Tech Used</th>
                 {tableData === "work" && <th>Timeline</th>}
                 <th></th>{/* Link if any */}

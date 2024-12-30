@@ -8,6 +8,15 @@ interface ProjectProperties {
   pushedAt: Date;
 };
 
+interface WorkProperties {
+  name: string;
+  tech: string;
+  time: string;
+  description: string;
+  image?: string;
+  url?: string;
+}
+
 interface WakatimeType {
   name: string;
   total_seconds: number;

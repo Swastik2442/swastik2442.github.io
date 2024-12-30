@@ -19,13 +19,17 @@
   font-weight: bold;
 }
 
+.descriptionCol p {
+  cursor: help;
+}
+
 .detailsCol {
   flex: 3;
 }
 
 @media screen and (max-width: 768px) {
   .main {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
   .descriptionCol {
     padding: 1vh 0;
@@ -66,6 +70,8 @@
 .expTable table thead {
   color: var(--primary);
   position: sticky;
+  cursor: default;
+  letter-spacing: 1px;
   top: 0;
 }
 
@@ -81,10 +87,12 @@
   cursor: pointer;
 }
 
-.expTable a {
-  &:hover svg {
-    fill: var(--secondary);
-  }
+.expTable a svg {
+  transition: fill 0.25s ease;
+}
+
+.expTable a:hover svg {
+  fill: var(--secondary);
 }
 
 .bottomButtons {

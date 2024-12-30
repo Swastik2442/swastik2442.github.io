@@ -13,17 +13,17 @@ export default function WorkRows({ setDescription }: {
     <>
       {workExpData.map((work, index) => (
         <tr key={index} onClick={() => setDescription({
-          image: work.image,
+          image: work.image ?? "",
           text: work.description
         })}>
           <td>{work.name}</td>
           <td>{work.tech}</td>
           <td>{work.time}</td>
-          <td>
+          <td>{work.url &&
             <Link href={work.url} target="_blank">
               <LinkIcon width={18} height={18} />
             </Link>
-          </td>
+          }</td>
         </tr>
       ))}
     </>

@@ -1,6 +1,6 @@
 import { githubUsername, startYear } from "@/config";
 
-export const revalidate = 604800; // 1 week
+export const revalidate = 1296000; // 15 days
 
 export async function GET() {
   let response = await fetch(`https://api.github.com/users/${githubUsername}/repos`);

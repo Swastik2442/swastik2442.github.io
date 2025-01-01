@@ -1,4 +1,4 @@
-import { Notable, Alex_Brush, Poppins } from "next/font/google";
+import { Notable, Alex_Brush, Poppins, Monoton } from "next/font/google";
 
 export const startYear = 2023;
 export const ownerName = "Swastik Kulshreshtha";
@@ -34,3 +34,4 @@ export const workExpData: WorkProperties[] = [
 export const primaryFont = Notable({ weight: "400", subsets: ["latin"] });
 export const secondaryFont = Alex_Brush({ weight: "400", subsets: ["latin"] });
 export const tertiaryFont = Poppins({ weight: "400", subsets: ["latin"] });
+export const quaternaryFont = Monoton({ weight: "400", subsets: ["latin"] });

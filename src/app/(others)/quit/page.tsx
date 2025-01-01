@@ -1,18 +1,26 @@
-import { ownerName } from "@/config";
+"use client";
+
+import dynamic from "next/dynamic";
+import { ownerName, quaternaryFont } from "@/config";
+import { mergeClasses } from "@/utils/css";
 import styles from "./page.module.css";
+
+const QuitImgContainer = dynamic(() => import("./imgContainer"), { ssr: false });
 
 export default function Quit() {
   const fromTitle = ownerName.trim().split(/(\s+)/).filter(e => e.trim().length > 0);
   return (
-    <>
-    <main className={styles.main}>
-      <div className={styles.greetings}>
-        Greetings from
+    <QuitImgContainer>
+      <div className={styles.textContainer}>
+        <div className={styles.textContainerRotated}>
+          <div className={styles.greetings}>
+            Greetings from
+          </div>
+          <div className={mergeClasses(styles.fromTitle, quaternaryFont.className)}>
+            {fromTitle.map((text, idx) => <p key={idx}>{text}</p>)}
+          </div>
+        </div>
       </div>
-      <div className={styles.fromTitle}>
-        {fromTitle.map((text, idx) => <p key={idx}>{text}</p>)}
-      </div>
-    </main>
-    </>
+    </QuitImgContainer>
   );
 }

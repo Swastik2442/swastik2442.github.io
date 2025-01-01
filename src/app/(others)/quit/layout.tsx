@@ -5,7 +5,7 @@ import "@/app/globals.css";
 export const metadata: Metadata = {
   title: siteTitle,
   description: siteDescription,
-  authors: [{"name": ownerName}],
+  authors: [{ "name": ownerName }],
   icons: "favicon.ico",
   openGraph: {
     type: "website",
@@ -13,9 +13,7 @@ export const metadata: Metadata = {
     title: siteTitle,
     description: siteDescription,
     siteName: siteTitle,
-    images: [{
-      url: siteLogo,
-    }],
+    images: [{ url: siteLogo }],
   },
   twitter: {
     card: "summary",
@@ -45,7 +43,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={secondaryFont.className} style={{ background: "none" }}>
+      <body className={secondaryFont.className} style={{
+        background: "none",
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}>
         {children}
       </body>
     </html>

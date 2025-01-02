@@ -5,9 +5,9 @@ import Link from "next/link";
 import { LinkIcon, LoadingIcon } from "@/app/_components/icons";
 
 async function getProjects() {
-  let response = await fetch("/api/projects");
+  const response = await fetch("/api/projects");
   if (!(response.ok)) return [];
-  let responseJson = await response.json();
+  const responseJson = await response.json();
   if (responseJson?.projects)
     return responseJson.projects as ProjectProperties[];
   return [];

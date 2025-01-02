@@ -3,15 +3,15 @@ import { githubUsername, startYear } from "@/config";
 export const revalidate = 1296000; // 15 days
 
 export async function GET() {
-  let response = await fetch(`https://api.github.com/users/${githubUsername}/repos`);
+  const response = await fetch(`https://api.github.com/users/${githubUsername}/repos`);
   if (!(response.ok))
     return Response.json({ projects: [] });
-  let responseJson = await response.json();
+  const responseJson = await response.json();
   if (!(responseJson instanceof Array))
     return Response.json({ projects: [] });
 
   // Remove Old & Forked Repos and Sort according to Last Push Date
-  let projects: ProjectProperties[] = responseJson.filter(
+  const projects: ProjectProperties[] = responseJson.filter(
     (repo: any) => (
       repo.fork === false &&
       new Date(repo.pushed_at).getFullYear() >= startYear &&
@@ -29,9 +29,9 @@ export async function GET() {
 
   // Get Languages for each Repo until Network Error
   for (let index = 0; index < projects.length; index++) {
-    let langsResponse = await fetch(projects[index].langUrl);
+    const langsResponse = await fetch(projects[index].langUrl);
     if (!(langsResponse.ok)) break;
-    let langsResponseJson = await langsResponse.json().then(
+    const langsResponseJson = await langsResponse.json().then(
       (data: any) => Object.keys(data)
     );
 

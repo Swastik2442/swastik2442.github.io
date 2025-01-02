@@ -7,8 +7,8 @@ import styles from "./page.module.css";
 export const revalidate = 604800; // 1 week
 
 export default async function Stats() {
-  let response = await import("@/app/api/stats/route");
-  let responseJson = await (await response.GET()).json();
+  const response = await import("@/app/api/stats/route");
+  const responseJson = await (await response.GET()).json();
   let langStats: WakatimeType[] = [];
   if (responseJson?.languages)
     langStats = responseJson.languages;

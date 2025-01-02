@@ -5,7 +5,7 @@ import { ownerName, quaternaryFont } from "@/config";
 import { mergeClasses } from "@/utils/css";
 import styles from "./page.module.css";
 
-const QuitImgContainer = dynamic(() => import("./imgContainer"), { ssr: false });
+const QuitImgContainer = dynamic(() => import("./qImg"), { ssr: false });
 
 export default function Quit() {
   const fromTitle = ownerName.trim().split(/(\s+)/).filter(e => e.trim().length > 0);

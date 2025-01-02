@@ -25,5 +25,14 @@ interface WakatimeType {
   decimal: number;
   text: string;
   hours: number;
-  minutes: number
-};
+  minutes: number;
+}
+
+interface QImg {
+  url: string;
+  blur_hash: string | null;
+  name_author: string;
+  name_service: string;
+  attr_author: string;
+  attr_service: string;
+}

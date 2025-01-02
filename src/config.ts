@@ -15,7 +15,10 @@ export const siteTitle = ownerName;
 export const siteDescription = "Yet another Human from Earth";
 export const siteLogo = "https://avatars.githubusercontent.com/u/56737344";
 export const siteHost = process.env.SITE_HOST;
+
 export const verificationGoogle = process.env.VERIFICATION_GOOGLE;
+export const unsplashAppName = process.env.UNSPLASH_APP_NAME ?? "sk_portfolio";
+export const unsplashAccessKey = process.env.UNSPLASH_ACCESS_KEY;
 
 export const twitterUsername = "swastik2442";
 export const githubUsername = "Swastik2442";

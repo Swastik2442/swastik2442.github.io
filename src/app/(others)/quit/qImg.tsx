@@ -8,12 +8,6 @@ import { drawImageOnCanvas } from "@/app/_components/canvasImg";
 import { drawBlurHashOnCanvas } from "@/app/_components/blurHash";
 import styles from "./page.module.css";
 
-const maxSize = 0.9;
-const distBW = 48;
-const ctrlPoint = 12;
-const fromOrg = distBW + 2 * ctrlPoint;
-let got1QImg = false;
-
 async function getQImg(orientation: "landscape" | "portrait" | "squarish" = "squarish") {
   const response = await fetch("/api/qimg?orientation=" + orientation);
   if (!(response.ok)) return;
@@ -34,49 +28,22 @@ export default function QuitImgContainer({
   children: React.ReactNode,
   props?: JSX.IntrinsicElements['main']
 }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const windowSize = useWindowSize();
   const clipPath = useMemo(() => pathMaker(windowSize), [windowSize]);
-  const [qImg, setQImg] = useState<QImg | undefined>();
-
-  useEffect(() => { // Disables Context Menu on Canvas
-    canvasRef.current?.addEventListener(
-      "contextmenu", (e) => e.preventDefault()
-    );
-    return canvasRef.current?.removeEventListener(
-      "contextmenu", (e) => e.preventDefault()
-    );
-  }, [canvasRef]);
-
-  useEffect(() => { // Gets QImg Response
-    if (got1QImg) return;
-    got1QImg = true;
-    getQImg(getOrientation(windowSize)).then((data) => setQImg(data));
-  }, [windowSize]);
-
-  useEffect(() => { // Draws BlurHash on Canvas
-    if (!(qImg?.blur_hash) || !windowSize) return;
-    drawBlurHashOnCanvas(canvasRef.current!, qImg.blur_hash, windowSize.width, windowSize.height);
-  }, [qImg, windowSize]);
-
-  // useEffect(() => { // Draws Image on Canvas as per Window Size
-  //   if (!(qImg) || !windowSize) return;
-  //   const interval = setInterval(() => {
-  //     const imgURL = new URL(qImg.url);
-  //     imgURL.searchParams.set("w", (maxSize * windowSize.width).toString());
-  //     imgURL.searchParams.set("dpr", (window?.devicePixelRatio ?? 1.5).toString());
-  //     drawImageOnCanvas(canvasRef.current!, imgURL!.href, windowSize.width, windowSize.height);
-  //   }, 3000);
-  //   return () => clearInterval(interval);
-  // }, [qImg, windowSize]);
 
   return (
     <main className={styles.main} style={{ clipPath: clipPath }} {...props}>
-      <canvas ref={canvasRef} className={styles.qImgCanvas} height={maxSize * windowSize!.height} width={maxSize * windowSize!.width} />
+      <QuitImg windowSize={windowSize} />
       {children}
     </main>
   );
 }
+
+const maxSize = 0.9;
+const distBW = 48;
+const ctrlPoint = 12;
+const fromOrg = distBW + 2 * ctrlPoint;
+let got1QImg = false;
 
 function pathMaker(windowSize?: WindowSize): CSS.Property.ClipPath {
   if (!windowSize) return "none";
@@ -133,4 +100,59 @@ function pathMaker(windowSize?: WindowSize): CSS.Property.ClipPath {
   path.push(`L ${x} ${y}`);
 
   return "path('" + path.join(' ') + "')";
+}
+
+function QuitImg({ windowSize }: { windowSize?: WindowSize }) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [qImg, setQImg] = useState<QImg | undefined>();
+
+  useEffect(() => { // Disables Context Menu on Canvas
+    canvasRef.current?.addEventListener(
+      "contextmenu", (e) => e.preventDefault()
+    );
+    return canvasRef.current?.removeEventListener(
+      "contextmenu", (e) => e.preventDefault()
+    );
+  }, [canvasRef]);
+
+  useEffect(() => { // Gets QImg Response
+    if (got1QImg) return;
+    got1QImg = true;
+    getQImg(getOrientation(windowSize)).then((data) => setQImg(data));
+  }, [windowSize]);
+
+  useEffect(() => { // Draws BlurHash on Canvas
+    if (!(qImg?.blur_hash) || !windowSize) return;
+    drawBlurHashOnCanvas(
+      canvasRef.current!,
+      qImg.blur_hash,
+      windowSize.width,
+      windowSize.height
+    );
+  }, [qImg, windowSize]);
+
+  // useEffect(() => { // Draws Image on Canvas as per Window Size
+  //   if (!(qImg) || !windowSize) return;
+  //   const interval = setInterval(() => {
+  //     const imgURL = new URL(qImg.url);
+  //     imgURL.searchParams.set("w", (maxSize * windowSize.width).toString());
+  //     imgURL.searchParams.set("dpr", (window?.devicePixelRatio ?? 1.5).toString());
+  //     drawImageOnCanvas(
+  //       canvasRef.current!,
+  //       imgURL!.href,
+  //       windowSize.width,
+  //       windowSize.height
+  //     );
+  //   }, 3000);
+  //   return () => clearInterval(interval);
+  // }, [qImg, windowSize]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className={styles.qImgCanvas}
+      height={maxSize * windowSize!.height}
+      width={maxSize * windowSize!.width}
+    />
+  );
 }

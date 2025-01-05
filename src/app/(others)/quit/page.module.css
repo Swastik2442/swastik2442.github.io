@@ -26,9 +26,21 @@
   transform: translateX(2.5rem);
 }
 
-.fromTitle p {
-  margin: 0;
-  padding: 0;
+@media screen and (max-width: 768px) {
+  .greetings {
+    font-size: 1.5rem;
+  }
+
+  .fromTitle {
+    font-size: 2.5rem;
+    transform: translateX(1.25rem);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .textContainer {
+    transform: rotate(90deg);
+  }
 }
 
 .qImgCanvas {

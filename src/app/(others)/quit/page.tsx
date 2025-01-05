@@ -17,7 +17,7 @@ export default function Quit() {
             Greetings from
           </div>
           <div className={mergeClasses(styles.fromTitle, quaternaryFont.className)}>
-            {fromTitle.map((text, idx) => <p key={idx}>{text}</p>)}
+            {fromTitle.map((text, idx) => <div key={idx}>{text}</div>)}
           </div>
         </div>
       </div>

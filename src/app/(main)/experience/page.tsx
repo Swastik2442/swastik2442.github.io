@@ -11,7 +11,7 @@ import WorkRows from "./workRows";
 import styles from "./page.module.css";
 
 export default function Experience() {
-  const [tableData, setTableData] = useState<"work" | "projects">("work");
+  const [tableData, setTableData] = useState<"work" | "projects">("projects");
   const [description, setDescription] = useState({ image: "", text: "" });
 
   const getWorkData = () => {

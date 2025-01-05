@@ -66,9 +66,9 @@ function pathMaker(windowSize?: WindowSize): CSS.Property.ClipPath {
 
   x += distBW;
   y += distBW;
-  path.push(`L ${x} ${y}`);
-
   newX = x + ctrlPoint;
+  path.push(`C ${x - distBW + (2 * ctrlPoint)} ${y - distBW - (2 * ctrlPoint)} ${newX + ctrlPoint} ${y - (2 * ctrlPoint)} ${x} ${y}`);
+
   for (let i = 0; i < lrCount; i++) {
     newY = y + distBW;
     path.push(`C ${newX} ${y} ${newX} ${newY} ${x} ${newY}`);
@@ -77,27 +77,30 @@ function pathMaker(windowSize?: WindowSize): CSS.Property.ClipPath {
 
   x -= distBW;
   y += distBW;
-  path.push(`L ${x} ${y}`);
-
   newY = y + ctrlPoint;
+  path.push(`C ${x + distBW + (2 * ctrlPoint)} ${y - distBW + (2 * ctrlPoint)} ${x + (2 * ctrlPoint)} ${newY + ctrlPoint} ${x} ${y}`);
+
   for (let i = 0; i < tdCount; i++) {
     newX = x - distBW;
     path.push(`C ${x} ${newY} ${newX} ${newY} ${newX} ${y}`);
     x = newX;
   }
 
-  y -= distBW;
   x -= distBW;
-  path.push(`L ${x} ${y}`);
-
+  y -= distBW;
   newX = x - ctrlPoint;
+  path.push(`C ${x + distBW - (2 * ctrlPoint)} ${y + distBW + (2 * ctrlPoint)} ${newX - ctrlPoint} ${y + (2 * ctrlPoint)} ${x} ${y}`);
+
   for (let i = 0; i < lrCount; i++) {
     newY = y - distBW;
     path.push(`C ${newX} ${y} ${newX} ${newY} ${x} ${newY}`);
     y = newY;
   }
 
-  path.push(`L ${x} ${y}`);
+  x  += distBW;
+  y -= distBW;
+  newY = y - ctrlPoint;
+  path.push(`C ${x - distBW - (2 * ctrlPoint)} ${y + distBW - (2 * ctrlPoint)} ${x - (2 * ctrlPoint)} ${newY - ctrlPoint} ${x} ${y}`);
 
   return "path('" + path.join(' ') + "')";
 }

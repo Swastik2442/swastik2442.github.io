@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo } from "react";
+import Link from "next/link";
 import type * as CSS from "csstype";
 import useWindowSize from "@/hooks/useWindowSize";
 import type { WindowSize } from "@/hooks/useWindowSize";
 import { drawImageOnCanvas } from "@/app/_components/canvasImg";
 import { drawBlurHashOnCanvas } from "@/app/_components/blurHash";
+import { mergeClasses } from "@/utils/css";
+import { tertiaryFont } from "@/config";
 import styles from "./page.module.css";
 
 async function getQImg(orientation: "landscape" | "portrait" | "squarish" = "squarish") {
@@ -151,11 +154,23 @@ function QuitImg({ windowSize }: { windowSize?: WindowSize }) {
   // }, [qImg, windowSize]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className={styles.qImgCanvas}
-      height={maxSize * windowSize!.height}
-      width={maxSize * windowSize!.width}
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        className={styles.qImgCanvas}
+        height={maxSize * windowSize!.height}
+        width={maxSize * windowSize!.width}
+      />
+      {qImg && <div className={mergeClasses(styles.qImgAttr, tertiaryFont.className)}>
+        <span>Photo by</span>&nbsp;
+        <Link href={qImg.attr_author} target="_blank">
+          {qImg.name_author}
+        </Link>&nbsp;
+        <span>on</span>&nbsp;
+        <Link href={qImg.attr_service} target="_blank">
+          {qImg.name_service}
+        </Link>
+      </div>}
+    </>
   );
 }

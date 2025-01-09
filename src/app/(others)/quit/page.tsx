@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { ownerName, quaternaryFont } from "@/config";
+import { ownerName, secondaryFont, quaternaryFont } from "@/config";
 import { mergeClasses } from "@/utils/css";
 import styles from "./page.module.css";
 
@@ -13,7 +13,7 @@ export default function Quit() {
     <QuitImgContainer>
       <div className={styles.textContainer}>
         <div className={styles.textContainerRotated}>
-          <div className={styles.greetings}>
+          <div className={mergeClasses(styles.greetings, secondaryFont.className)}>
             Greetings from
           </div>
           <div className={mergeClasses(styles.fromTitle, quaternaryFont.className)}>

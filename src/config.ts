@@ -20,6 +20,9 @@ export const verificationGoogle = process.env.VERIFICATION_GOOGLE;
 export const unsplashAppName = process.env.UNSPLASH_APP_NAME ?? "sk_portfolio";
 export const unsplashAccessKey = process.env.UNSPLASH_ACCESS_KEY;
 
+export const kvAPIToken = process.env.KV_REST_API_TOKEN;
+export const kvAPIURL = process.env.KV_REST_API_URL;
+
 export const twitterUsername = "swastik2442";
 export const githubUsername = "Swastik2442";
 export const linkedinUsername = githubUsername;

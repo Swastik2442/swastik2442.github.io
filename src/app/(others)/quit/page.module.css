@@ -9,6 +9,7 @@
 
 .textContainer {
   z-index: 2;
+  user-select: none;
 }
 
 .textContainerRotated {
@@ -40,6 +41,31 @@
 @media screen and (max-width: 640px) {
   .textContainer {
     transform: rotate(90deg);
+  }
+}
+
+.qImgAttr {
+  z-index: 2;
+  position: absolute;
+  right: 0;
+  font-style: italic;
+  font-size: 0.65rem;
+  transform: rotate(90deg);
+}
+
+.qImgAttr a {
+  color: var(--secondary);
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .qImgAttr {
+    font-size: 0.4rem;
+    transform: none;
+    right: auto;
+    bottom: 10vh;
   }
 }
 

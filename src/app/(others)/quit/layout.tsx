@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verificationGoogle, twitterUsername, secondaryFont } from "@/config";
+import { ownerName, siteTitle, siteDescription, siteLogo, siteHost, verificationGoogle, twitterUsername } from "@/config";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={secondaryFont.className} style={{
+      <body style={{
         background: "none",
         width: "100vw",
         height: "100vh",

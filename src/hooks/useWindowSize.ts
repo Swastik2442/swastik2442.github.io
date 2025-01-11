@@ -2,11 +2,6 @@
 
 import { useState, useEffect } from "react";
 
-export interface WindowSize {
-  height: number;
-  width: number;
-}
-
 export function useWindowSize() {
   const isClient = typeof window === "object";
   const [windowSize, setWindowSize] = useState<WindowSize | undefined>(

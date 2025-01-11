@@ -1,3 +1,8 @@
+interface WindowSize {
+  height: number;
+  width: number;
+}
+
 interface ProjectProperties {
   name: string;
   tech: string;

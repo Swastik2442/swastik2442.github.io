@@ -3,8 +3,6 @@ import type { Orientation } from 'unsplash-js';
 import type { NextRequest } from 'next/server';
 import { unsplashAppName, unsplashAccessKey } from "@/config";
 
-export const revalidate = 43200; // 3 days
-
 export async function GET(request: NextRequest) {
   if (!unsplashAccessKey) {
     console.error("Unsplash Access Key not found");

@@ -2,27 +2,18 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
-import type * as CSS from "csstype";
 import useWindowSize from "@/hooks/useWindowSize";
-import type { WindowSize } from "@/hooks/useWindowSize";
+import useQuery from "@/hooks/useQuery";
 import { drawImageOnCanvas } from "@/app/_components/canvasImg";
 import { drawBlurHashOnCanvas } from "@/app/_components/blurHash";
+import { LoadingIcon } from "@/app/_components/icons";
+import { quitPath } from "@/utils/paths";
 import { mergeClasses } from "@/utils/css";
+import { getOrientation } from "@/utils/others";
 import { tertiaryFont } from "@/config";
 import styles from "./page.module.css";
 
-async function getQImg(orientation: "landscape" | "portrait" | "squarish" = "squarish") {
-  const response = await fetch("/api/qimg?orientation=" + orientation);
-  if (!(response.ok)) return;
-  const responseJson = await response.json();
-  if (!responseJson) return;
-  return responseJson as QImg;
-}
-
-function getOrientation(windowSize?: WindowSize) {
-  if (!windowSize || windowSize.width == windowSize.height) return "squarish";
-  return windowSize.width > windowSize.height ? "landscape" : "portrait";
-}
+const maxSize = 0.9;
 
 export default function QuitImgContainer({
   children,
@@ -32,7 +23,9 @@ export default function QuitImgContainer({
   props?: JSX.IntrinsicElements['main']
 }) {
   const windowSize = useWindowSize();
-  const clipPath = useMemo(() => pathMaker(windowSize), [windowSize]);
+  const clipPath = useMemo(() => windowSize && quitPath({
+    height: windowSize.height * maxSize, width: windowSize.width * maxSize
+  }), [windowSize]);
 
   return (
     <main className={styles.main} style={{ clipPath: clipPath }} {...props}>
@@ -42,90 +35,11 @@ export default function QuitImgContainer({
   );
 }
 
-const maxSize = 0.9;
-const distBW = 48;
-const ctrlPoint = 12;
-const fromOrg = distBW + 2 * ctrlPoint;
-let got1QImg = false;
-
-function pathMaker(windowSize?: WindowSize): CSS.Property.ClipPath {
-  if (!windowSize) return "none";
-
-  const tdCount = Math.floor((windowSize.width * maxSize - 2 * fromOrg) / distBW);
-  const lrCount = Math.floor((windowSize.height * maxSize - 2 * fromOrg) / distBW);
-
-  let x = (windowSize.width * maxSize - tdCount * distBW) / 2;
-  let y = (windowSize.height * maxSize - lrCount * distBW) / 2 - distBW;
-  let newX, newY;
-
-  const path = [`M ${x} ${y}`];
-
-  newY = y - ctrlPoint;
-  for (let i = 0; i < tdCount; i++) {
-    newX = x + distBW;
-    path.push(`C ${x} ${newY} ${newX} ${newY} ${newX} ${y}`);
-    x = newX;
-  }
-
-  x += distBW;
-  y += distBW;
-  newX = x + ctrlPoint;
-  path.push(`C ${x - distBW + (2 * ctrlPoint)} ${y - distBW - (2 * ctrlPoint)} ${newX + ctrlPoint} ${y - (2 * ctrlPoint)} ${x} ${y}`);
-
-  for (let i = 0; i < lrCount; i++) {
-    newY = y + distBW;
-    path.push(`C ${newX} ${y} ${newX} ${newY} ${x} ${newY}`);
-    y = newY;
-  }
-
-  x -= distBW;
-  y += distBW;
-  newY = y + ctrlPoint;
-  path.push(`C ${x + distBW + (2 * ctrlPoint)} ${y - distBW + (2 * ctrlPoint)} ${x + (2 * ctrlPoint)} ${newY + ctrlPoint} ${x} ${y}`);
-
-  for (let i = 0; i < tdCount; i++) {
-    newX = x - distBW;
-    path.push(`C ${x} ${newY} ${newX} ${newY} ${newX} ${y}`);
-    x = newX;
-  }
-
-  x -= distBW;
-  y -= distBW;
-  newX = x - ctrlPoint;
-  path.push(`C ${x + distBW - (2 * ctrlPoint)} ${y + distBW + (2 * ctrlPoint)} ${newX - ctrlPoint} ${y + (2 * ctrlPoint)} ${x} ${y}`);
-
-  for (let i = 0; i < lrCount; i++) {
-    newY = y - distBW;
-    path.push(`C ${newX} ${y} ${newX} ${newY} ${x} ${newY}`);
-    y = newY;
-  }
-
-  x  += distBW;
-  y -= distBW;
-  newY = y - ctrlPoint;
-  path.push(`C ${x - distBW - (2 * ctrlPoint)} ${y + distBW - (2 * ctrlPoint)} ${x - (2 * ctrlPoint)} ${newY - ctrlPoint} ${x} ${y}`);
-
-  return "path('" + path.join(' ') + "')";
-}
-
 function QuitImg({ windowSize }: { windowSize?: WindowSize }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [qImg, setQImg] = useState<QImg | undefined>();
-
-  useEffect(() => { // Disables Context Menu on Canvas
-    canvasRef.current?.addEventListener(
-      "contextmenu", (e) => e.preventDefault()
-    );
-    return canvasRef.current?.removeEventListener(
-      "contextmenu", (e) => e.preventDefault()
-    );
-  }, [canvasRef]);
-
-  useEffect(() => { // Gets QImg Response
-    if (got1QImg) return;
-    got1QImg = true;
-    getQImg(getOrientation(windowSize)).then((data) => setQImg(data));
-  }, [windowSize]);
+  const { data: qImg, isLoading } = useQuery<QImg>(
+    `/api/qimg?orientation=${getOrientation(windowSize)}`
+  );
 
   useEffect(() => { // Draws BlurHash on Canvas
     if (!(qImg?.blur_hash) || !windowSize) return;
@@ -155,22 +69,26 @@ function QuitImg({ windowSize }: { windowSize?: WindowSize }) {
 
   return (
     <>
-      <canvas
+      {windowSize && <canvas
         ref={canvasRef}
         className={styles.qImgCanvas}
-        height={maxSize * windowSize!.height}
-        width={maxSize * windowSize!.width}
-      />
-      {qImg && <div className={mergeClasses(styles.qImgAttr, tertiaryFont.className)}>
-        <span>Photo by</span>&nbsp;
-        <Link href={qImg.attr_author} target="_blank">
-          {qImg.name_author}
-        </Link>&nbsp;
-        <span>on</span>&nbsp;
-        <Link href={qImg.attr_service} target="_blank">
-          {qImg.name_service}
-        </Link>
-      </div>}
+        height={maxSize * windowSize.height}
+        width={maxSize * windowSize.width}
+        onContextMenu={(e) => e.preventDefault()}
+      />}
+      <div className={mergeClasses(styles.qImgAttr, tertiaryFont.className)}>
+        {qImg && <>
+          <span>Photo by</span>&nbsp;
+          <Link href={qImg.attr_author} target="_blank">
+            {qImg.name_author}
+          </Link>&nbsp;
+          <span>on</span>&nbsp;
+          <Link href={qImg.attr_service} target="_blank">
+            {qImg.name_service}
+          </Link>
+        </>}
+        {isLoading && <LoadingIcon width={18} height={18} fill="white" />}
+      </div>
     </>
   );
 }

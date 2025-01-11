@@ -1,5 +1,6 @@
 .main {
   color: var(--secondary);
+  background-color: var(--tertiary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,28 +18,26 @@
 }
 
 .greetings {
-  font-size: 2.5rem;
-  text-shadow: 1px 1px black;
+  font-size: 2.5vw;
+  text-shadow: 1px 1px var(--tertiary);
 }
 
 .fromTitle {
-  font-size: 5rem;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-  transform: translateX(2.5rem);
-}
-
-@media screen and (max-width: 768px) {
-  .greetings {
-    font-size: 1.5rem;
-  }
-
-  .fromTitle {
-    font-size: 2.5rem;
-    transform: translateX(1.25rem);
-  }
+  font-size: 5vw;
+  text-shadow: -2px 0 var(--tertiary), 0 2px var(--tertiary), 2px 0 var(--tertiary), 0 -2px var(--tertiary);
+  transform: translateX(2.5vw);
 }
 
 @media screen and (max-width: 640px) {
+  .greetings {
+    font-size: 2.5vh;
+  }
+
+  .fromTitle {
+    font-size: 5vh;
+    transform: translateX(2.5vh);
+  }
+
   .textContainer {
     transform: rotate(90deg);
   }
@@ -47,8 +46,7 @@
 .qImgAttr {
   z-index: 2;
   position: absolute;
-  right: 0;
-  font-style: italic;
+  right: 10vw;
   font-size: 0.65rem;
   transform: rotate(90deg);
 }
@@ -63,6 +61,7 @@
 @media screen and (max-width: 1280px) {
   .qImgAttr {
     font-size: 0.4rem;
+    font-style: italic;
     transform: none;
     right: auto;
     bottom: 10vh;

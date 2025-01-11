@@ -44,7 +44,7 @@ export default function Home() {
         </li>
         {mainLinks.map((link, idx) => (
           <li key={idx}>
-            <Link href={link.loc} className="greenHover textScar">
+            <Link href={link.loc} prefetch={true} className="greenHover textScar">
               {link.name}
             </Link>
           </li>

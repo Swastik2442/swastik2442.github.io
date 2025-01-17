@@ -37,9 +37,11 @@ export default function QuitImgContainer({
 
 function QuitImg({ windowSize }: { windowSize?: WindowSize }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { data: qImg, isLoading } = useQuery<QImg>(
-    `/api/qimg/${getOrientation(windowSize)}`
-  );
+  const { data: qImg, loading: qImgLoading } = useQuery<QImg>(
+    `/api/qimg/${getOrientation(windowSize)}`, {
+    cache: 'force-cache',
+    next: { revalidate: 604800 }
+  });
 
   useEffect(() => { // Draws BlurHash on Canvas
     if (!(qImg?.blur_hash) || !windowSize) return;
@@ -87,7 +89,7 @@ function QuitImg({ windowSize }: { windowSize?: WindowSize }) {
             {qImg.name_service}
           </Link>
         </>}
-        {isLoading && <LoadingIcon width={18} height={18} fill="white" />}
+        {qImgLoading && <LoadingIcon width={18} height={18} fill="white" />}
       </div>
     </>
   );

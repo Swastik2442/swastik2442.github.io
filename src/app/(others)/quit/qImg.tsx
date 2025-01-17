@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
+import useScreenSize from "@/hooks/useScreenSize";
 import useWindowSize from "@/hooks/useWindowSize";
 import useQuery from "@/hooks/useQuery";
 import { drawImageOnCanvas } from "@/app/_components/canvasImg";
@@ -22,6 +23,29 @@ export default function QuitImgContainer({
   children: React.ReactNode,
   props?: JSX.IntrinsicElements['main']
 }) {
+  const screenSize = useScreenSize();
+  const { data } = useQuery<QImg>(
+    `/api/qimg/${getOrientation(screenSize)}`, {
+    cache: 'force-cache',
+    next: { revalidate: 604800 }
+  });
+
+  return (
+    <QuitImgContainer2 qImg={data} {...props}>
+      {children}
+    </QuitImgContainer2>
+  );
+}
+
+function QuitImgContainer2({
+  qImg,
+  children,
+  ...props
+}: {
+  qImg: QImg | null,
+  children: React.ReactNode,
+  props?: JSX.IntrinsicElements['main']
+}) {
   const windowSize = useWindowSize();
   const clipPath = useMemo(() => windowSize && quitPath({
     height: windowSize.height * maxSize, width: windowSize.width * maxSize
@@ -29,19 +53,20 @@ export default function QuitImgContainer({
 
   return (
     <main className={styles.main} style={{ clipPath: clipPath }} {...props}>
-      <QuitImg windowSize={windowSize} />
+      <QuitImgRenderer qImg={qImg} windowSize={windowSize} />
       {children}
     </main>
   );
 }
 
-function QuitImg({ windowSize }: { windowSize?: WindowSize }) {
+function QuitImgRenderer({
+  qImg,
+  windowSize
+}: {
+  qImg: QImg | null,
+  windowSize?: WindowSize
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { data: qImg, loading: qImgLoading } = useQuery<QImg>(
-    `/api/qimg/${getOrientation(windowSize)}`, {
-    cache: 'force-cache',
-    next: { revalidate: 604800 }
-  });
 
   useEffect(() => { // Draws BlurHash on Canvas
     if (!(qImg?.blur_hash) || !windowSize) return;
@@ -89,7 +114,7 @@ function QuitImg({ windowSize }: { windowSize?: WindowSize }) {
             {qImg.name_service}
           </Link>
         </>}
-        {qImgLoading && <LoadingIcon width={18} height={18} fill="white" />}
+        {qImg == null && <LoadingIcon width={18} height={18} fill="white" />}
       </div>
     </>
   );

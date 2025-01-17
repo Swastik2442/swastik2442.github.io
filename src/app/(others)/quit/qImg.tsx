@@ -38,7 +38,7 @@ export default function QuitImgContainer({
 function QuitImg({ windowSize }: { windowSize?: WindowSize }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { data: qImg, isLoading } = useQuery<QImg>(
-    `/api/qimg?orientation=${getOrientation(windowSize)}`
+    `/api/qimg/${getOrientation(windowSize)}`
   );
 
   useEffect(() => { // Draws BlurHash on Canvas

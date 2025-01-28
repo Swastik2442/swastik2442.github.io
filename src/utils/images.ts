@@ -2,6 +2,14 @@ import { createApi } from 'unsplash-js';
 import type { Orientation } from 'unsplash-js';
 import { unsplashAppName, unsplashAccessKey } from "@/config";
 
+function getUnsplashParamURL(url: string) {
+  if (!unsplashAppName) return url;
+  const unsplashURL = new URL(url);
+  unsplashURL.searchParams.set("utm_source", unsplashAppName);
+  unsplashURL.searchParams.set("utm_medium", "referral");
+  return unsplashURL.href;
+}
+
 export async function getUnsplashImage(orientation: Orientation) {
   if (!unsplashAccessKey) {
     console.error("Unsplash Access Key not found");
@@ -19,21 +27,12 @@ export async function getUnsplashImage(orientation: Orientation) {
     return null;
 
   const photo = Array.isArray(response.response) ? response.response[0] : response.response;
-
-  const rawURL = new URL(photo.urls.raw);
-  rawURL.searchParams.set("utm_source", unsplashAppName);
-  rawURL.searchParams.set("utm_medium", "referral");
-
-  const authorAttr = new URL(photo.user.links.html);
-  authorAttr.searchParams.set("utm_source", unsplashAppName);
-  authorAttr.searchParams.set("utm_medium", "referral");
-
   return {
-    url: rawURL.href,
+    url: getUnsplashParamURL(photo.urls.raw),
     blur_hash: photo.blur_hash,
     name_author: photo.user.name,
     name_service: "Unsplash",
-    attr_author: authorAttr.href,
-    attr_service: `https://unsplash.com/?utm_source=${unsplashAppName}&utm_medium=referral`,
+    attr_author: getUnsplashParamURL(photo.user.links.html),
+    attr_service: getUnsplashParamURL("https://unsplash.com"),
   } satisfies QImg;
 }

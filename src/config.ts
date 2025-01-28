@@ -17,7 +17,7 @@ export const siteLogo = "https://avatars.githubusercontent.com/u/56737344";
 export const siteHost = process.env.SITE_HOST;
 
 export const verificationGoogle = process.env.VERIFICATION_GOOGLE;
-export const unsplashAppName = process.env.UNSPLASH_APP_NAME ?? "sk_portfolio";
+export const unsplashAppName = process.env.UNSPLASH_APP_NAME;
 export const unsplashAccessKey = process.env.UNSPLASH_ACCESS_KEY;
 
 export const kvAPIToken = process.env.KV_REST_API_TOKEN;

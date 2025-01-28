@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import { useState, useEffect, Dispatch, SetStateAction, memo } from "react";
 import Link from "next/link";
 import { LinkIcon, LoadingIcon } from "@/app/_components/icons";
 
@@ -13,7 +13,7 @@ async function getProjects() {
   return [];
 }
 
-export default function ProjectsRows({ setDescription }: {
+function ProjectsRows({ setDescription }: {
   setDescription: Dispatch<SetStateAction<{
     image: string;
     text: string;
@@ -53,3 +53,5 @@ export default function ProjectsRows({ setDescription }: {
     </>
   )
 }
+
+export default memo(ProjectsRows);

@@ -1,11 +1,12 @@
 "use client";
 
+import { memo } from "react";
 import { useRouter } from "next/navigation";
 import { primaryFont } from "@/config";
 
 type BackButtonVariant = "normal" | "small";
 
-export default function BackButton({ variant = "normal" }: { variant?: BackButtonVariant }) {
+function BackButton({ variant = "normal" }: { variant?: BackButtonVariant }) {
   const router = useRouter();
   return (
     <a
@@ -17,3 +18,5 @@ export default function BackButton({ variant = "normal" }: { variant?: BackButto
     </a>
   )
 }
+
+export default memo(BackButton);

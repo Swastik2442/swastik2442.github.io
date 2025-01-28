@@ -1,9 +1,9 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, memo } from "react";
 import Link from "next/link";
 import { workExpData } from "@/config";
 import { LinkIcon } from "@/app/_components/icons";
 
-export default function WorkRows({ setDescription }: {
+function WorkRows({ setDescription }: {
   setDescription: Dispatch<SetStateAction<{
     image: string;
     text: string;
@@ -29,3 +29,5 @@ export default function WorkRows({ setDescription }: {
     </>
   )
 }
+
+export default memo(WorkRows);

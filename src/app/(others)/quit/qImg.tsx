@@ -69,30 +69,27 @@ function QuitImgRenderer({
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => { // Draws BlurHash on Canvas
-    if (!(qImg?.blur_hash) || !windowSize) return;
+    if (!qImg || !windowSize) return;
     drawBlurHashOnCanvas(
       canvasRef.current!,
-      qImg.blur_hash,
+      qImg.blur_hash ?? "L3IMQZGt01_~Qp%OEzIV00sq7xF2",
       windowSize.width,
       windowSize.height
     );
   }, [qImg, windowSize]);
 
-  // useEffect(() => { // Draws Image on Canvas as per Window Size
-  //   if (!(qImg) || !windowSize) return;
-  //   const interval = setInterval(() => {
-  //     const imgURL = new URL(qImg.url);
-  //     imgURL.searchParams.set("w", (maxSize * windowSize.width).toString());
-  //     imgURL.searchParams.set("dpr", (window?.devicePixelRatio ?? 1.5).toString());
-  //     drawImageOnCanvas(
-  //       canvasRef.current!,
-  //       imgURL!.href,
-  //       windowSize.width,
-  //       windowSize.height
-  //     );
-  //   }, 3000);
-  //   return () => clearInterval(interval);
-  // }, [qImg, windowSize]);
+  useEffect(() => { // Draws Image on Canvas as per Window Size
+    if (!(qImg) || !windowSize) return;
+    const imgURL = new URL(qImg.url);
+    imgURL.searchParams.set("w", (maxSize * windowSize.width).toString());
+    imgURL.searchParams.set("dpr", (window?.devicePixelRatio ?? 1.5).toString());
+    drawImageOnCanvas(
+      canvasRef.current!,
+      imgURL!.href,
+      windowSize.width,
+      windowSize.height
+    );
+  }, [qImg, windowSize]);
 
   return (
     <>

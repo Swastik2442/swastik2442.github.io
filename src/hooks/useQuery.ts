@@ -8,15 +8,15 @@ export function useQuery<T>(url: string, init?: RequestInit) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(url, init)
+    if (loading) fetch(url, init)
     .then((res) => res.json())
     .catch((error) => setError(error))
     .then((data) => setData(data as T))
     .catch((error) => setError(error))
     .finally(() => setLoading(false));
-  }, [url, init]);
+  }, [url, init, loading]);
 
-  return { data, error, loading };
+  return { data, error, loading, setLoading };
 }
 
 export default useQuery;

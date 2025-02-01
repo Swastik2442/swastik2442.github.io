@@ -30,7 +30,7 @@ export function BlurHashCanvas({
 };
 
 export function drawBlurHashOnCanvas(
-  canvas: HTMLCanvasElement,
+  canvas: HTMLCanvasElement | OffscreenCanvas,
   hash: string,
   width: number,
   height: number,

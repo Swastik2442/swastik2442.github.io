@@ -2,15 +2,12 @@
 
 import { useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
-import useScreenSize from "@/hooks/useScreenSize";
 import useWindowSize from "@/hooks/useWindowSize";
 import useQuery from "@/hooks/useQuery";
-import { drawImageOnCanvas } from "@/app/_components/canvasImg";
-import { drawBlurHashOnCanvas } from "@/app/_components/blurHash";
 import { LoadingIcon } from "@/app/_components/icons";
 import { quitPath } from "@/utils/paths";
 import { mergeClasses } from "@/utils/css";
-import { getOrientation } from "@/utils/others";
+import { getScreenSize, getOrientation } from "@/utils/others";
 import { tertiaryFont } from "@/config";
 import styles from "./page.module.css";
 
@@ -21,12 +18,12 @@ export default function QuitImgContainer({
   ...props
 }: {
   children: React.ReactNode,
-  props?: JSX.IntrinsicElements['main']
+  props?: JSX.IntrinsicElements["main"]
 }) {
-  const screenSize = useScreenSize();
+  const screenSize = getScreenSize();
   const { data } = useQuery<QImg>(
     `/api/qimg/${getOrientation(screenSize)}`, {
-    cache: 'force-cache',
+    cache: "force-cache",
     next: { revalidate: 604800 }
   });
 
@@ -44,7 +41,7 @@ function QuitImgContainer2({
 }: {
   qImg: QImg | null,
   children: React.ReactNode,
-  props?: JSX.IntrinsicElements['main']
+  props?: JSX.IntrinsicElements["main"]
 }) {
   const windowSize = useWindowSize();
   const clipPath = useMemo(() => windowSize && quitPath({
@@ -53,7 +50,7 @@ function QuitImgContainer2({
 
   return (
     <main className={styles.main} style={{ clipPath: clipPath }} {...props}>
-      <QuitImgRenderer qImg={qImg} windowSize={windowSize} />
+      <QuitImgRenderer qImg={qImg} />
       {children}
     </main>
   );
@@ -61,35 +58,44 @@ function QuitImgContainer2({
 
 function QuitImgRenderer({
   qImg,
-  windowSize
 }: {
   qImg: QImg | null,
-  windowSize?: WindowSize
 }) {
+  const windowSize = useWindowSize();
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const renderWorker = useMemo(() => new Worker(
+    new URL("./renderWorker.ts", import.meta.url),
+    {
+      name: "Quit Image Renderer",
+      type: "module",
+      credentials: "omit"
+    }
+  ), []);
 
-  useEffect(() => { // Draws BlurHash on Canvas
-    if (!qImg || !windowSize) return;
-    drawBlurHashOnCanvas(
-      canvasRef.current!,
-      qImg.blur_hash ?? "L3IMQZGt01_~Qp%OEzIV00sq7xF2",
-      windowSize.width,
-      windowSize.height
-    );
-  }, [qImg, windowSize]);
+  useEffect(() => { // Draws on Canvas
+    const screenSize = getScreenSize();
+    if (!qImg || !screenSize) return;
 
-  useEffect(() => { // Draws Image on Canvas as per Window Size
-    if (!(qImg) || !windowSize) return;
     const imgURL = new URL(qImg.url);
-    imgURL.searchParams.set("w", (maxSize * windowSize.width).toString());
+    imgURL.searchParams.set("w", (screenSize.width).toString());
     imgURL.searchParams.set("dpr", (window?.devicePixelRatio ?? 1.5).toString());
-    drawImageOnCanvas(
-      canvasRef.current!,
-      imgURL!.href,
-      windowSize.width,
-      windowSize.height
-    );
-  }, [qImg, windowSize]);
+
+    const offScreenCanvas = canvasRef.current!.transferControlToOffscreen();
+    renderWorker.postMessage({
+      start: {
+        canvas: offScreenCanvas,
+        blurHash: qImg.blur_hash,
+        imgURL: imgURL.href,
+        screenSize: screenSize,
+      }
+    }, [offScreenCanvas]);
+  }, [renderWorker, qImg]);
+
+  useEffect(() => { // Redraws on Resize
+    renderWorker.postMessage({
+      update: { windowSize: windowSize }
+    });
+  }, [renderWorker, windowSize]);
 
   return (
     <>

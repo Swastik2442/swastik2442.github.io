@@ -2,6 +2,7 @@ interface WindowSize {
   height: number;
   width: number;
 }
+type ScreenSize = WindowSize;
 
 interface ProjectProperties {
   name: string;

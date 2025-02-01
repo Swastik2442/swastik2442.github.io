@@ -27,17 +27,26 @@ export function CanvasImg({
 };
 
 export function drawImageOnCanvas(
-  canvas: HTMLCanvasElement,
+  canvas: HTMLCanvasElement | OffscreenCanvas,
   imgURL: string,
   width: number,
-  height: number,
+  height: number
 ) {
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
 
-  const image = new Image(width, height);
-  image.src = imgURL;
-  image.onload = () => ctx.drawImage(image, 0, 0);
+  try {
+    const image = new Image(width, height);
+    image.src = imgURL;
+    image.onload = () => ctx.drawImage(image, 0, 0);
+  } catch (e) {
+    (async () => { // For use in WebWorker
+      const imgBlob = await fetch(imgURL).then((res) => res.blob());
+      createImageBitmap(imgBlob).then(
+        (image) => ctx.drawImage(image, 0, 0)
+      );
+    })();
+  }
 }
 
 export default CanvasImg;

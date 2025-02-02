@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo, memo } from "react";
 import Link from "next/link";
 import useWindowSize from "@/hooks/useWindowSize";
+import useDebounce from "@/hooks/useDebounce";
 import useQuery from "@/hooks/useQuery";
 import { LoadingIcon } from "@/app/_components/icons";
 import { quitPath } from "@/utils/paths";
@@ -13,13 +14,11 @@ import styles from "./page.module.css";
 
 const maxSize = 0.9;
 
-export default function QuitImgContainer({
-  children,
-  ...props
-}: {
+function QuitImgContainer({ children, ...props }: {
   children: React.ReactNode,
   props?: JSX.IntrinsicElements["main"]
 }) {
+  // Keeping it here instead of Renderer to prevent fetching on re-render
   const screenSize = getScreenSize();
   const { data } = useQuery<QImg>(
     `/api/qimg/${getOrientation(screenSize)}`, {
@@ -28,18 +27,14 @@ export default function QuitImgContainer({
   });
 
   return (
-    <QuitImgContainer2 qImg={data} {...props}>
+    <QuitImgContainerBorder {...props}>
+      <QuitImgRenderer qImg={data} />
       {children}
-    </QuitImgContainer2>
+    </QuitImgContainerBorder>
   );
 }
 
-function QuitImgContainer2({
-  qImg,
-  children,
-  ...props
-}: {
-  qImg: QImg | null,
+function QuitImgContainerBorder({ children, ...props }: {
   children: React.ReactNode,
   props?: JSX.IntrinsicElements["main"]
 }) {
@@ -50,38 +45,38 @@ function QuitImgContainer2({
 
   return (
     <main className={styles.main} style={{ clipPath: clipPath }} {...props}>
-      <QuitImgRenderer qImg={qImg} />
       {children}
     </main>
   );
 }
 
-function QuitImgRenderer({
-  qImg,
-}: {
-  qImg: QImg | null,
-}) {
-  const windowSize = useWindowSize();
+function QuitImgRenderer({ qImg }: { qImg: QImg | null }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const renderWorker = useMemo(() => new Worker(
-    new URL("./renderWorker.ts", import.meta.url),
-    {
-      name: "Quit Image Renderer",
-      type: "module",
-      credentials: "omit"
-    }
-  ), []);
+  const workerRef = useRef<Worker>();
+
+  const windowSize = useWindowSize();
+  const debouncedWindowSize = useDebounce(windowSize, 500);
 
   useEffect(() => { // Draws on Canvas
     const screenSize = getScreenSize();
     if (!qImg || !screenSize) return;
+    if (!workerRef.current) {
+      workerRef.current = new Worker(
+        new URL("./renderWorker.ts", import.meta.url),
+        {
+          name: "Quit Image Renderer",
+          type: "module",
+          credentials: "omit"
+        }
+      );
+    }
 
     const imgURL = new URL(qImg.url);
     imgURL.searchParams.set("w", (screenSize.width).toString());
     imgURL.searchParams.set("dpr", (window?.devicePixelRatio ?? 1.5).toString());
 
     const offScreenCanvas = canvasRef.current!.transferControlToOffscreen();
-    renderWorker.postMessage({
+    workerRef.current.postMessage({
       start: {
         canvas: offScreenCanvas,
         blurHash: qImg.blur_hash,
@@ -89,13 +84,16 @@ function QuitImgRenderer({
         screenSize: screenSize,
       }
     }, [offScreenCanvas]);
-  }, [renderWorker, qImg]);
+
+    return () => workerRef.current!.terminate();
+  }, [workerRef, qImg]);
 
   useEffect(() => { // Redraws on Resize
-    renderWorker.postMessage({
-      update: { windowSize: windowSize }
+    if (!workerRef.current || !debouncedWindowSize) return;
+    workerRef.current.postMessage({
+      update: { windowSize: debouncedWindowSize }
     });
-  }, [renderWorker, windowSize]);
+  }, [workerRef, debouncedWindowSize]);
 
   return (
     <>
@@ -122,3 +120,5 @@ function QuitImgRenderer({
     </>
   );
 }
+
+export default memo(QuitImgContainer);

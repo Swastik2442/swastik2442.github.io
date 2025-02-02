@@ -1,5 +1,4 @@
-import { drawImageOnCanvas } from "@/app/_components/canvasImg";
-import { drawBlurHashOnCanvas } from "@/app/_components/blurHash";
+import { drawBlurHashOnCanvas, drawImageOnCanvas } from "@/utils/canvas";
 
 interface RenderMessage {
   start?: {
@@ -11,55 +10,50 @@ interface RenderMessage {
   update?: {
     windowSize: WindowSize;
   };
-};
+}
 
+const defaultBlurHash = "L3IMQZGt01_~Qp%OEzIV00sq7xF2";
 let canvas: OffscreenCanvas | null = null;
 let blurHash: string | null = null;
-let imgURL: string | null = null;
+let imgBitmap: ImageBitmap | null = null;
 
-function drawOnCanvas(
-  canvas: OffscreenCanvas,
-  blurHash: string | null,
-  imgURL: string,
-  width: number,
-  height: number
-) {
+function drawOnCanvas(width: number, height: number) {
+  if (!canvas || !imgBitmap) {
+    console.warn("Canvas or Bitmap not set");
+    return;
+  }
   drawBlurHashOnCanvas(
     canvas,
-    blurHash ?? "L3IMQZGt01_~Qp%OEzIV00sq7xF2",
+    blurHash ?? defaultBlurHash,
     width,
     height
   );
-  // drawImageOnCanvas(
-  //   canvas,
-  //   imgURL,
-  //   width,
-  //   height,
-  // );
+  drawImageOnCanvas(
+    canvas,
+    imgBitmap,
+    width,
+    height
+  );
 }
 
-onmessage = function (event: MessageEvent<RenderMessage>) {
+onmessage = async function (event: MessageEvent<RenderMessage>) {
   if (event.data.start) {
     canvas = event.data.start.canvas;
     blurHash = event.data.start.blurHash;
-    imgURL = event.data.start.imgURL;
+
+    const imgBlob = await fetch(event.data.start.imgURL).then((res) => res.blob());
+    imgBitmap = await createImageBitmap(imgBlob);
 
     drawOnCanvas(
-      canvas,
-      blurHash,
-      imgURL,
       event.data.start.screenSize.width,
       event.data.start.screenSize.height
     );
   } else if (event.data.update) {
-    if (!canvas || !imgURL) {
+    if (!canvas || !imgBitmap) {
       console.warn("Cannot 'update' until 'start' Message is Posted");
       return;
     }
     drawOnCanvas(
-      canvas,
-      blurHash,
-      imgURL,
       event.data.update.windowSize.width,
       event.data.update.windowSize.height
     );

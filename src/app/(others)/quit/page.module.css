@@ -49,6 +49,7 @@
   right: 10vw;
   font-size: 0.65rem;
   transform: rotate(90deg);
+  text-shadow: 1px 1px var(--tertiary);
 }
 
 .qImgAttr a {

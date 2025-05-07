@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, memo } from "react";
 import Link from "next/link";
-import { workExpData } from "@/config";
 import { LinkIcon } from "@/app/_components/icons";
 
-function WorkRows({ setDescription }: {
+function WorkRows({ data, setDescription }: {
+  data: WorkProperties[],
   setDescription: Dispatch<SetStateAction<{
     image: string;
     text: string;
@@ -11,7 +11,7 @@ function WorkRows({ setDescription }: {
 }) {
   return (
     <>
-      {workExpData.map((work, index) => (
+      {data.map((work, index) => (
         <tr key={index} onClick={() => setDescription({
           image: work.image ?? "",
           text: work.description

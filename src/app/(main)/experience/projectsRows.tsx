@@ -1,32 +1,17 @@
-"use client";
-
-import { useState, useEffect, Dispatch, SetStateAction, memo } from "react";
+import { Dispatch, SetStateAction, memo } from "react";
 import Link from "next/link";
 import { LinkIcon, LoadingIcon } from "@/app/_components/icons";
 
-async function getProjects() {
-  const response = await fetch("/api/projects");
-  if (!(response.ok)) return [];
-  const responseJson = await response.json();
-  if (responseJson?.projects)
-    return responseJson.projects as ProjectProperties[];
-  return [];
-}
-
-function ProjectsRows({ setDescription }: {
+function ProjectsRows({ data, setDescription }: {
+  data: ProjectProperties[],
   setDescription: Dispatch<SetStateAction<{
     image: string;
     text: string;
   }>>
 }) {
-  const [projects, setProjects] = useState<ProjectProperties[]>([]);
-  useEffect(() => {
-    getProjects().then((data) => setProjects(data));
-  }, []);
-
   return (
     <>
-      {projects.length > 0 ? projects.map((project, index) => (
+      {data.length > 0 ? data.map((project, index) => (
         <tr key={index} onClick={() => setDescription({
           image: "",
           text: project.description

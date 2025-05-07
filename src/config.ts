@@ -32,7 +32,7 @@ export const workExpData: WorkProperties[] = [
   {
     name: "DigiMonk Ltd.",
     tech: "Python, Flet, Mediapipe, Pygame",
-    time: "since May 2024",
+    time: "May-July 2024",
     description: "Worked as a Software Development Intern improving a product based on Gesture Recognition, with features like Usage Statistics, Game Screens, Bluetooth/Webcam Connectivity, Gesture Showcase, etc.",
   },
 ];

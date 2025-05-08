@@ -1,11 +1,17 @@
 "use client";
 
 import { useContext, createContext, useState, useEffect, Dispatch, SetStateAction } from "react";
+import useQuery from "@/hooks/useQuery";
 import useWindowSize from "@/hooks/useWindowSize";
+import { getOrientation, getScreenSize } from "@/utils/others";
 
 interface AppProviderState {
   /** Data for Image to be used on Quit Site Page */
-  qImg: QImg | null;
+  qImg: {
+    data: QImg | null;
+    error: any;
+    loading: boolean;
+  };
   /** Function to refetch the Quit Site Page Image Data */
   refreshQImg: () => void;
   /** Size of the current Browser Window */
@@ -17,7 +23,7 @@ interface AppProviderState {
 }
 
 const initialState: AppProviderState = {
-  qImg: null,
+  qImg: { data: null, error: null, loading: false },
   refreshQImg: () => console.error("refreshQImg not implemented"),
   windowSize: undefined,
   limitedTill: null,
@@ -35,19 +41,30 @@ const AppProviderContext = createContext<AppProviderState>(initialState);
  */
 export function AppProvider({ children, ...props }: { children: React.ReactNode }) {
   const [limitedTill, setLimitedTill] = useState<Date | null>(null);
-  const [qImg, setQImg] = useState<QImg | null>(null);
+  const screenSize = getScreenSize();
   const windowSize = useWindowSize();
+
+  const {
+    data: qImgData,
+    error: qImgError,
+    loading: qImgLoading,
+    doFetch: refreshQImg
+  } = useQuery<QImg>(
+    `/api/qimg/${getOrientation(screenSize)}`, {
+    cache: "force-cache",
+    next: { revalidate: 604800 }
+  }, false);
 
   useEffect(() => {
     if (didInit) return;
     didInit = true;
 
-    // Do Something
-  }, [qImg]);
+    refreshQImg();
+  }, []);
 
   const value: AppProviderState = {
-    qImg: qImg,
-    refreshQImg: () => {},
+    qImg: { data: qImgData, error: qImgError, loading: qImgLoading },
+    refreshQImg: refreshQImg,
     windowSize: windowSize,
     limitedTill: limitedTill,
     setLimitedTill: setLimitedTill,

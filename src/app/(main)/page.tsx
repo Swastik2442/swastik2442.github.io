@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ownerResume, primaryFont } from "@/config";
+import { primaryFont } from "@/config";
 import BorderStyle from "@/components/vcBordersStyle";
 import mergeClasses from "@/utils/css";
 import styles from "./page.module.css";
@@ -38,7 +38,7 @@ export default function Home() {
     <main className={styles.main}>
       <ul className={mergeClasses(styles.menuList, primaryFont.className)}>
         <li>
-          <Link href={ownerResume ?? "#"} target="_blank" className="greenHover textScar">
+          <Link href="/links/resume" target="_blank" className="greenHover textScar">
             resume
           </Link>
         </li>

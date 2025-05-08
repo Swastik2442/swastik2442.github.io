@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { siteTitle, twitterUsername, githubUsername, linkedinUsername,  ownerLocation } from "@/config";
-import { GitHubLogo, LinkedInLogo, TwitterLogo, LinkIcon, LocationPinIcon } from "@/app/_components/icons";
-import OwnerTime from "@/app/_components/ownerTime";
-import BorderStyle from "@/app/_components/vcBordersStyle";
-import BackButton from "@/app/_components/backButton";
+import { GitHubLogo, LinkedInLogo, TwitterLogo, LinkIcon, LocationPinIcon } from "@/components/icons";
+import OwnerTime from "@/components/ownerTime";
+import BorderStyle from "@/components/vcBordersStyle";
+import BackButton from "@/components/backButton";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {

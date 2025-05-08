@@ -3,8 +3,8 @@
 import { useState, memo } from "react";
 import Image from "next/image";
 import { primaryFont } from "@/config";
-import BorderStyle from "@/app/_components/vcBordersStyle";
-import BackButton from "@/app/_components/backButton";
+import BorderStyle from "@/components/vcBordersStyle";
+import BackButton from "@/components/backButton";
 import mergeClasses from "@/utils/css";
 import ProjectsRows from "./projectsRows";
 import WorkRows from "./workRows";

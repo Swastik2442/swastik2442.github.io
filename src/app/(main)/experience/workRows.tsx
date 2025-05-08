@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, memo } from "react";
 import Link from "next/link";
-import { LinkIcon } from "@/app/_components/icons";
+import { LinkIcon } from "@/components/icons";
 
 function WorkRows({ data, setDescription }: {
   data: WorkProperties[],

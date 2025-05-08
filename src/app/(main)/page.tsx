@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ownerResume, primaryFont } from "@/config";
-import BorderStyle from "@/app/_components/vcBordersStyle";
+import BorderStyle from "@/components/vcBordersStyle";
 import mergeClasses from "@/utils/css";
 import styles from "./page.module.css";
 

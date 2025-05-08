@@ -4,7 +4,7 @@ interface RenderMessage {
   start?: {
     canvas: OffscreenCanvas;
     blurHash: string | null;
-    imgURL: string;
+    imgURL: URL;
     screenSize: ScreenSize;
   };
   update?: {
@@ -41,7 +41,7 @@ onmessage = async function (event: MessageEvent<RenderMessage>) {
     canvas = event.data.start.canvas;
     blurHash = event.data.start.blurHash;
 
-    const imgBlob = await fetch(event.data.start.imgURL).then((res) => res.blob());
+    const imgBlob = await fetch(event.data.start.imgURL.href).then((res) => res.blob());
     imgBitmap = await createImageBitmap(imgBlob);
 
     drawOnCanvas(

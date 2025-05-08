@@ -1,6 +1,6 @@
 import { ownerName, ownerBio, ownerDescription } from "@/config";
-import BorderStyle from "@/app/_components/vcBordersStyle";
-import BackButton from "@/app/_components/backButton";
+import BorderStyle from "@/components/vcBordersStyle";
+import BackButton from "@/components/backButton";
 import styles from "./page.module.css";
 
 export default function Brief() {

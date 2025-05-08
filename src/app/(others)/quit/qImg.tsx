@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useMemo, memo } from "react";
+import { useEffect, useRef, useMemo, memo, JSX } from "react";
 import Link from "next/link";
 import useWindowSize from "@/hooks/useWindowSize";
 import useDebounce from "@/hooks/useDebounce";
 import useQuery from "@/hooks/useQuery";
-import { LoadingIcon } from "@/app/_components/icons";
+import { LoadingIcon } from "@/components/icons";
 import { quitPath } from "@/utils/paths";
 import { mergeClasses } from "@/utils/css";
 import { getScreenSize, getOrientation } from "@/utils/others";
@@ -80,7 +80,7 @@ function QuitImgRenderer({ qImg }: { qImg: QImg | null }) {
       start: {
         canvas: offScreenCanvas,
         blurHash: qImg.blur_hash,
-        imgURL: imgURL.href,
+        imgURL: imgURL,
         screenSize: screenSize,
       }
     }, [offScreenCanvas]);

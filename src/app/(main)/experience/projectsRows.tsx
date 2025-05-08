@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, memo } from "react";
 import Link from "next/link";
-import { LinkIcon, LoadingIcon } from "@/app/_components/icons";
+import { LinkIcon, LoadingIcon } from "@/components/icons";
 
 function ProjectsRows({ data, setDescription }: {
   data: ProjectProperties[],

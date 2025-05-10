@@ -13,70 +13,33 @@ html, body {
   overflow: hidden;
 }
 
-body {
+.vcBackground {
   background: var(--quaternary) url("/images/background.webp") left top/cover no-repeat;
 }
 
 @media screen and (max-width: 768px) {
-  body {
+  .vcBackground {
     background-image: url("/images/backgroundSmall.webp");
   }
 }
 
-.main { /* Overflow Doesn't Work on Mobiles */
-  /* position: relative; */
-  overflow: hidden;
+.main {
+  background-color: var(--tertiary);
 }
 
-.borderOne, .borderTwo, .borderThree, .borderFour {
-  position: absolute;
-  z-index: -2;
-  background-color: black;
-  rotate: 0deg;
-  transition: rotate 0.5s;
-}
-
-@media screen and (max-width: 320px) {
-  .borderOne, .borderTwo, .borderThree, .borderFour {
-    display: none;
-  }
-}
-
-.borderOne, .borderTwo {
-  width: 125vw;
-  height: 25vh;
-}
-
-.borderThree, .borderFour {
-  width: 25vw;
-  height: 125vh;
-}
-
-.borderOne {
-  top: -12.5vh;
-  left: 0;
-}
-
-.borderTwo {
-  bottom: -12.5vh;
-  right: 0;
-}
-
-.borderThree {
-  top: 0;
-  left: -12.5vw;
-}
-
-.borderFour {
-  bottom: 0;
-  right: -12.5vw;
+.main .vcBackground {
+  height: calc(100vh - 16px);
 }
 
 .topNames {
   padding: 2em 2em;
   display: flex;
-  justify-self: space-between;
+  align-items: end;
+  -webkit-user-select: none;
   user-select: none;
+  position: absolute;
+  z-index: 2;
+  width: 95%;
 }
 
 .leftName {
@@ -141,7 +104,7 @@ body {
 
 .footer {
   font-size: 0.8rem;
-  color: var(--tertiary);
+  color: var(--quaternary);
   position: fixed;
   right: 0;
   bottom: 0;

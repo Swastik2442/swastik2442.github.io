@@ -1,7 +1,7 @@
 import { tertiaryFont } from "@/config";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import Borders from "@/components/vcBorders";
+import VCBorders from "@/components/vcBorders";
 
 export default function RootLayout({
   children,
@@ -9,13 +9,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <body className={tertiaryFont.className}>
-      <div className="main">
-        <Header />
+    <body className={tertiaryFont.className} style={{ minHeight: "100%" }}>
+      <Header />
+      <VCBorders>
         {children}
-        <Footer />
-      </div>
-      <Borders />
+      </VCBorders>
+      <Footer />
     </body>
   );
 }

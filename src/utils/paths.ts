@@ -1,7 +1,10 @@
 import type * as CSS from "csstype";
 
 export function mainPath(windowSize: WindowSize): CSS.Property.ClipPath {
-  return "none";
+  const top = 0.1 * windowSize.height, left = 0.05 * windowSize.width, right = 0.95 * windowSize.width, bottom = 0.9 * windowSize.height;
+  const tl = [left, top].join(" "), tr = [right, top].join(" "), br = [right, bottom].join(" "), bl = [left, bottom].join(" ");
+
+  return `path('M ${tl} L ${tr} L ${br} L ${bl}')`;
 }
 
 const distBW = 48;

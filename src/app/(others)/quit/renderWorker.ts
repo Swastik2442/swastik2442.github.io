@@ -4,8 +4,9 @@ interface RenderMessage {
   start?: {
     canvas: OffscreenCanvas;
     blurHash: string | null;
-    imgURL: URL;
+    imgURL: string;
     screenSize: ScreenSize;
+    dpr: number;
   };
   update?: {
     windowSize: WindowSize;
@@ -41,13 +42,15 @@ onmessage = async function (event: MessageEvent<RenderMessage>) {
     canvas = event.data.start.canvas;
     blurHash = event.data.start.blurHash;
 
-    const imgBlob = await fetch(event.data.start.imgURL.href).then((res) => res.blob());
+    const screenSize = event.data.start.screenSize;
+    const imgURL = new URL(event.data.start.imgURL);
+    imgURL.searchParams.set("w", screenSize.width.toString());
+    imgURL.searchParams.set("dpr", event.data.start.dpr.toString());
+
+    const imgBlob = await fetch(imgURL.href).then((res) => res.blob());
     imgBitmap = await createImageBitmap(imgBlob);
 
-    drawOnCanvas(
-      event.data.start.screenSize.width,
-      event.data.start.screenSize.height
-    );
+    drawOnCanvas(screenSize.width, screenSize.height);
   } else if (event.data.update) {
     if (!canvas || !imgBitmap) {
       console.warn("Cannot 'update' until 'start' Message is Posted");

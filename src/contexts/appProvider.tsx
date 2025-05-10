@@ -5,7 +5,7 @@ import useQuery from "@/hooks/useQuery";
 import useWindowSize from "@/hooks/useWindowSize";
 import { getOrientation, getScreenSize } from "@/utils/others";
 
-interface AppProviderState {
+export interface AppProviderState {
   /** Data for Image to be used on Quit Site Page */
   qImg: {
     data: QImg | null;

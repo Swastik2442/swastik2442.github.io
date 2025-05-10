@@ -4,13 +4,13 @@ import { useEffect, useRef, useMemo, memo, JSX } from "react";
 import Link from "next/link";
 import useWindowSize from "@/hooks/useWindowSize";
 import useDebounce from "@/hooks/useDebounce";
-import useQuery from "@/hooks/useQuery";
 import { LoadingIcon } from "@/components/icons";
 import { quitPath } from "@/utils/paths";
 import { mergeClasses } from "@/utils/css";
-import { getScreenSize, getOrientation } from "@/utils/others";
+import { getScreenSize } from "@/utils/others";
 import { tertiaryFont } from "@/config";
 import styles from "./page.module.css";
+import { AppProviderState, useApp } from "@/contexts/appProvider";
 
 const maxSize = 0.9;
 
@@ -18,17 +18,10 @@ function QuitImgContainer({ children, ...props }: {
   children: React.ReactNode,
   props?: JSX.IntrinsicElements["main"]
 }) {
-  // Keeping it here instead of Renderer to prevent fetching on re-render
-  const screenSize = getScreenSize();
-  const { data } = useQuery<QImg>(
-    `/api/qimg/${getOrientation(screenSize)}`, {
-    cache: "force-cache",
-    next: { revalidate: 604800 }
-  });
-
+  const { qImg } = useApp();
   return (
     <QuitImgContainerBorder {...props}>
-      <QuitImgRenderer qImg={data} />
+      <QuitImgRenderer qImg={qImg} />
       {children}
     </QuitImgContainerBorder>
   );
@@ -50,7 +43,7 @@ function QuitImgContainerBorder({ children, ...props }: {
   );
 }
 
-function QuitImgRenderer({ qImg }: { qImg: QImg | null }) {
+function QuitImgRenderer({ qImg }: { qImg: AppProviderState["qImg"] }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const workerRef = useRef<Worker>();
 
@@ -59,7 +52,7 @@ function QuitImgRenderer({ qImg }: { qImg: QImg | null }) {
 
   useEffect(() => { // Draws on Canvas
     const screenSize = getScreenSize();
-    if (!qImg || !screenSize) return;
+    if (!qImg.data || !screenSize) return;
     if (!workerRef.current) {
       workerRef.current = new Worker(
         new URL("./renderWorker.ts", import.meta.url),
@@ -71,22 +64,19 @@ function QuitImgRenderer({ qImg }: { qImg: QImg | null }) {
       );
     }
 
-    const imgURL = new URL(qImg.url);
-    imgURL.searchParams.set("w", (screenSize.width).toString());
-    imgURL.searchParams.set("dpr", (window?.devicePixelRatio ?? 1.5).toString());
-
     const offScreenCanvas = canvasRef.current!.transferControlToOffscreen();
     workerRef.current.postMessage({
       start: {
         canvas: offScreenCanvas,
-        blurHash: qImg.blur_hash,
-        imgURL: imgURL,
+        blurHash: qImg.data.blur_hash,
+        imgURL: qImg.data.url,
         screenSize: screenSize,
+        dpr: window?.devicePixelRatio ?? 1.5
       }
     }, [offScreenCanvas]);
 
     return () => workerRef.current!.terminate();
-  }, [workerRef, qImg]);
+  }, [workerRef, qImg.data]);
 
   useEffect(() => { // Redraws on Resize
     if (!workerRef.current || !debouncedWindowSize) return;
@@ -105,17 +95,17 @@ function QuitImgRenderer({ qImg }: { qImg: QImg | null }) {
         onContextMenu={(e) => e.preventDefault()}
       />}
       <div className={mergeClasses(styles.qImgAttr, tertiaryFont.className)}>
-        {qImg && <>
+        {qImg.data && <>
           <span>Photo by</span>&nbsp;
-          <Link href={qImg.attr_author} target="_blank">
-            {qImg.name_author}
+          <Link href={qImg.data.attr_author} target="_blank">
+            {qImg.data.name_author}
           </Link>&nbsp;
           <span>on</span>&nbsp;
-          <Link href={qImg.attr_service} target="_blank">
-            {qImg.name_service}
+          <Link href={qImg.data.attr_service} target="_blank">
+            {qImg.data.name_service}
           </Link>
         </>}
-        {qImg == null && <LoadingIcon width={18} height={18} fill="white" />}
+        {qImg.loading && <LoadingIcon width={18} height={18} fill="white" />}
       </div>
     </>
   );

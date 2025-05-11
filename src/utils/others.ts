@@ -24,3 +24,12 @@ export function areObjectsEqual(obj1: any, obj2: any): boolean {
   }
   return true;
 }
+
+export function toRadians(angle: number): number {
+  if (angle < 0)
+    angle = Math.ceil(-angle / 360) * 360 + angle;
+  else if (angle > 360)
+    angle = Math.ceil(angle / 360) * 360 - angle;
+
+  return angle * Math.PI / 180;
+}

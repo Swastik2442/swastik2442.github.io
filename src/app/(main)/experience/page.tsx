@@ -1,5 +1,5 @@
-import ExperienceUI from "./interact";
 import { workExpData } from "@/config";
+import ExperienceUI, { ExperienceUIBorderStyle } from "./interact";
 
 async function getProjects() {
   const response = await import("@/app/api/projects/route");
@@ -11,5 +11,10 @@ async function getProjects() {
 
 export default async function Experience() {
   const projectsData = await getProjects();
-  return <ExperienceUI projectsData={projectsData} workData={workExpData} />
+  return (
+    <>
+      <ExperienceUIBorderStyle />
+      <ExperienceUI projectsData={projectsData} workData={workExpData} />
+    </>
+  );
 }

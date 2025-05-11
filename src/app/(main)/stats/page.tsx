@@ -15,7 +15,7 @@ export default async function Stats() {
 
   return (
     <>
-    <BorderStyle tl={1} tr={1.5} bl={3.5} br={1} />
+    <BorderStyle tl={0} tr={2} bl={4} br={3.5} />
     <main className={styles.main}>
       <div style={{ paddingBottom: 3 + "vh" }}>
         <div className={styles.statsHeading}>

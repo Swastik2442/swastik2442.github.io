@@ -5,6 +5,7 @@ import { GitHubLogo, LinkedInLogo, TwitterLogo, LinkIcon, LocationPinIcon } from
 import OwnerTime from "@/components/ownerTime";
 import { BorderStyle } from "@/components/vcBorders";
 import BackButton from "@/components/backButton";
+import { toRadians } from "@/utils/others";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -38,7 +39,7 @@ const socialLinks = [
 export default function Contact() {
   return (
     <>
-    <BorderStyle tl={1.5} tr={3} br={3.5} bl={3.5} />
+    <BorderStyle tl={toRadians(80)} tr={toRadians(180)} br={toRadians(200)} bl={toRadians(-35)} />
     <main className={styles.main}>
       <div className={styles.socials} style={{ paddingBottom: 3 + "vh" }}>
         <div className={styles.location}>

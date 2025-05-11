@@ -1,12 +1,13 @@
 import { ownerName, ownerBio, ownerDescription } from "@/config";
 import { BorderStyle } from "@/components/vcBorders";
 import BackButton from "@/components/backButton";
+import { toRadians } from "@/utils/others";
 import styles from "./page.module.css";
 
 export default function Brief() {
   return (
     <>
-    <BorderStyle tl={1.25} tr={1.5} br={2.5} bl={1.5} />
+    <BorderStyle tl={toRadians(100)} tr={toRadians(30)} br={toRadians(-90)} bl={toRadians(-50)} />
     <main className={styles.main}>
       <div>
         <p className={styles.shortBrief}>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { primaryFont } from "@/config";
 import { BorderStyle } from "@/components/vcBorders";
 import mergeClasses from "@/utils/css";
+import { toRadians } from "@/utils/others";
 import styles from "./page.module.css";
 
 const mainLinks = [
@@ -34,7 +35,7 @@ const mainLinks = [
 export default function Home() {
   return (
     <>
-    <BorderStyle tl={1} tr={1} br={2.5} bl={1.5}/>
+    <BorderStyle tl={0} tr={toRadians(180)} br={toRadians(-70)}/>
     <main className={styles.main}>
       <ul className={mergeClasses(styles.menuList, primaryFont.className)}>
         <li>

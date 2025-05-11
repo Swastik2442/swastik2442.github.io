@@ -5,6 +5,7 @@ import Image from "next/image";
 import { primaryFont } from "@/config";
 import { BorderStyle } from "@/components/vcBorders";
 import BackButton from "@/components/backButton";
+import { useApp } from "@/contexts/appProvider";
 import mergeClasses from "@/utils/css";
 import ProjectsRows from "./projectsRows";
 import WorkRows from "./workRows";
@@ -27,8 +28,6 @@ function ExperienceUI({ projectsData, workData }: {
   }
 
   return (
-    <>
-    <BorderStyle tl={1} tr={1.5} br={2.5} bl={1} />
     <main className={styles.main}>
       <div className={styles.descriptionCol} style={{
         flex: (description.image != "" || description.text != "") ? 2 : 0
@@ -80,8 +79,15 @@ function ExperienceUI({ projectsData, workData }: {
         </div>
       </div>
     </main>
-    </>
   );
+}
+
+export function ExperienceUIBorderStyle() {
+  const { windowSize } = useApp();
+  if (!windowSize || windowSize.width <= 768)
+    return <BorderStyle />
+  else
+    return <BorderStyle tr={1} br={5} bl={4} />;
 }
 
 export default memo(ExperienceUI);

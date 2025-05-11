@@ -42,3 +42,23 @@ interface QImg {
   attr_author: string;
   attr_service: string;
 }
+
+interface Coordinates {
+  x: number;
+  y: number;
+}
+
+interface TransposeValues {
+  theta: number;
+  radius: number;
+}
+
+interface QuadrilateralValues<t> {
+  tl: t;
+  tr: t;
+  br: t;
+  bl: t;
+}
+
+type QuadrilateralCoords = QuadrilateralValues<Coordinates>;
+type QuadrilateralTranspose = QuadrilateralValues<TransposeValues>;

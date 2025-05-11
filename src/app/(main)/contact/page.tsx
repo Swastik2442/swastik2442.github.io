@@ -3,7 +3,7 @@ import Link from "next/link";
 import { siteTitle, twitterUsername, githubUsername, linkedinUsername,  ownerLocation } from "@/config";
 import { GitHubLogo, LinkedInLogo, TwitterLogo, LinkIcon, LocationPinIcon } from "@/components/icons";
 import OwnerTime from "@/components/ownerTime";
-import BorderStyle from "@/components/vcBordersStyle";
+import { BorderStyle } from "@/components/vcBorders";
 import BackButton from "@/components/backButton";
 import styles from "./page.module.css";
 
@@ -38,7 +38,7 @@ const socialLinks = [
 export default function Contact() {
   return (
     <>
-    <BorderStyle up={1.5} down={-3} left={3.5} right={-3.5} />
+    <BorderStyle tl={1.5} tr={3} br={3.5} bl={3.5} />
     <main className={styles.main}>
       <div className={styles.socials} style={{ paddingBottom: 3 + "vh" }}>
         <div className={styles.location}>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { primaryFont } from "@/config";
-import BorderStyle from "@/components/vcBordersStyle";
+import { BorderStyle } from "@/components/vcBorders";
 import mergeClasses from "@/utils/css";
 import styles from "./page.module.css";
 
@@ -34,7 +34,7 @@ const mainLinks = [
 export default function Home() {
   return (
     <>
-    <BorderStyle up={1} down={-1} left={2.5} right={-1.5}/>
+    <BorderStyle tl={1} tr={1} br={2.5} bl={1.5}/>
     <main className={styles.main}>
       <ul className={mergeClasses(styles.menuList, primaryFont.className)}>
         <li>

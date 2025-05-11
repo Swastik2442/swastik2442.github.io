@@ -1,14 +1,43 @@
 import type * as CSS from "csstype";
 
-export function mainPath(windowSize: WindowSize): CSS.Property.ClipPath {
-  const top = 0.1 * windowSize.height, left = 0.05 * windowSize.width, right = 0.95 * windowSize.width, bottom = 0.9 * windowSize.height;
-  const tl = [left, top].join(" "), tr = [right, top].join(" "), br = [right, bottom].join(" "), bl = [left, bottom].join(" ");
+function transposeInCircle(center: Coordinates, theta: number, radius: number) {
+  if (!(0 <= theta && theta <= 2 * Math.PI))
+    throw new Error("theta must be between 0 and 2π")
 
+  return {
+    x: center.x + radius * Math.cos(theta),
+    y: center.y + radius * Math.sin(theta),
+  }
+}
+
+const tbDiff = 0.1, lrDiff = 0.1;
+
+export function getCoordinates(windowSize: WindowSize, transpose: QuadrilateralTranspose | null = null): QuadrilateralCoords {
+  const top = tbDiff * windowSize.height, bottom = (1 - tbDiff) * windowSize.height;
+  const left = lrDiff * windowSize.width, right = (1 - lrDiff) * windowSize.width;
+  const defaults = {
+    tl: { x: left, y: top },
+    tr: { x: right, y: top },
+    br: { x: right, y: bottom },
+    bl: { x: left, y: bottom },
+  };
+  if (!transpose) return defaults;
+
+  return {
+    tl: transposeInCircle(defaults.tl, transpose.tl.theta, transpose.tl.radius),
+    tr: transposeInCircle(defaults.tr, transpose.tr.theta, transpose.tr.radius),
+    br: transposeInCircle(defaults.br, transpose.br.theta, transpose.br.radius),
+    bl: transposeInCircle(defaults.bl, transpose.bl.theta, transpose.bl.radius),
+  }
+}
+
+export function mainPath(coords: QuadrilateralCoords): CSS.Property.ClipPath {
+  const tl = Object.values(coords.tl).join(" "), tr = Object.values(coords.tr).join(" ");
+  const bl = Object.values(coords.bl).join(" "), br = Object.values(coords.br).join(" ");
   return `path('M ${tl} L ${tr} L ${br} L ${bl}')`;
 }
 
-const distBW = 48;
-const ctrlPoint = 12;
+const distBW = 48, ctrlPoint = 12;
 const ctrlPoint2 = 2 * ctrlPoint;
 const fromOrg = distBW + ctrlPoint2;
 

@@ -1,12 +1,12 @@
 import { ownerName, ownerBio, ownerDescription } from "@/config";
-import BorderStyle from "@/components/vcBordersStyle";
+import { BorderStyle } from "@/components/vcBorders";
 import BackButton from "@/components/backButton";
 import styles from "./page.module.css";
 
 export default function Brief() {
   return (
     <>
-    <BorderStyle up={1.25} down={-1.5} left={-2.5} right={1.5} />
+    <BorderStyle tl={1.25} tr={1.5} br={2.5} bl={1.5} />
     <main className={styles.main}>
       <div>
         <p className={styles.shortBrief}>

@@ -3,7 +3,7 @@
 import { useState, memo } from "react";
 import Image from "next/image";
 import { primaryFont } from "@/config";
-import BorderStyle from "@/components/vcBordersStyle";
+import { BorderStyle } from "@/components/vcBorders";
 import BackButton from "@/components/backButton";
 import mergeClasses from "@/utils/css";
 import ProjectsRows from "./projectsRows";
@@ -28,7 +28,7 @@ function ExperienceUI({ projectsData, workData }: {
 
   return (
     <>
-    <BorderStyle up={-1} down={-1.5} left={2.5} right={-1} />
+    <BorderStyle tl={1} tr={1.5} br={2.5} bl={1} />
     <main className={styles.main}>
       <div className={styles.descriptionCol} style={{
         flex: (description.image != "" || description.text != "") ? 2 : 0

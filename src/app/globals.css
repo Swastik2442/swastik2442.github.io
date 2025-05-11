@@ -25,6 +25,7 @@ html, body {
 
 .main {
   background-color: var(--tertiary);
+  transition: clip-path 0.5s ease-in-out;
 }
 
 .main .vcBackground {

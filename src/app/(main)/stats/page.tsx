@@ -1,5 +1,5 @@
 import { primaryFont, tertiaryFont } from "@/config";
-import BorderStyle from "@/components/vcBordersStyle";
+import { BorderStyle } from "@/components/vcBorders";
 import BackButton from "@/components/backButton";
 import mergeClasses from "@/utils/css";
 import styles from "./page.module.css";
@@ -15,7 +15,7 @@ export default async function Stats() {
 
   return (
     <>
-    <BorderStyle up={1} down={-1.5} left={3.5} right={-1} />
+    <BorderStyle tl={1} tr={1.5} bl={3.5} br={1} />
     <main className={styles.main}>
       <div style={{ paddingBottom: 3 + "vh" }}>
         <div className={styles.statsHeading}>

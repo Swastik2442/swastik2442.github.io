@@ -43,6 +43,20 @@
   }
 }
 
+.closeTabText {
+  font-size: x-small;
+  animation: closeTabTextAnimation 10s linear;
+}
+
+@keyframes closeTabTextAnimation {
+  0% {
+    color: var(--tertiary);
+  }
+  100% {
+    color: var(--quaternary);
+  }
+}
+
 .qImgAttr {
   z-index: 2;
   position: absolute;

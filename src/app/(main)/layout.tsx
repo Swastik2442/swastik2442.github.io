@@ -1,7 +1,14 @@
+"use client";
+
+import dynamic from "next/dynamic";
 import { tertiaryFont } from "@/config";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import VCBorders from "@/components/vcBorders";
+
+const VCBorders = dynamic(
+  () => import("@/components/vcBorders"),
+  { ssr: false }
+);
 
 export default function RootLayout({
   children,

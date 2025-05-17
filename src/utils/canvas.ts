@@ -7,7 +7,7 @@ export function drawBlurHashOnCanvas(
   height: number,
   punch?: number
 ) {
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d", { alpha: false });
   if (!ctx) return;
 
   const imageData = ctx.createImageData(width, height);
@@ -22,7 +22,7 @@ export function drawImageOnCanvas(
   width: number,
   height: number
 ) {
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d", { alpha: false });
   if (!ctx) return;
 
   ctx.drawImage(img, 0, 0, width, height);

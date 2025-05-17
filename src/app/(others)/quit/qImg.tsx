@@ -20,14 +20,15 @@ function QuitImgContainer({ children, ...props }: {
 }) {
   const { qImg } = useApp();
   return (
-    <QuitImgContainerBorder {...props}>
+    <QuitImgBorder {...props}>
       <QuitImgRenderer qImg={qImg} />
+      <QuitImgAttribution qImg={qImg} />
       {children}
-    </QuitImgContainerBorder>
+    </QuitImgBorder>
   );
 }
 
-function QuitImgContainerBorder({ children, ...props }: {
+function QuitImgBorder({ children, ...props }: {
   children: React.ReactNode,
   props?: JSX.IntrinsicElements["main"]
 }) {
@@ -40,6 +41,24 @@ function QuitImgContainerBorder({ children, ...props }: {
     <main className={styles.main} style={{ clipPath: clipPath }} {...props}>
       {children}
     </main>
+  );
+}
+
+function QuitImgAttribution({ qImg }: { qImg: AppProviderState["qImg"] }) {
+  return (
+    <div className={mergeClasses(styles.qImgAttr, tertiaryFont.className)}>
+      {qImg.data && <>
+        <span>Photo by</span>&nbsp;
+        <Link href={qImg.data.attr_author} target="_blank">
+          {qImg.data.name_author}
+        </Link>&nbsp;
+        <span>on</span>&nbsp;
+        <Link href={qImg.data.attr_service} target="_blank">
+          {qImg.data.name_service}
+        </Link>
+      </>}
+      {qImg.loading && <LoadingIcon width={18} height={18} fill="white" />}
+    </div>
   );
 }
 
@@ -79,7 +98,7 @@ function QuitImgRenderer({ qImg }: { qImg: AppProviderState["qImg"] }) {
   }, [workerRef, qImg.data]);
 
   useEffect(() => { // Redraws on Resize
-    if (!workerRef.current || !debouncedWindowSize) return;
+    if (process.env.NODE_ENV != "development" || !workerRef.current || !debouncedWindowSize) return;
     workerRef.current.postMessage({
       update: { windowSize: debouncedWindowSize }
     });
@@ -94,19 +113,6 @@ function QuitImgRenderer({ qImg }: { qImg: AppProviderState["qImg"] }) {
         width={maxSize * windowSize.width}
         onContextMenu={(e) => e.preventDefault()}
       />}
-      <div className={mergeClasses(styles.qImgAttr, tertiaryFont.className)}>
-        {qImg.data && <>
-          <span>Photo by</span>&nbsp;
-          <Link href={qImg.data.attr_author} target="_blank">
-            {qImg.data.name_author}
-          </Link>&nbsp;
-          <span>on</span>&nbsp;
-          <Link href={qImg.data.attr_service} target="_blank">
-            {qImg.data.name_service}
-          </Link>
-        </>}
-        {qImg.loading && <LoadingIcon width={18} height={18} fill="white" />}
-      </div>
     </>
   );
 }

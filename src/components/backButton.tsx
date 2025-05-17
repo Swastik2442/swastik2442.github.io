@@ -3,16 +3,26 @@
 import { memo } from "react";
 import { useRouter } from "next/navigation";
 import { primaryFont } from "@/config";
+import mergeClasses from "@/utils/css";
 
-type BackButtonVariant = "normal" | "small";
-
-function BackButton({ variant = "normal" }: { variant?: BackButtonVariant }) {
+function BackButton({
+  variant = "normal",
+  showBG = true
+}: {
+  variant?: "normal" | "small",
+  showBG?: boolean
+}) {
   const router = useRouter();
   return (
     <a
       type="button"
       onClick={router.back}
-      className={`${primaryFont.className} ${variant == 'normal' ? 'backButton' : ''} greenHover textScar`}
+      className={mergeClasses(
+        "greenHover textScar",
+        primaryFont.className,
+        variant == 'normal' ? 'backButton' : '',
+        showBG ? 'absHover' : '',
+      )}
     >
       back
     </a>

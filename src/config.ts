@@ -4,15 +4,17 @@ export const startYear = 2023;
 export const ownerName = "Swastik Kulshreshtha";
 export const ownerBio = "Computer Science Undergraduate | Tech Enthusiast | Python & C++";
 export const ownerDescription = `
-I am currently pursuing higher studies in Computer Science and Engineering. I am enthusiastic about Computers and Technology in general. I have been learning about Programming and their Libraries since 2018 and have significant experience in Python and Web Development.
-In my college, I started learning more about Computer Fundamentals and other Programming Languages like C, Java, C++, JavaScript etc. Other than that, I have explored and created projects in Django, Flet, Next.js, React, Pandas, etc. I am currently exploring Artificial Intelligence, Game Development, and several other Computer Science domains.
+I am currently pursuing higher studies in Computer Science and Engineering. I am enthusiastic about Computers and Technology in general. I have been learning Programming since 2018 and have significant experience in Python and Web Development.
+In my college, I started learning more about Computer Fundamentals and other Programming Languages like C, Java, C++, JavaScript, TypeScript etc. I have learnt about Data Structures and Algorithms, Object-Oriented Programming, Database Management System, Computer Architecture and Organization, Operating Systems, Machine Learning, Deep Learning, Data Science, Big Data Analysis and many more.
+Other than that, I have explored and created projects in TensorFlow, PyTorch, Django, Pandas, Flet, React, Next.js, Apache Hadoop, Apache Spark, etc. I am currently exploring Artificial Intelligence, Game Development, and several other Computer Science domains.
 `;
 
 export const ownerResume = process.env.OWNER_RESUME;
-export const ownerLocation = "RJ, India";
+export const ownerLocation = "Jaipur, Rajasthan";
 export const ownerTimezone = "Asia/Kolkata";
+
 export const siteTitle = ownerName;
-export const siteDescription = "Yet another Human from Earth";
+export const siteDescription = ownerBio + " - Swastik is currently pursuing higher studies in Computer Science and is enthusiastic about Computers and Technology in general. He has been learning Programming since 2018 and has significant experience in Python and Web Development."
 export const siteLogo = "https://avatars.githubusercontent.com/u/56737344";
 export const siteHost = process.env.SITE_HOST;
 

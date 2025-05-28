@@ -35,31 +35,37 @@ function ChangeBordersStyle({
   bl?: TransposeValues | number;
 }) {
   const { windowSize, transposeCoordsValues, transposeCoords } = useApp();
+  const defaultRadius = useMemo(
+    () => windowSize && (defaultRadiusRatio * Math.min(windowSize.height, windowSize.width)),
+    [windowSize]
+  );
+  const tlV = useMemo(
+    () => typeof tl === "number" ? { theta: tl, radius: defaultRadius ?? 0 } : tl,
+    [tl, defaultRadius]
+  );
+  const trV = useMemo(
+    () => typeof tr === "number" ? { theta: tr, radius: defaultRadius ?? 0 } : tr,
+    [tr, defaultRadius]
+  );
+  const brV = useMemo(
+    () => typeof br === "number" ? { theta: br, radius: defaultRadius ?? 0 } : br,
+    [br, defaultRadius]
+  );
+  const blV = useMemo(
+    () => typeof bl === "number" ? { theta: bl, radius: defaultRadius ?? 0 } : bl,
+    [bl, defaultRadius]
+  );
 
   useEffect(() => {
-    if (typeof tl === "number" || typeof tr === "number" || typeof br === "number" || typeof bl === "number") {
-      if (!windowSize) return;
-      const defaultRadius = defaultRadiusRatio * Math.min(windowSize.height, windowSize.width);
-
-      if (typeof tl === "number")
-        tl = { theta: tl, radius: defaultRadius }
-      if (typeof tr === "number")
-        tr = { theta: tr, radius: defaultRadius }
-      if (typeof br === "number")
-        br = { theta: br, radius: defaultRadius }
-      if (typeof bl === "number")
-        bl = { theta: bl, radius: defaultRadius }
-    }
-
     if (transposeCoordsValues && (
-      areObjectsEqual(transposeCoordsValues.tl, tl) &&
-      areObjectsEqual(transposeCoordsValues.tr, tr) &&
-      areObjectsEqual(transposeCoordsValues.br, br) &&
-      areObjectsEqual(transposeCoordsValues.bl, bl)
+      areObjectsEqual(transposeCoordsValues.tl, tlV) &&
+      areObjectsEqual(transposeCoordsValues.tr, trV) &&
+      areObjectsEqual(transposeCoordsValues.br, brV) &&
+      areObjectsEqual(transposeCoordsValues.bl, blV)
     )) return;
 
-    transposeCoords({ tl, tr, br, bl });
-  }, [transposeCoordsValues, tl, tr, br, bl]);
+    transposeCoords({ tl: tlV, tr: trV, br: brV, bl: blV });
+  }, [transposeCoords, transposeCoordsValues, tlV, trV, brV, blV]);
 
   return <></>;
 }

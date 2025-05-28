@@ -78,7 +78,7 @@ export function AppProvider({ children, ...props }: { children: React.ReactNode 
     didInit = true;
 
     refreshQImg();
-  }, []);
+  }, [refreshQImg]);
 
   const value: AppProviderState = {
     qImg: { data: qImgData, error: qImgError, loading: qImgLoading },

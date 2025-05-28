@@ -41,7 +41,7 @@ export default function Contact() {
     <>
     <BorderStyle tl={toRadians(80)} tr={toRadians(180)} br={toRadians(200)} bl={toRadians(-35)} />
     <main className={styles.main}>
-      <div className={styles.socials} style={{ paddingBottom: 3 + "vh" }}>
+      <div className={styles.socials}>
         <div className={styles.location}>
           <LocationPinIcon />
           <strong>{ownerLocation} (<OwnerTime />)</strong>

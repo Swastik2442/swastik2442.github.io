@@ -109,7 +109,7 @@
 .bottomButtons button, .bottomButtons a {
   font-size: 1.25rem;
   color: var(--primary);
-  text-decoration: none;
+  -webkit-user-select: none;
   user-select: none;
 }
 

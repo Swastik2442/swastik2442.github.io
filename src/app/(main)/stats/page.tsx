@@ -17,7 +17,7 @@ export default async function Stats() {
     <>
     <BorderStyle tl={0} tr={2} bl={4} br={3.5} />
     <main className={styles.main}>
-      <div style={{ paddingBottom: 3 + "vh" }}>
+      <div className={styles.statsContainer}>
         <div className={styles.statsHeading}>
           <div className={mergeClasses(primaryFont.className, "textScar")}>
             Developer Rating:

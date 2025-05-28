@@ -13,6 +13,23 @@ html, body {
   overflow: hidden;
 }
 
+a {
+  text-decoration: none;
+}
+
+.mainBody {
+  min-height: 100%;
+}
+
+.othersBody {
+  background: none;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .vcBackground {
   position: relative;
   z-index: 1;
@@ -117,6 +134,7 @@ html, body {
   font-size: 2rem;
   color: var(--primary);
   text-decoration: none;
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -127,6 +145,7 @@ html, body {
   right: 0;
   bottom: 0;
   padding-right: 16px;
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -141,6 +160,19 @@ html, body {
 
 .loadingIconCircle {
   animation: loadingIconAnimation .75s linear infinite;
+}
+
+.centerAll {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.noUserSelect {
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .sr-only {

@@ -6,13 +6,16 @@
   transform: translate(-50%, -50%);
 }
 
+.socials {
+  padding-bottom: 3vh;
+}
+
 .socials div {
   padding: 5px;
 }
 
 .socials div a {
   color: inherit;
-  text-decoration: none;
   transition: color 0.25s ease;
   &:hover {
     color: var(--tertiary);
@@ -32,6 +35,7 @@
 }
 
 .socials .location {
+  -webkit-user-select: none;
   user-select: none;
 }
 

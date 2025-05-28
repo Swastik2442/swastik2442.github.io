@@ -22,6 +22,7 @@
 
 .textContainer {
   z-index: 2;
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -80,6 +81,7 @@
 
 .qImgAttr a {
   color: var(--secondary);
+  text-decoration: underline;
   &:hover {
     text-decoration: none;
   }

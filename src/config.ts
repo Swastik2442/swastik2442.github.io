@@ -39,6 +39,14 @@ export const workExpData: WorkProperties[] = [
   },
 ];
 
+export const links = {
+  "resume": ownerResume,
+  "github": `https://github.com/${githubUsername}`,
+  "linkedin": `https://linkedin.com/in/${linkedinUsername}`,
+  "twitter": `https://x.com/${twitterUsername}`,
+  "x": `https://x.com/${twitterUsername}`
+} as const;
+
 export const primaryFont = Notable({ weight: "400", subsets: ["latin"] });
 export const secondaryFont = Alex_Brush({ weight: "400", subsets: ["latin"] });
 export const tertiaryFont = Poppins({ weight: "400", subsets: ["latin"] });

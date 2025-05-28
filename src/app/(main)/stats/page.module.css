@@ -12,13 +12,19 @@
   width: 60vw;
   height: 40vh;
   overflow: hidden;
+  -webkit-user-select: none;
   user-select: none;
   clip-path: polygon(2% 3%, 100% 0, 98% 94%, 0 100%);
+}
+
+.statsContainer {
+  padding-bottom: 3vh;
 }
 
 .statsHeading {
   text-align: center;
   padding-bottom: 3vh;
+  -webkit-user-select: none;
   user-select: none;
 }
 

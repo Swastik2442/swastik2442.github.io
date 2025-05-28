@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <body className={tertiaryFont.className} style={{ minHeight: "100%" }}>
+    <body className={`mainBody ${tertiaryFont.className}`}>
       <Header />
       <VCBorders>
         {children}

@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import { tertiaryFont } from "@/config";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 
 const VCBorders = dynamic(
   () => import("@/components/vcBorders"),
@@ -21,7 +20,6 @@ export default function RootLayout({
       <VCBorders>
         {children}
       </VCBorders>
-      <Footer />
     </body>
   );
 }

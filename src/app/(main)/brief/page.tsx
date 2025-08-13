@@ -9,7 +9,7 @@ export default function Brief() {
     <>
     <BorderStyle tl={toRadians(100)} tr={toRadians(30)} br={toRadians(-90)} bl={toRadians(-50)} />
     <main className={styles.main}>
-      <div>
+      <div className={styles.briefContent}>
         <p className={styles.shortBrief}>
           <span>{ownerName}</span>
           <span>{ownerBio}</span>

@@ -39,7 +39,7 @@ export default function Home() {
     <main className={styles.main}>
       <ul className={mergeClasses(styles.menuList, primaryFont.className)}>
         <li>
-          <Link href="/links/resume" target="_blank" className="greenHover textScar">
+          <Link href="/links/resume" target="_blank" prefetch={false} className="greenHover textScar">
             resume
           </Link>
         </li>

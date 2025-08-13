@@ -4,7 +4,27 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.briefContent {
   width: 60vw;
+  max-height: 40vh;
+  overflow-y: scroll;
+  margin-bottom: 1rem;
+  padding-right: 0.2rem;
+
+  &::-webkit-scrollbar {
+    width: 0.1rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--primaryDark);
+  }
 }
 
 .shortBrief {

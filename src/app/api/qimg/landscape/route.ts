@@ -1,4 +1,4 @@
-import { getUnsplashImage } from "@/utils/images";
+import { getUnsplashImage } from "@/services/unsplash";
 
 export const dynamic = 'force-static';
 export const revalidate = 604800; // 1 week

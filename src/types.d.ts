@@ -53,11 +53,11 @@ interface TransposeValues {
   radius: number;
 }
 
-interface QuadrilateralValues<t> {
-  tl: t;
-  tr: t;
-  br: t;
-  bl: t;
+interface QuadrilateralValues<T> {
+  tl: T;
+  tr: T;
+  br: T;
+  bl: T;
 }
 
 type QuadrilateralCoords = QuadrilateralValues<Coordinates>;

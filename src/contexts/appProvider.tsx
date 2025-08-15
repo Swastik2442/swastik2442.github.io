@@ -1,10 +1,18 @@
 "use client";
 
-import { useContext, createContext, useState, useEffect, Dispatch, SetStateAction, useMemo } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type Dispatch,
+  type SetStateAction
+} from "react";
+import { getCoordinates } from "@/lib/paths";
 import useQuery from "@/hooks/useQuery";
 import useWindowSize from "@/hooks/useWindowSize";
 import { getOrientation, getScreenSize } from "@/utils/others";
-import { getCoordinates } from "@/utils/paths";
 
 export interface AppProviderState {
   /** Data for Image to be used on Quit Site Page */
@@ -25,10 +33,6 @@ export interface AppProviderState {
 
   /** Size of the current Browser Window */
   windowSize: WindowSize | undefined;
-  /** Date till the User is Rate Limited */
-  limitedTill: Date | null;
-  /** Function to set the Date till the User is Rate Limited */
-  setLimitedTill: Dispatch<SetStateAction<Date | null>>;
 }
 
 const initialState: AppProviderState = {
@@ -37,9 +41,7 @@ const initialState: AppProviderState = {
   bgCoords: null,
   transposeCoordsValues: null,
   transposeCoords: () => console.error("transposeCoords not implemented"),
-  windowSize: undefined,
-  limitedTill: null,
-  setLimitedTill: () => console.error("setLimitedTill not implemented"),
+  windowSize: undefined
 };
 
 let didInit = false;
@@ -55,7 +57,6 @@ export function AppProvider({ children, ...props }: { children: React.ReactNode 
   const screenSize = getScreenSize();
   const windowSize = useWindowSize();
 
-  const [limitedTill, setLimitedTill] = useState<AppProviderState["limitedTill"]>(null);
   const [coordsTranspose, setCoordsTranspose] = useState<AppProviderState["transposeCoordsValues"]>(null);
   const bgCoords = useMemo<AppProviderState["bgCoords"]>(
     () => windowSize ? getCoordinates(windowSize, coordsTranspose) : null,
@@ -70,7 +71,7 @@ export function AppProvider({ children, ...props }: { children: React.ReactNode 
   } = useQuery<QImg>(
     `/api/qimg/${getOrientation(screenSize)}`, {
     cache: "force-cache",
-    next: { revalidate: 604800 }
+    next: { revalidate: 604800 } // 7 days
   }, false);
 
   useEffect(() => {
@@ -86,9 +87,7 @@ export function AppProvider({ children, ...props }: { children: React.ReactNode 
     bgCoords: bgCoords,
     transposeCoordsValues: coordsTranspose,
     transposeCoords: setCoordsTranspose,
-    windowSize: windowSize,
-    limitedTill: limitedTill,
-    setLimitedTill: setLimitedTill,
+    windowSize: windowSize
   };
 
   return (

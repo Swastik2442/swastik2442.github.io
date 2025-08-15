@@ -1,9 +1,9 @@
 "use client";
 
 import { memo, useMemo, useEffect } from "react";
+import { mainPath } from "@/lib/paths";
 import { useApp } from "@/contexts/appProvider";
 import useClient from "@/hooks/useClient";
-import { mainPath } from "@/utils/paths";
 import { areObjectsEqual } from "@/utils/others";
 
 const defaultValues = { theta: 0, radius: 0 }, defaultRadiusRatio = 0.1;

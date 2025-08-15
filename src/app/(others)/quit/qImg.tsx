@@ -2,15 +2,15 @@
 
 import { useEffect, useRef, useMemo, memo, JSX } from "react";
 import Link from "next/link";
+import { quitPath } from "@/lib/paths";
+import { tertiaryFont } from "@/config";
+import { AppProviderState, useApp } from "@/contexts/appProvider";
 import useWindowSize from "@/hooks/useWindowSize";
 import useDebounce from "@/hooks/useDebounce";
 import { LoadingIcon } from "@/components/icons";
-import { quitPath } from "@/utils/paths";
 import { mergeClasses } from "@/utils/css";
 import { getScreenSize } from "@/utils/others";
-import { tertiaryFont } from "@/config";
 import styles from "./page.module.css";
-import { AppProviderState, useApp } from "@/contexts/appProvider";
 
 const maxSize = 0.9;
 

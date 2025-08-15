@@ -10,7 +10,7 @@ function getUnsplashParamURL(url: string) {
   return unsplashURL.href;
 }
 
-export async function getUnsplashImage(orientation: Orientation) {
+export async function getUnsplashImage(orientation: Orientation): Promise<QImg | null> {
   if (!unsplashAccessKey) {
     console.error("Unsplash Access Key not found");
     return null;
@@ -23,8 +23,7 @@ export async function getUnsplashImage(orientation: Orientation) {
     topicIds: ["6sMVjTLSkeQ", "bo8jQKTaE0Y"], // Nature, Wallpaper
     contentFilter: "high",
   });
-  if (response.type === 'error')
-    return null;
+  if (response.type === 'error') return null;
 
   const photo = Array.isArray(response.response) ? response.response[0] : response.response;
   return {
@@ -34,5 +33,5 @@ export async function getUnsplashImage(orientation: Orientation) {
     name_service: "Unsplash",
     attr_author: getUnsplashParamURL(photo.user.links.html),
     attr_service: getUnsplashParamURL("https://unsplash.com"),
-  } satisfies QImg;
+  };
 }

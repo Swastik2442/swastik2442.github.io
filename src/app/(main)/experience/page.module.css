@@ -17,6 +17,7 @@
   transition: flex 0.75s;
   padding: 0 1vw;
   font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .descriptionCol p {
@@ -47,6 +48,7 @@
   overflow-y: scroll;
   height: 50vh;
   margin-bottom: 2vh;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 
   &::-webkit-scrollbar {
     width: 1.5vw;

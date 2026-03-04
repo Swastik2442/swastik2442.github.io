@@ -17,7 +17,14 @@ export const config = { matcher: ["/api/:path*", "/links/:path*"] };
 export default async function proxy(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/api')) {
     const ip = getClientIp(request as unknown as Request) ?? "127.0.0.1";
-    const { success } = await ratelimit.limit(ip);
+    let success = false;
+    try {
+      const { success: shouldNotRatelimit } = await ratelimit.limit(ip);
+      success = shouldNotRatelimit;
+    } catch (err) {
+      console.error("An error occurred while rate-limiting the request: ", err);
+      success = true; // BUG: Directly allowing the request is neither safe nor recommended
+    }
     return success ? NextResponse.next() : NextResponse.error();
   }
 

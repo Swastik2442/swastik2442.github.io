@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useMemo, useEffect } from "react";
+import { memo, useMemo, useEffect, type JSX } from "react";
 import { mainPath } from "@/lib/paths";
 import { useApp } from "@/contexts/appProvider";
 import useClient from "@/hooks/useClient";

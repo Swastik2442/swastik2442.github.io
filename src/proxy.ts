@@ -14,7 +14,7 @@ const ratelimit = new Ratelimit({
 
 export const config = { matcher: ["/api/:path*", "/links/:path*"] };
 
-export default async function middleware(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/api')) {
     const ip = getClientIp(request as unknown as Request) ?? "127.0.0.1";
     const { success } = await ratelimit.limit(ip);

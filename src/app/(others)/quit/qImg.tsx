@@ -64,7 +64,7 @@ function QuitImgAttribution({ qImg }: { qImg: AppProviderState["qImg"] }) {
 
 function QuitImgRenderer({ qImg }: { qImg: AppProviderState["qImg"] }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const workerRef = useRef<Worker>();
+  const workerRef = useRef<Worker>(undefined);
 
   const windowSize = useWindowSize();
   const debouncedWindowSize = useDebounce(windowSize, 500);

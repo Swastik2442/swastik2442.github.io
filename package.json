@@ -20,23 +20,23 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@upstash/ratelimit": "^2.0.7",
-    "@upstash/redis": "^1.35.7",
+    "@upstash/ratelimit": "^2.0.8",
+    "@upstash/redis": "^1.36.3",
     "blurhash": "^2.0.5",
-    "next": "15.5.9",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "next": "16.1.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "request-ip": "^3.3.0",
     "unsplash-js": "^7.0.20"
   },
   "devDependencies": {
-    "@types/node": "^22.19.2",
-    "@types/react": "^18.3.27",
-    "@types/react-dom": "^18.3.7",
+    "@types/node": "^22.19.13",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
     "@types/request-ip": "^0.0.41",
     "csstype": "^3.2.3",
-    "eslint": "^9.39.1",
-    "eslint-config-next": "15.5.9",
+    "eslint": "^9.39.3",
+    "eslint-config-next": "16.1.6",
     "typescript": "^5.9.3"
   }
 }

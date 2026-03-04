@@ -18,7 +18,7 @@ export interface AppProviderState {
   /** Data for Image to be used on Quit Site Page */
   qImg: {
     data: QImg | null;
-    error: any;
+    error: unknown;
     loading: boolean;
   };
   /** Function to refetch the Quit Site Page Image Data */

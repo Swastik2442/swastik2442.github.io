@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 
 export function useQuery<T>(url: string, init?: RequestInit, start: boolean = true) {
   const [data, setData] = useState<T | null>(null);
-  const [error, setError] = useState<any>(null);
+  const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(start);
 
   const doFetch = useCallback(() => {
@@ -19,6 +19,7 @@ export function useQuery<T>(url: string, init?: RequestInit, start: boolean = tr
   }, [loading, url, init, setLoading, setError, setData]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (start) doFetch();
   }, [start, doFetch]);
 

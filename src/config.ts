@@ -2,11 +2,11 @@ import { Notable, Alex_Brush, Poppins, Monoton } from "next/font/google";
 
 export const startYear = 2023;
 export const ownerName = "Swastik Kulshreshtha";
-export const ownerBio = "Computer Science Undergraduate | Tech Enthusiast | Python & C++";
+export const ownerBio = "Full-Stack Developer | Tech Enthusiast | Python & TypeScript";
 export const ownerDescription = `
-I am currently pursuing higher studies in Computer Science and Engineering. I am enthusiastic about Computers and Technology in general. I have been learning Programming since 2018 and have significant experience in Python and Web Development.
-In my college, I started learning more about Computer Fundamentals and other Programming Languages like C, Java, C++, JavaScript, TypeScript etc. I have learnt about Data Structures and Algorithms, Object-Oriented Programming, Database Management System, Computer Architecture and Organization, Operating Systems, Machine Learning, Deep Learning, Data Science, Big Data Analysis and many more.
-Other than that, I have explored and created projects in TensorFlow, PyTorch, Django, Pandas, Flet, React, Next.js, Apache Hadoop, Apache Spark, etc. I am currently exploring Artificial Intelligence, Game Development, and several other Computer Science domains.
+I am currently pursuing higher studies in Computer Science and Engineering. I am enthusiastic about Computers and Technology in general. I have been learning Programming since 2018 and have significant experience in Python, TypeScript and Web Development.
+In my college, I learnt more about Computer Fundamentals and other Programming Languages like C, Java, C++, etc. I have learnt about Data Structures and Algorithms, Object-Oriented Programming, Database Management Systems, Computer Architecture and Organization, Operating Systems, Machine Learning, Deep Learning, Large Language Models, Big Data Analysis and many more.
+Other than that, I have explored and created projects in FastAPI, React, Next.js, Express.js, Pandas, Flet, Django, Apache Hadoop, Apache Spark, TensorFlow, PyTorch, etc. I have used multiple cloud platforms like Azure, AWS, Vercel, Render, etc. I am currently exploring Artificial Intelligence, Game Development, and several other Computer Science domains.
 `;
 
 export const ownerResume = process.env.OWNER_RESUME;
@@ -14,7 +14,7 @@ export const ownerLocation = "Jaipur, Rajasthan";
 export const ownerTimezone = "Asia/Kolkata";
 
 export const siteTitle = ownerName;
-export const siteDescription = ownerBio + " - Swastik is currently pursuing higher studies in Computer Science and is enthusiastic about Computers and Technology in general. He has been learning Programming since 2018 and has significant experience in Python and Web Development."
+export const siteDescription = ownerBio + " - Swastik is currently pursuing higher studies in Computer Science and is enthusiastic about Computers and Technology in general. He has been learning Programming since 2018 and has significant experience in Python, TypeScript and Web Development."
 export const siteLogo = "https://avatars.githubusercontent.com/u/56737344";
 export const siteHost = process.env.SITE_HOST;
 
@@ -27,8 +27,8 @@ export const kvAPIURL = process.env.KV_REST_API_URL;
 
 export const twitterUsername = "swastik2442";
 export const githubUsername = "Swastik2442";
-export const linkedinUsername = githubUsername;
-export const wakatimeUsername = twitterUsername;
+export const linkedinUsername = "Swastik2442";
+export const wakatimeUsername = "swastik2442";
 
 export const workExpData: WorkProperties[] = [
   {
@@ -41,7 +41,7 @@ export const workExpData: WorkProperties[] = [
     name: "Celebal Technologies Ltd.",
     tech: "Python, FastAPI, Azure",
     time: "Feb 2026 - Present",
-    description: "Working as a Full-Stack Development Intern.",
+    description: "Working as a Junior Software Engineer in the Full-Stack Development department focusing on building scalable web applications.",
   },
 ];
 
